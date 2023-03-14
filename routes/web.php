@@ -17,4 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/create', function () {
+//     return view('users.create');
+// });
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::resource('users', App\Http\Controllers\UserController::class);
+    // Route::get('/usuarios/nuevo', [App\Http\Controllers\userController::class, 'create'])->name('users.create');
+
+
+
+    Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+    Route::resource('roles', App\Http\Controllers\RoleController::class);
+});

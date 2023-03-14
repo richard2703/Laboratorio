@@ -31,7 +31,7 @@
   }
   
   a {
-	color: var(--links)#4154f1;
+	color: var(--links);
 	text-decoration: none;
   }
   

@@ -266,10 +266,15 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
-                            </a>
+                            <form action="{{ route('logout') }}" method="POST" style="display: inline-block;"
+                                onsubmit="return confirm('Seguro?')">
+                                @csrf
+                                <button class="dropdown-item d-flex align-items-center" type="submit"
+                                    rel="tooltip">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Sign Out</span>
+                                </button>
+                            </form>
                         </li>
 
                     </ul>
@@ -319,32 +324,37 @@
             <li class="nav-heading">Administracion</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>Usuarios y perfiles</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="tables-general.html">
-                            <i class="bi bi-circle"></i><span>General Tables</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tables-data.html">
-                            <i class="bi bi-circle"></i><span>Data Tables</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            {{--  End Usuarios y perfiles Nav  --}}
-
-            <li class="nav-item">
                 <a class="nav-link collapsed" href="users-profile.html">
                     <i class="bi bi-person"></i>
                     <span>Profile</span>
                 </a>
             </li>
-            <!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#usuarios-nav" data-bs-toggle="collapse"
+                    href="#">
+                    <i class="bi bi-person"></i>
+                    <span>Usuarios y Permisos</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="usuarios-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('users.index') }}">
+                            <i class="bi bi-circle"></i><span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('roles.index') }}">
+                            <i class="bi bi-circle"></i><span>Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('permissions.index') }}">
+                            <i class="bi bi-circle"></i><span>Permisos</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{--  <!-- Usuarios Roles y permisos -->  --}}
 
         </ul>
 
@@ -381,6 +391,7 @@
     <script src="{{ asset('vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
+
 
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
