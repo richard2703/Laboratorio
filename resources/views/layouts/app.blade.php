@@ -295,26 +295,27 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item ">
-                <a class="nav-link {{ $activePage == 'Dashboard' ? ' active' : '' }}" href="index.html">
+                <a class="nav-link {{ $activePage == 'Dashboard' ? '' : 'collapsed' }}" href="{{ url('test') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item ">
-                <a class="nav-link{{ $activePage == 'Tables' ? ' active' : '' }} " data-bs-target="#tables-nav"
+                <a class="nav-link {{ $activePage == 'Tables' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
                     data-bs-toggle="collapse" href="#">
                     <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="tables-nav" class="nav-content collapse {{ $activePage == 'Tables' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="tables-general.html">
+                        <a href="tables-general.html" class="{{ $activeItem == 'General' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>General Tables</span>
                         </a>
                     </li>
                     <li>
-                        <a href="tables-data.html">
+                        <a href="tables-data.html" class="{{ $activeItem == 'Data' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Data Tables</span>
                         </a>
                     </li>
@@ -324,22 +325,24 @@
 
             <li class="nav-heading">Administracion</li>
 
-            <li class="nav-item ">
-                <a class="nav-link {{ $activePage == 'personal' ? ' active' : '' }}" href="{{ url('test') }}">
+            <li class="nav-item collapsed">
+                <a class="nav-link {{ $activePage == 'Profile' ? '' : 'collapsed' }}" href="{{ url('test') }}">
                     <i class="bi bi-person"></i>
                     <span>Profile</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ $activePage == 'usuarios' ? ' active' : '' }}" data-bs-target="#usuarios-nav"
-                    data-bs-toggle="collapse" href="#">
+                <a class="nav-link {{ $activePage == 'usuarios' ? '' : 'collapsed' }} "
+                    data-bs-target="#usuarios-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-person"></i>
                     <span>Usuarios y Permisos</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="usuarios-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="usuarios-nav" class="nav-content collapse {{ $activePage == 'usuarios' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('users.index') }}">
+                        <a href="{{ route('users.index') }}"
+                            class="{{ $activeItem == 'usuarios' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Usuarios</span>
                         </a>
                     </li>
