@@ -22,6 +22,8 @@
 --links: #009394;
 --select: #f6f9ff;
 --titulo: #08C6AB;
+--active: #f6f9ff;
+
   }
   
   body {
@@ -36,7 +38,7 @@
   }
   
   a:hover {
-	color: var(--links);
+	color: var(--titulo);
 	text-decoration: none;
   }
   
@@ -101,7 +103,7 @@
 	color: var(--dash);
 	line-height: 0;
   }
-  
+
   .back-to-top:hover {
 	background: #6776f4;
 	color: var(--dash);
@@ -609,11 +611,11 @@
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: var(--links);
+  color: var(--select);
 }
 
 .sidebar-nav .nav-content a.active i {
-  background-color: var(--links);
+  background-color: var(--select);
 }
 /*--------------------------------------------------------------
 # Footer

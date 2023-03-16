@@ -347,12 +347,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('roles.index') }}">
+                        <a href="{{ route('roles.index') }}" class=" {{ $activeItem == 'Roles' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Roles</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('permissions.index') }}">
+                        <a href="{{ route('permissions.index') }}"
+                            class="{{ $activeItem == 'Permisos' ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Permisos</span>
                         </a>
                     </li>
