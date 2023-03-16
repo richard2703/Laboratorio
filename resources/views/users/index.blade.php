@@ -1,5 +1,35 @@
-@extends('layouts.app', ['activePage' => 'users', 'titlePage' => 'Usuarios'])
+@extends('layouts.app', ['activePage' => 'usuarios'])
 @section('content')
+    <div class="pagetitle">
+        <h1>Usuarios</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                <li class="breadcrumb-item active">Blank</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header ">
+                        <div class="col text-end">
+                            <button type="button" class="btn btn-primary">Nuevo usuario</button>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <h5 class="card-title">Example Card</h5>
+                        <p>This is an examle page with no contrnt. You can udse it as a starter for your custom pages.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
     <div class="content">
         <div class="container-fluid">
             <div class="row">

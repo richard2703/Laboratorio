@@ -294,15 +294,16 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link " href="index.html">
+            <li class="nav-item ">
+                <a class="nav-link {{ $activePage == 'Dashboard' ? ' active' : '' }}" href="index.html">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+            <li class="nav-item ">
+                <a class="nav-link{{ $activePage == 'Tables' ? ' active' : '' }} " data-bs-target="#tables-nav"
+                    data-bs-toggle="collapse" href="#">
                     <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
@@ -323,16 +324,16 @@
 
             <li class="nav-heading">Administracion</li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+            <li class="nav-item ">
+                <a class="nav-link {{ $activePage == 'personal' ? ' active' : '' }}" href="{{ url('test') }}">
                     <i class="bi bi-person"></i>
                     <span>Profile</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#usuarios-nav" data-bs-toggle="collapse"
-                    href="#">
+                <a class="nav-link {{ $activePage == 'usuarios' ? ' active' : '' }}" data-bs-target="#usuarios-nav"
+                    data-bs-toggle="collapse" href="#">
                     <i class="bi bi-person"></i>
                     <span>Usuarios y Permisos</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
