@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Dashboard', 'titlePage' => __('Alta de Personal')])
+@extends('layouts.app', ['activePage' => 'Dashboard', 'activeItem' => ''])
 
 @section('content')
     <div class="pagetitle">

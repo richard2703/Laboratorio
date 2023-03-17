@@ -25,10 +25,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('users', App\Http\Controllers\UserController::class);
-    // Route::get('/usuarios/nuevo', [App\Http\Controllers\userController::class, 'create'])->name('users.create');
-
-
-
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
     Route::resource('roles', App\Http\Controllers\RoleController::class);
+    Route::resource('parametros', App\Http\Controllers\parametrosController::class);
+    Route::resource('examenes', App\Http\Controllers\examenesController::class);
+    Route::resource('maquilas', App\Http\Controllers\maquilasController::class);
+    Route::resource('pacientes', App\Http\Controllers\pacientesController::class);
+    Route::resource('tickets', App\Http\Controllers\ticketsController::class);
+    Route::get('/ticket/{ticket}/examenes', [App\Http\Controllers\resultadosController::class, 'index'])->name('resultados.index');
+    Route::post('/ticket/{ticket}/resultados', [App\Http\Controllers\resultadosController::class, 'create'])->name('resultados.create');
+    Route::post('/ticket/resultados', [App\Http\Controllers\resultadosController::class, 'store'])->name('resultados.store');
+    Route::post('/ticket/{ticket}/resultados/editar', [App\Http\Controllers\resultadosController::class, 'edit'])->name('resultados.edit');
+    Route::post('/ticket/resultados/update', [App\Http\Controllers\resultadosController::class, 'update'])->name('resultados.update');
+    Route::post('/resultados', [App\Http\Controllers\resultadosController::class, 'pdfResultado'])->name('resultados.pdf');
+
+    Route::get('/pdf', [App\Http\Controllers\resultadosController::class, 'pdftest'])->name('resultados.pdftest');
 });

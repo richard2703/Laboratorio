@@ -333,6 +333,29 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link {{ $activePage == 'examenes' ? '' : 'collapsed' }} "
+                    data-bs-target="#examenes-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person"></i>
+                    <span>Examenes y Parametros</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="examenes-nav" class="nav-content collapse {{ $activePage == 'examenes' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('examenes.index') }}"
+                            class="{{ $activeItem == 'examenes' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Examenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('parametros.index') }}"
+                            class=" {{ $activeItem == 'parametros' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Parametros</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link {{ $activePage == 'usuarios' ? '' : 'collapsed' }} "
                     data-bs-target="#usuarios-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-person"></i>
