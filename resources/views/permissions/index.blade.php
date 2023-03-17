@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="card-footer mr-auto">
-                        {{--  {{ $permissions->links() }}  --}}
+                        {{ $permissions->links('vendor.pagination.bootstrap-5') }}
                     </div>
                 </div>
 

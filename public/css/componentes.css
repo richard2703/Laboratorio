@@ -162,3 +162,15 @@
 	color: #4154f1;
 	border-bottom: 2px solid #4154f1;
   }
+
+  /* -------------------------------------------------------
+  Paginacion
+  ------------------------------------------------------- */
+  .active>.page-link{
+    background-color: var(--dash);
+    border-color: var(--dash);
+  }
+
+    .page-link{
+    color: var(--dash);
+  }
