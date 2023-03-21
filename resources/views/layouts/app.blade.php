@@ -299,7 +299,18 @@
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
+            <!-- End Dashboard Nav -->
+
+            <li class="nav-item collapsed">
+                <a class="nav-link {{ $activePage == 'pacientes' ? '' : 'collapsed' }}"
+                    href="{{ route('pacientes.index') }}">
+                    <i class="bi bi-person"></i>
+                    <span>Pacientes</span>
+                </a>
+            </li>
+            {{--  <!-- Pacientes -->  --}}
+
 
             <li class="nav-item ">
                 <a class="nav-link {{ $activePage == 'Tables' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
@@ -326,11 +337,13 @@
             <li class="nav-heading">Administracion</li>
 
             <li class="nav-item collapsed">
-                <a class="nav-link {{ $activePage == 'Profile' ? '' : 'collapsed' }}" href="{{ url('test') }}">
+                <a class="nav-link {{ $activePage == 'maquilas' ? '' : 'collapsed' }}"
+                    href="{{ route('maquilas.index') }}">
                     <i class="bi bi-person"></i>
-                    <span>Profile</span>
+                    <span>Maquilas</span>
                 </a>
             </li>
+            {{--  <!-- Maquilas -->  --}}
 
             <li class="nav-item">
                 <a class="nav-link {{ $activePage == 'examenes' ? '' : 'collapsed' }} "
@@ -354,6 +367,8 @@
                     </li>
                 </ul>
             </li>
+            {{--  <!-- Usuarios Examenes y Parametros -->  --}}
+
 
             <li class="nav-item">
                 <a class="nav-link {{ $activePage == 'usuarios' ? '' : 'collapsed' }} "

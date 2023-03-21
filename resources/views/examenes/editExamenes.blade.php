@@ -40,36 +40,41 @@
                                 </div>
                             @endif
                             <div class="row">
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
-                                    <label class="labelTitulo">Nombre:</label></br>
-                                    <input type="text" class="inputCaja" id="nombre" name="nombre"
-                                        value="{{ $examene->nombre }}">
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="nombre" class="form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                        value="{{ $examene->nombre }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
                                 </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
-                                    <label class="labelTitulo">costo:</label></br>
-                                    <input type="number" class="inputCaja" id="costo" name="costo"
-                                        value="{{ $examene->costo }}">
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="costo" class="form-label">Costo:</label></br>
+                                    <input type="number" class="form-control" id="costo" name="costo"
+                                        value="{{ $examene->costo }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
                                 </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
-                                    <label class="labelTitulo">Costo Maquila:</label></br>
-                                    <input type="number" class="inputCaja" id="maquila" name="maquila"
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="maquila" class="form-label">Costo Maquila:</label></br>
+                                    <input type="number" class="form-control" id="maquila" name="maquila"
                                         value="{{ $examene->maquila }}">
                                 </div>
-                                <div class="row ">
-                                    <label class="labelTitulo">Parametros:</label></br>
-                                    <div class="col-12 " style=" display: contents;">
+                                <div class="col-12 ">
+                                    <label class="form-label">Parametros:</label></br>
+                                    <div class="row position-relative d-flex">
                                         @forelse ($parametros as $id => $parametro)
                                             <div class=" col-12 col-sm-6 col-lg-4 my-1">
-                                                <input type="checkbox" id="{{ $id }}" name="parametros[]"
-                                                    value="{{ $id }}"
+                                                <input type="checkbox" class="form-check-input" id="{{ $id }}"
+                                                    name="parametros[]" value="{{ $id }}"
                                                     {{ $examene->parametros->contains($id) ? 'checked' : '' }}>
                                                 <label for="{{ $id }}"> {{ $parametro }}</label>
                                             </div>
                                         @empty
                                             <label> No hay </label>
                                         @endforelse
-
-
                                     </div>
                                 </div>
                             </div>

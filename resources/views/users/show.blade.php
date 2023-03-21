@@ -1,5 +1,16 @@
-@extends('layouts.app', ['activePage' => 'users', 'titlePage' => 'Detalles del usuario'])
+@extends('layouts.app', ['activePage' => 'usuarios', 'activeItem' => 'usuarios'])
+
 @section('content')
+    <div class="pagetitle">
+        <h1>Parametros</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item">Usuarios</li>
+                <li class="breadcrumb-item active">Ver Usuario</li>
+            </ol>
+        </nav>
+    </div>
     <div class="content">
         <div class="container-fluid">
             <div class="row">

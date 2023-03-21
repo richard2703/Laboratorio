@@ -26,7 +26,8 @@
                             @endcan
                         </div>  --}}
                     </div>
-                    <form action="{{ route('examenes.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('examenes.store') }}" method="post" class="form-horizontal needs-validation"
+                        novalidate>
                         @csrf
                         <div class="card-body">
                             @if ($errors->any())
@@ -40,29 +41,38 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="row">
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
-                                    <label class="labelTitulo">Nombre:</label></br>
-                                    <input type="text" class="inputCaja" id="nombre" name="nombre"
-                                        value="{{ old('nombre') }}">
+                            <div class="row g-3">
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="nombre" class="form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" value="{{ old('nombre') }}"
+                                        required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
                                 </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
-                                    <label class="labelTitulo">costo:</label></br>
-                                    <input type="number" class="inputCaja" id="costo" name="costo"
-                                        value="{{ old('costo') }}">
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="costo" class="form-label">Costo:</label></br>
+                                    <input type="number" class="form-control" id="costo" name="costo"
+                                        value="{{ old('costo') }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
                                 </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
-                                    <label class="labelTitulo">Costo Maquila:</label></br>
-                                    <input type="number" class="inputCaja" id="maquila" name="maquila"
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="maquila" class="form-label">Costo Maquila:</label></br>
+                                    <input type="number" class="form-control" id="maquila" name="maquila"
                                         value="{{ old('maquila') }}">
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
                                 </div>
-                                <div class="row ">
-                                    <label class="labelTitulo">Parametros:</label></br>
-                                    <div class="col-12 " style=" display: contents;">
+                                <div class="col-12 ">
+                                    <label for="nombre" class="form-label">Parametros:</label></br>
+                                    <div class="row position-relative d-flex">
                                         @forelse ($parametros as $parametro)
                                             <div class=" col-12 col-sm-6 col-lg-4 my-1">
-                                                <input type="checkbox" id="{{ $parametro->id }}" name="parametros[]"
-                                                    value="{{ $parametro->id }}">
+                                                <input type="checkbox" class="form-check-input" id="{{ $parametro->id }}"
+                                                    name="parametros[]" value="{{ $parametro->id }}">
                                                 <label for="{{ $parametro->id }}">
                                                     {{ $parametro->nombre }}</label>
                                             </div>

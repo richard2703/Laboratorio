@@ -108,24 +108,25 @@
                                     <div class="col-12 ">
                                         <img style="width: 100px;" id="imagenM">
                                     </div>
+
                                     <div class="col-12 mb-3 ">
                                         <input type="hidden" name="id" id="id">
-                                        <label class="labelTitulo" for="">Nombre:</label></br>
-                                        <input class="inputCaja" type="text" id="nombre" name="nombre"></br>
+                                        <label class="form-label" for="">Nombre:</label></br>
+                                        <input class="form-control" type="text" id="nombre" name="nombre"></br>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <label class="labelTitulo" for="">tipo:</label></br>
-                                        <input class="inputCaja" type="text" id="tipo" name="tipo"></br>
+                                        <label class="form-label" for="">tipo:</label></br>
+                                        <input class="form-control" type="text" id="tipo" name="tipo"></br>
                                     </div>
 
-                                    <label class="labelTitulo" for="">Tipo de respuesta:</label></br>
+                                    <label class="form-label" for="">Tipo de respuesta:</label></br>
                                     <div class="col-12 mb-3 nav nav-tabs navMenuBalance justify-content-evenly"
                                         id="nav-tab" role="tablist">
-                                        <label class="labelTitulo"> <input value="1" type="radio" name="respuesta"
+                                        <label class="form-label"> <input value="1" type="radio" name="respuesta"
                                                 id="opc1-tab" data-bs-toggle="tab" data-bs-target="#opc1" role="tab"
                                                 aria-controls="opc1" aria-selected="true">Numerica</label><br>
 
-                                        <label class="labelTitulo"> <input value="2" type="radio" name="respuesta"
+                                        <label class="form-label"> <input value="2" type="radio" name="respuesta"
                                                 d="opc2-tab" data-bs-toggle="tab" data-bs-target="#opc2" role="tab"
                                                 aria-controls="opc2" aria-selected="false">Texto</label><br>
                                     </div>
@@ -134,19 +135,19 @@
                                             aria-labelledby="opc1-tab" tabindex="0">
                                             <div class="row d-flex">
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="labelTitulo" for="">Bajo:</label></br>
-                                                    <input class="inputCaja text-center" type="number" step="0.01"
+                                                    <label class="form-label" for="">Bajo:</label></br>
+                                                    <input class="form-control text-center" type="number" step="0.01"
                                                         min="0.01" id="bajo" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="labelTitulo" for="">Alto:</label></br>
-                                                    <input class="inputCaja text-end" type="number" step="0.01"
+                                                    <label class="form-label" for="">Alto:</label></br>
+                                                    <input class="form-control text-end" type="number" step="0.01"
                                                         min="0.01" id="alto" name="alto"></br>
                                                 </div>
 
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="labelTitulo" for="">Medicion:</label></br>
-                                                    <input class="inputCaja" type="text" id="medicion"
+                                                    <label class="form-label" for="">Medicion:</label></br>
+                                                    <input class="form-control" type="text" id="medicion"
                                                         name="medicion"></br>
                                                 </div>
                                             </div>
@@ -155,8 +156,8 @@
                                             aria-labelledby="opc2-tab" tabindex="0">
                                             <div class="row">
                                                 <div class="col-12 ">
-                                                    <label class="labelTitulo" for="">Referencia:</label></br>
-                                                    <input class="inputCaja" type="text" id="referencia"
+                                                    <label class="form-label" for="">Referencia:</label></br>
+                                                    <input class="form-control" type="text" id="referencia"
                                                         name="referencia"></br>
                                                 </div>
                                             </div>
@@ -197,27 +198,29 @@
                                     <div class="col-12 ">
                                         <img style="width: 100px;" id="imagenM">
                                     </div>
-                                    <div class="col-12 mb-3 ">
+                                    <div class="col-12 col-sm-6  my-3 position-relative ">
                                         <input type="hidden" name="id" id="id">
-                                        <label class="labelTitulo" for="">Nombre:</label></br>
-                                        <input class="inputCaja" type="text" id="nombreU" name="nombre"></br>
+                                        <label class="form-label" for="">Nombre:</label></br>
+                                        <input class="form-control" type="text" id="nombreU" name="nombre"
+                                            required>
                                     </div>
-                                    <div class="col-12 mb-3">
-                                        <label class="labelTitulo" for="">tipo:</label></br>
-                                        <input class="inputCaja" type="text" id="tipoU" name="tipo"></br>
+                                    <div class="col-12 col-sm-6  my-3 position-relative ">
+                                        <label class="form-label" for="">tipo:</label></br>
+                                        <input class="form-control" type="text" id="tipoU" name="tipo"
+                                            required>
                                     </div>
 
-                                    <label class="labelTitulo" for="">Tipo de respuesta:</label></br>
+                                    <label class="form-label" for="">Tipo de respuesta:</label></br>
                                     <div class="col-12 mb-3 nav nav-tabs navMenuBalance justify-content-evenly"
                                         id="nav-tab" role="tablist">
-                                        <label class="labelTitulo"> <input value="1" type="radio"
-                                                name="respuesta" id="balanceUno-tab" data-bs-toggle="tab"
-                                                data-bs-target="#balanceUno" role="tab" aria-controls="balanceUno"
-                                                aria-selected="true" checked>Numerica</label><br>
+                                        <label class="form-label"> <input value="1" type="radio" name="respuesta"
+                                                id="balanceUno-tab" data-bs-toggle="tab" data-bs-target="#balanceUno"
+                                                role="tab" aria-controls="balanceUno" aria-selected="true"
+                                                checked>Numerica</label><br>
 
-                                        <label class="labelTitulo"> <input value="2" type="radio"
-                                                name="respuesta" d="balanceDos-tab" data-bs-toggle="tab"
-                                                data-bs-target="#balanceDos" role="tab" aria-controls="balanceDos"
+                                        <label class="form-label"> <input value="2" type="radio" name="respuesta"
+                                                d="balanceDos-tab" data-bs-toggle="tab" data-bs-target="#balanceDos"
+                                                role="tab" aria-controls="balanceDos"
                                                 aria-selected="false">Texto</label><br>
 
                                         {{--  <div class="col-4">
@@ -232,19 +235,19 @@
                                             aria-labelledby="balanceUno-tab" tabindex="0">
                                             <div class="row d-flex">
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="labelTitulo" for="">Bajo:</label></br>
-                                                    <input class="inputCaja text-center" type="number" step="0.01"
+                                                    <label class="form-label" for="">Bajo:</label></br>
+                                                    <input class="form-control text-center" type="number" step="0.01"
                                                         min="0.01" id="bajoU" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="labelTitulo" for="">Alto:</label></br>
-                                                    <input class="inputCaja text-end" type="number" step="0.01"
+                                                    <label class="form-label" for="">Alto:</label></br>
+                                                    <input class="form-control text-end" type="number" step="0.01"
                                                         min="0.01" id="altoU" name="alto"></br>
                                                 </div>
 
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="labelTitulo" for="">Medicion:</label></br>
-                                                    <input class="inputCaja" type="text" id="medicionU"
+                                                    <label class="form-label" for="">Medicion:</label></br>
+                                                    <input class="form-control" type="text" id="medicionU"
                                                         name="medicion"></br>
                                                 </div>
                                             </div>
@@ -253,8 +256,8 @@
                                             aria-labelledby="balanceDos-tab" tabindex="0">
                                             <div class="row">
                                                 <div class="col-12 ">
-                                                    <label class="labelTitulo" for="">Referencia:</label></br>
-                                                    <input class="inputCaja" type="text" id="referenciaU"
+                                                    <label class="form-label" for="">Referencia:</label></br>
+                                                    <input class="form-control" type="text" id="referenciaU"
                                                         name="referencia"></br>
                                                 </div>
                                             </div>
