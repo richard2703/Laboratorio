@@ -1,5 +1,17 @@
-@extends('layouts.main', ['activePage' => 'Resultados', 'titlePage' => __('Lista de Resultados')])
+@extends('layouts.app', ['activePage' => 'tickets', 'activeItem' => 'tickets'])
+
 @section('content')
+    <div class="pagetitle">
+        <h1>Tickets</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item active">Tickets</li>
+            </ol>
+        </nav>
+    </div>
+
+
     <div class="content">
         <div class="container-fluid">
             <div class="row">

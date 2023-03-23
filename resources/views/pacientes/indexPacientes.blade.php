@@ -50,7 +50,7 @@
                                                     <a href="#"><i class="bi bi-card-text h3"></i></a>
                                                 @endcan
                                                 @can('user_edit')
-                                                    <a href="{{ route('pacientes.edit', $paciente->id) }}}"><i
+                                                    <a href="{{ route('pacientes.edit', $paciente->id) }}"><i
                                                             class="bi bi-pencil h3 px-2"></i></a>
                                                 @endcan
                                                 @can('user_destroy')

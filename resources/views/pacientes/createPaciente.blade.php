@@ -25,7 +25,7 @@
                             @endcan
                         </div>  --}}
                     </div>
-                    <form action="{{ route('roles.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('pacientes.store') }}" method="post" class="form-horizontal">
                         @csrf
                         <div class="card-body">
 

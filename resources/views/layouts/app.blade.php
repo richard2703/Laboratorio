@@ -302,6 +302,29 @@
             </li>
             <!-- End Dashboard Nav -->
 
+            <li class="nav-item ">
+                <a class="nav-link {{ $activePage == 'tickets' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
+                    data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-receipt"></i><span>Tickets</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="tables-nav" class="nav-content collapse {{ $activePage == 'tickets' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('tickets.create') }}"
+                            class="{{ $activeItem == 'newTicket' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Nuevo Ticket</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('tickets.index') }}"
+                            class="{{ $activeItem == 'tickets' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Tickets</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{--  <!-- Tickets -->  --}}
+
             <li class="nav-item collapsed">
                 <a class="nav-link {{ $activePage == 'pacientes' ? '' : 'collapsed' }}"
                     href="{{ route('pacientes.index') }}">
@@ -311,35 +334,12 @@
             </li>
             {{--  <!-- Pacientes -->  --}}
 
-
-            <li class="nav-item ">
-                <a class="nav-link {{ $activePage == 'Tables' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
-                    data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="tables-nav" class="nav-content collapse {{ $activePage == 'Tables' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="tables-general.html" class="{{ $activeItem == 'General' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>General Tables</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tables-data.html" class="{{ $activeItem == 'Data' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Data Tables</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- End Tables Nav -->
-
             <li class="nav-heading">Administracion</li>
 
             <li class="nav-item collapsed">
                 <a class="nav-link {{ $activePage == 'maquilas' ? '' : 'collapsed' }}"
                     href="{{ route('maquilas.index') }}">
-                    <i class="bi bi-person"></i>
+                    <i class="bi bi-shop"></i>
                     <span>Maquilas</span>
                 </a>
             </li>
@@ -348,7 +348,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ $activePage == 'examenes' ? '' : 'collapsed' }} "
                     data-bs-target="#examenes-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-person"></i>
+                    <i class="bi bi-clipboard2-pulse"></i>
                     <span>Examenes y Parametros</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="examenes-nav" class="nav-content collapse {{ $activePage == 'examenes' ? 'show' : '' }}"
@@ -373,7 +373,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ $activePage == 'usuarios' ? '' : 'collapsed' }} "
                     data-bs-target="#usuarios-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-person"></i>
+                    <i class="bi bi-people"></i>
                     <span>Usuarios y Permisos</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="usuarios-nav" class="nav-content collapse {{ $activePage == 'usuarios' ? 'show' : '' }}"
@@ -438,6 +438,10 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 
 </body>
 

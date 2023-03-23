@@ -1,92 +1,91 @@
-@extends('layouts.main', ['activePage' => 'maquilas', 'titlePage' => __('Maquilas')])
+@extends('layouts.app', ['activePage' => 'maquilas', 'activeItem' => ''])
+
 @section('content')
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-11 align-self-start">
-                    <div class="card">
-                        <div class="card-body contCart">
-                            <form class="row alertaGuardar" action="{{ route('maquilas.store') }}" method="post"class="row"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="p-1 align-self-start bacTituloPrincipal">
-                                    <h2 class="my-3 ms-3 texticonos ">Alta de Maquila</h2>
-                                </div>
-                                <div class="row mt-3">
-                                    {{--  <div class="col-12 col-md-4  my-3">
-                                        <div class="text-center mx-auto border vistaFoto mb-4">
-                                            <i><img class="imgVista img-fluid mb-2"
-                                                    src="{{ asset('/img/general/default.jpg') }}"></i>
-                                            <span class="mi-archivo"> <input class="mb-4 ver " type="file" name="foto"
-                                                    id="mi-archivo" accept="image/*"></span>
-                                            <label for="mi-archivo">
-                                                <span class="">sube imagen</span>
-                                            </label>
-                                        </div>
-                                    </div>  --}}
+    <div class="pagetitle">
+        <h1>Maquilas</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item ">Maquilas</li>
+                <li class="breadcrumb-item active">Nueva Maquila</li>
+            </ol>
+        </nav>
+    </div>
 
-                                    {{--  <div class="col-12 col-md-8 ">  --}}
-                                    <div class="col-12">
-
-                                        <div class="row">
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Nombre:</label></br>
-                                                <input type="text" class="inputCaja" id="nombre" name="nombre"
-                                                    value="">
-                                            </div>
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Direccion:</label></br>
-                                                <input type="text" class="inputCaja" id="direccion" name="direccion"
-                                                    value="">
-                                            </div>
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Telefono:</label></br>
-                                                <input type="text" class="inputCaja" id="telefono" name="telefono"
-                                                    value="">
-                                            </div>
-
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Correo:</label></br>
-                                                <input type="email" class="inputCaja" id="correo" name="correo"
-                                                    value="">
-                                            </div>
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Encargado:</label></br>
-                                                <input type="text" class="inputCaja" id="encargado" name="encargado"
-                                                    value="">
-                                            </div>
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Telefono encargado:</label></br>
-                                                <input type="text" class="inputCaja" id="telEncargado"
-                                                    name="telEncargado" value="">
-                                            </div>
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Foraneo:</label></br>
-                                                <input type="number" class="inputCaja" id="foraneo" name="foraneo"
-                                                    value="" placeholder="extra por examen">
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 text-end mb-3 ">
-                                        <button type="submit" class="btn botonGral"
-                                            onclick="alertaGuardar()">Guardar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+    <section class="section">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header ">
+                        {{--  <div class="col text-end">
+                            @can('user_create')
+                                <a href="{{ route('users.create') }}">
+                                    <button type="button" class="btn btn-primary">Nuevo usuario</button>
+                                </a>
+                            @endcan
+                        </div>  --}}
                     </div>
+                    <form action="{{ route('maquilas.store') }}" method="post" class="form-horizontal">
+                        @csrf
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Nombre:</label></br>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Direccion:</label></br>
+                                    <input type="text" class="form-control" id="direccion" name="direccion"
+                                        value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Telefono:</label></br>
+                                    <input type="text" class="form-control" id="telefono" name="telefono"
+                                        value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Correo:</label></br>
+                                    <input type="text" class="form-control" id="correo" name="correo" value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Encargado:</label></br>
+                                    <input type="text" class="form-control" id="encargado" name="encargado"
+                                        value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Telefono Encargado:</label></br>
+                                    <input type="text" class="form-control" id="telEncargado" name="telEncargado"
+                                        value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Foraneo:</label></br>
+                                    <input type="number" class="form-control" id="foraneo" name="foraneo" value=""
+                                        placeholder="Extra por examen">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!--Footer-->
+                        <div class="card-footer ml-auto mr-auto text-center">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                        <!--End footer-->
+                    </form>
+
                 </div>
+
             </div>
         </div>
-    </div>
+    </section>
+
     <script type="application/javascript">
         jQuery('input[type=file]').change(function(){
          var filename = jQuery(this).val().split('\\').pop();
