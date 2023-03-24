@@ -1,66 +1,49 @@
-@extends('layouts.main', ['activePage' => 'Tickets', 'titlePage' => __('Resultados')])
+@extends('layouts.app', ['activePage' => 'tickets', 'activeItem' => 'tickets'])
+
 @section('content')
-    <div class="content">
-        @if ($errors->any())
-            <!-- PARA LA CARGA DE LOS ERRORES DE LOS DATOS-->
-            <div class="alert alert-danger">
-                <p>Listado de errores a corregir</p>
-                <ul>
-                    @foreach ($errors->all() as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-11 align-self-start">
-                    <div class="card">
-                        <div class="card-header bacTituloPrincipal">
-                            <h4 class="card-title">Ticket N°: {{ $ticket->id }} - {{ $ticket->nombre }}
-                                {{ $ticket->apellido }} - {{ $examen->nombre }}</h4>
-                            {{-- <p class="card-category">Usuarios registrados</p> --}}
-                        </div>
-                        <div class="card-body ">
-                            <div class="row justify-content-end">
-                                {{--  <div class="col-2 text-center">
-                                    @can('user_create')
-                                    <a href="{{ route('tickets.create') }}">
-                                        <button type="button" class="botonSinFondo ">
-                                            <img style="width: 30px;"src="{{ '/img/inventario/nuevo.svg' }}"></button>
-                                        <p>Nuevo paciente</p>
+    <div class="pagetitle">
+        <h1>Resultados</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item ">Tickets</li>
+                <li class="breadcrumb-item ">Resultados</li>
+                <li class="breadcrumb-item active">Examen</li>
+            </ol>
+        </nav>
+    </div>
 
-                                    </a>
-
-                                    @endcan
-                                </div>  --}}
+    <section class="section">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header ">
+                        <div class="row">
+                            <div class="col card-title ">
+                                <h2 class="">{{ $ticket->nombre }}
+                                    {{ $ticket->apellido }} - {{ $examen->nombre }}</h2>
                             </div>
-
-                            <form class="row alertaGuardar" action="{{ route('resultados.store') }}" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" name="examenes_id" value={{ $ticket->id }}>
-                                <input type="hidden" name="ticket_id" value={{ $examen->id }}>
-
-                                <div class="row ">
-                                    <label class="labelTitulo">Parametros:</label></br>
-                                    <div class="col-12 " style=" display: contents;">
+                        </div>
+                    </div>
+                    <form action="{{ route('resultados.store') }}" method="post" class="form-horizontal">
+                        @csrf
+                        <input type="hidden" name="examenes_id" value={{ $ticket->id }}>
+                        <input type="hidden" name="ticket_id" value={{ $examen->id }}>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 ">
+                                    <h5 class="card-title">Parametros:</h5>
+                                    <div class="row position-relative d-flex">
                                         @forelse ($parametros as $parametro)
-                                            <div class=" col-12 col-sm-6  col-lg-4 my-1">
-                                                <input type="hidden" name="parametro[]" value={{ $parametro->id }}>
-                                                <label class="mb-3">{{ $parametro->nombre }} </label>
+                                            <div class=" col-12 col-sm-6 col-lg-4 my-1">
+                                                <input type="hidden" name="parametro[]" value={{ $parametro->toma }}>
+                                                <label class="form-label">{{ $parametro->nombre }} </label>
                                                 @if ($parametro->respuesta == 1)
                                                     <input type="number" name="respuesta[]" id=""
-                                                        class="inputCaja" value="">
+                                                        class="form-control" value="">
                                                 @elseif ($parametro->respuesta == 2)
                                                     <input type="text" name="respuesta[]" id=""
-                                                        class="inputCaja" value="">
-                                                    {{--  @elseif ($parametro->respuesta == 3)
-                                                    <select name="{{ $campo->nombre }}" id="{{ $campo->nombre }}"
-                                                        class="form-control">
-                                                        <option value="positivo">Positivo</option>
-                                                        <option value="negativo">Negativo</option>
-                                                    </select>  --}}
+                                                        class="form-control" value="">
                                                 @endif
                                             </div>
                                         @empty
@@ -68,46 +51,29 @@
                                         @endforelse
                                     </div>
                                 </div>
-
-                                <div class="row ">
-                                    <input type="hidden" name="toma" value="{{ $examen->toma }}">
-                                    </br>
-                                    <div class=" col-12 col-sm-6   my-1">
-                                        <label class="labelTitulo">Notas: </label>
-                                        <p>
-                                            <textarea class="inputCaja" name="nota" rows="5"cols="25" style="border-color: #5C7C26;"></textarea>
-                                        </p>
-                                    </div>
-                                    <div class=" col-12 col-sm-6   my-1">
-                                        <label class="labelTitulo">Comentarios:</label>
-                                        <p>
-                                            <textarea class="inputCaja" name="comentario" rows="5" cols="25" style="border-color: #5C7C26;"></textarea>
-                                        </p>
-                                    </div>
-
+                                <input type="hidden" name="toma" value="{{ $examen->toma }}">
+                                <div class=" col-12 col-sm-6   my-1">
+                                    <label class="form-label">Notas: </label>
+                                    <p>
+                                        <textarea class="form-control" name="nota" rows="5"cols="25"></textarea>
+                                    </p>
                                 </div>
-                                <div class="col-12 text-end mb-3 "><br>
-                                    <button type="submit" class="btn botonGral" onclick="alertaGuardar()">Guardar</button>
+                                <div class=" col-12 col-sm-6   my-1">
+                                    <label class="form-label">Comentarios:</label>
+                                    <p>
+                                        <textarea class="form-control" name="comentario" rows="5" cols="25"></textarea>
+                                    </p>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                        <!--Footer-->
+                        <div class="card-footer ml-auto mr-auto text-center">
+                            <button type="submit" class="btn btn-primary" onclick="alertaGuardar()">Guardar</button>
+                        </div>
+                        <!--End footer-->
+                    </form>
                 </div>
-
-
             </div>
         </div>
-    </div>
-
-    <script>
-        function sumar(id, valor) {
-            if ($('#' + id).prop("checked")) {
-                total = (parseFloat(document.getElementById('total').value) + parseFloat(valor)).toFixed(2);
-            } else {
-                total = (parseFloat(document.getElementById('total').value) - parseFloat(valor)).toFixed(2);
-            }
-            document.getElementById('total').value = total;
-        }
-    </script>
-
+    </section>
 @endsection
