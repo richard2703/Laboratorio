@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('maquilas', App\Http\Controllers\maquilasController::class);
     Route::resource('pacientes', App\Http\Controllers\pacientesController::class);
     Route::resource('tickets', App\Http\Controllers\ticketsController::class);
+    Route::get('create/tickets/search', [App\Http\Controllers\ticketsController::class, 'search'])->name('search.ticket.paciente');
     Route::get('/ticket/{ticket}/examenes', [App\Http\Controllers\resultadosController::class, 'index'])->name('resultados.index');
     Route::post('/ticket/{ticket}/resultados', [App\Http\Controllers\resultadosController::class, 'create'])->name('resultados.create');
     Route::post('/ticket/resultados', [App\Http\Controllers\resultadosController::class, 'store'])->name('resultados.store');

@@ -19,9 +19,9 @@
                     <div class="card-header ">
                         <div class="row">
                             <div class="search-bar col-12 col-md-9 card-title ">
-                                <form class="search-form d-flex align-items-center" method="POST" action="#">
-                                    <input type="text" class="form-control" name="query" placeholder="Buscar Paciente"
-                                        title="Enter search keyword">
+                                <form class="search-form d-flex align-items-center" action="#">
+                                    <input type="text" class="form-control" id="search" name="search"
+                                        placeholder="Buscar Paciente" title="Enter search keyword">
                                     <button type="submit" class="busqueda" title="Search">
                                         <i class="bi bi-search"></i>
                                     </button>
@@ -38,6 +38,7 @@
                     </div>
                     <form action="{{ route('tickets.store') }}" method="post" class="form-horizontal">
                         @csrf
+                        <input type="hidden" id="paciente_id" name="paciente_id">
                         <div class="card-body">
 
                             <div class="row">
@@ -123,6 +124,45 @@
         </div>
     </section>
 
+    {{--  Buscador  --}}
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <script>
+        var curso = ['html', 'hola', 'hi'];
+        $('#search').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "{{ route('search.ticket.paciente') }}",
+
+                    dataType: 'json',
+                    data: {
+                        term: request.term,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        response(data);
+                    }
+                });
+            },
+            minChars: 1,
+            width: 402,
+            matchContains: "word",
+            autoFill: true,
+            minLength: 1,
+            select: function(event, ui) {
+                // Rellenar los campos con los datos de la persona seleccionada
+                $('#paciente_id').val(ui.item.id);
+                $('#nombre').val(ui.item.nombre);
+                $('#apellido').val(ui.item.apellido);
+                $('#telefono').val(ui.item.telefono);
+                $('#nacimiento').val(ui.item.nacimiento);
+            }
+
+        });
+    </script>
+    {{--  Suma  --}}
     <script>
         function sumar(id, valor) {
             if ($('#' + id).prop("checked")) {

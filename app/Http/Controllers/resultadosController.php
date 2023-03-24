@@ -23,11 +23,10 @@ class resultadosController extends Controller
             ->where('tickets.id', $ticket)
             ->first();
 
-        $examenes = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id')
+        $examenes = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id', 'tomas.tickets_id')
             ->select('examenes.id', 'examenes.nombre', 'tomas.estatus', 'tomas.id as toma')
+            ->where('tomas.tickets_id', $ticket->id)
             ->paginate(10);
-        // dd($ticket);
-
         // $tomas = tomas::paginate(10);
         return view('resultados.indexresultados', compact('ticket', 'examenes'));
     }

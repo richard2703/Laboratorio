@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
+use App\Models\pacientes;
 use Illuminate\Support\Facades\DB;
 
 
@@ -28,13 +29,51 @@ class ticketsController extends Controller
         return view('tickets.createTickets', compact('examenes'));
     }
 
+    public function search(Request $request)
+    {
+        // $term = $request->input('term');
+        $term = $request->get('term');
+
+        $personas = pacientes::where('nombre', 'LIKE', '%' . $term . '%')
+            ->orwhere('apellido', 'LIKE', '%' . $term . '%')
+            ->orwhere('telefono', 'LIKE', '%' . $term . '%')->get();
+
+        $sugerencias = [];
+        foreach ($personas as $persona) {
+            $sugerencias[] = [
+                'value' => $persona->nombre . " " . $persona->apellido . " " . $persona->telefono,
+                'id' => $persona->id,
+                'nombre' => $persona->nombre,
+                'apellido' => $persona->apellido,
+                'nacimiento' => $persona->nacimiento,
+                'telefono' => $persona->telefono,
+            ];
+        }
+
+        return $sugerencias;
+        // return response()->json($sugerencias);
+    }
+
     public function store(Request $request)
     {
         if (!$request->paciente_id) {
             // Guardar al paciente
-            dd('funciona');
+            // dd($request);
+            $paciente = pacientes::create($request->only('nombre', 'apellido', 'telefono', 'nacimiento'));
+            $ticket = new tickets();
+            $ticket->paciente_id = $paciente->id;
+            $ticket->maquila_id = $request->maquila_id;
+            $ticket->total = $request->total;
+            $ticket->abono = $request->abono;
+            $ticket->doctor = $request->doctor;
+            $ticket->save();
+
+            // $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
+            $ticket->examenes()->sync($request->input('examenes', []));
+            Session::flash('message', 1);
+            return redirect()->action([ticketsController::class, 'index']);
         }
-        // dd($request);
+        dd($request);
         $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);

@@ -28,6 +28,8 @@
     <link href="{{ asset('vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    {{--  <link href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">  --}}
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
@@ -439,8 +441,12 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  --}}
+    {{--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  --}}
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+    {{--  <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>  --}}
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
 
 </body>
