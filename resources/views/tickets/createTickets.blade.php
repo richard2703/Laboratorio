@@ -17,12 +17,23 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header ">
-                        <div class="col text-end">
-                            @can('user_create')
-                                <a href="#">
-                                    <button type="button" class="btn btn-primary">Nuevo Paciente</button>
-                                </a>
-                            @endcan
+                        <div class="row">
+                            <div class="search-bar col-12 col-md-9 card-title ">
+                                <form class="search-form d-flex align-items-center" method="POST" action="#">
+                                    <input type="text" class="form-control" name="query" placeholder="Buscar Paciente"
+                                        title="Enter search keyword">
+                                    <button type="submit" class="busqueda" title="Search">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-12 col-md-3 card-title text-end">
+                                @can('user_create')
+                                    <a href="#">
+                                        <button type="button" class="btn btn-primary">Nuevo Paciente</button>
+                                    </a>
+                                @endcan
+                            </div>
                         </div>
                     </div>
                     <form action="{{ route('tickets.store') }}" method="post" class="form-horizontal">
