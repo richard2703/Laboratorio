@@ -43,7 +43,7 @@
                                     <div class="row position-relative d-flex">
                                         @forelse ($parametros as $parametro)
                                             <div class=" col-12 col-sm-6 col-lg-4 my-1">
-                                                <input type="hidden" name="parametro[]" value={{ $parametro->toma }}>
+                                                <input type="hidden" name="parametro[]" value={{ $parametro->id }}>
                                                 <label class="form-label">{{ $parametro->nombre }} </label>
                                                 @if ($parametro->respuesta == 1)
                                                     <input type="number" name="respuesta[]" id=""

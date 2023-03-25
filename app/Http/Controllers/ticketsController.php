@@ -73,7 +73,7 @@ class ticketsController extends Controller
             Session::flash('message', 1);
             return redirect()->action([ticketsController::class, 'index']);
         }
-        dd($request);
+        // dd($request);
         $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);

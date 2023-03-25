@@ -44,7 +44,7 @@
                             <div class="row g-3">
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                     <label for="nombre" class="form-label">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre" value="{{ old('nombre') }}"
+                                    <input type="text" class="form-control" name="nombre" id="nombre" value="{{ old('nombre') }}"
                                         required>
                                     <div class="invalid-tooltip">
                                         Es Obligatorio!

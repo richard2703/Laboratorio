@@ -22,7 +22,7 @@
                         <div class="col text-end">
                             @can('user_create')
                                 <a href="{{ route('maquilas.create') }}">
-                                    <button type="button" class="btn btn-primary">Nuevo Paciente</button>
+                                    <button type="button" class="btn btn-primary">Nuevo Maquila</button>
                                 </a>
                             @endcan
                         </div>

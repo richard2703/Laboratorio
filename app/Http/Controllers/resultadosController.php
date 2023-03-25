@@ -56,7 +56,7 @@ class resultadosController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
+        // dd($request->parametro);
         $toma = tomas::find($request->toma);
         $toma->estatus = 1;
         $toma->nota = $request->nota;
@@ -111,14 +111,16 @@ class resultadosController extends Controller
         $toma->nota = $request->nota;
         $toma->comentario = $request->comentario;
         $toma->save();
-        dd($toma);
+        // dd($toma);
         $c = count($request->parametro);
         for ($i = 0; $i < $c; $i++) {
             $resultado = resultados::find($request->parametro[$i]);
             $resultado->resultado = $request->respuesta[$i];
             $resultado->save();
         }
-        return redirect()->action([resultadosController::class, 'index']);
+        // return redirect()->action([resultadosController::class, 'index']);
+                return redirect()->action([HomeController::class, 'index']);
+
     }
 
     /**

@@ -26,6 +26,7 @@ class examenesController extends Controller
     public function store(Request $request)
     {
         // $examen = examenes::find(1);
+        // dd($request);
 
         $examen = examenes::create($request->only('nombre', 'costo', 'maquila'));
         $examen->parametros()->sync($request->input('parametros', []));
