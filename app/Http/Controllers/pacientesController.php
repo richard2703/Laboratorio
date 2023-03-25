@@ -23,7 +23,7 @@ class pacientesController extends Controller
 
     public function store(Request $request)
     {
-        pacientes::create($request->only('nombre', 'apellido', 'telefono', 'nacimiento'));
+        pacientes::create($request->only('nombre', 'apellido', 'telefono', 'nacimiento','correo'));
         Session::flash('message', 1);
         return redirect()->action([pacientesController::class, 'index']);
     }
@@ -46,7 +46,7 @@ class pacientesController extends Controller
 
     public function update(Request $request, pacientes $paciente)
     {
-        $paciente->update($request->only('nombre', 'apellido', 'telefono', 'nacimiento'));
+        $paciente->update($request->only('nombre', 'apellido', 'telefono', 'nacimiento','correo'));
         Session::flash('message', 1);
         $pacientes = pacientes::paginate(5);
         return view('pacientes.indexPacientes', compact('pacientes'));

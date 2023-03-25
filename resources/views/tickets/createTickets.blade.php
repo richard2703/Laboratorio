@@ -30,7 +30,7 @@
                             <div class="col-12 col-md-3 card-title text-end">
                                 @can('user_create')
                                     <a href="#">
-                                        <button type="button" class="btn btn-primary">Nuevo Paciente</button>
+                                        <button type="button" class="btn btn-primary">Limpiar formulario</button>
                                     </a>
                                 @endcan
                             </div>
@@ -60,6 +60,12 @@
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Correo Electronico:</label></br>
+                                    <input type="email" class="form-control" id="correo" name="correo"
+                                        value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Fecha de nacimiento:</label></br>
                                     <input type="date" class="form-control" id="nacimiento" name="nacimiento"
                                         value="">
@@ -75,8 +81,10 @@
                                     <select class="form-control" id="maquila" name="maquila"
                                         aria-label="Default select example">
                                         <option selected>Seleccione</option>
-                                        <option value="1">Maquinaria 1</option>
-                                        <option value="2">Maquinaria 2</option>
+                                        @forelse ($maquilas as $maquila)
+                                        <option value="{{$maquila->id}}">{{$maquila->nombre}}</option>
+                                        @empty
+                                        @endforelse
                                     </select>
                                 </div>
 
@@ -158,6 +166,7 @@
                 $('#apellido').val(ui.item.apellido);
                 $('#telefono').val(ui.item.telefono);
                 $('#nacimiento').val(ui.item.nacimiento);
+                $('#correo').val(ui.item.correo);
             }
 
         });

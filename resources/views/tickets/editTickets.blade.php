@@ -18,11 +18,11 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            <!-- @can('user_create')
                                 <a href="#">
                                     <button type="button" class="btn btn-primary">Nuevo Paciente</button>
                                 </a>
-                            @endcan
+                            @endcan -->
                         </div>
                     </div>
                     <form action="{{ route('tickets.update', $ticket->id) }}" method="post" class="form-horizontal">
@@ -33,25 +33,31 @@
                             <div class="row">
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Nombre:</label></br>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" value="">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{$paciente->nombre}}" onlyread>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Apellido:</label></br>
                                     <input type="text" class="form-control" id="apellido" name="apellido"
-                                        value="">
+                                        value="{{$paciente->apellido}}" onlyread>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Telefono:</label></br>
                                     <input type="text" class="form-control" id="telefono" name="telefono"
-                                        value="">
+                                        value="{{$paciente->telefono}}" onlyread>
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Correo Electronico:</label></br>
+                                    <input type="email" class="form-control" id="correo" name="correo"
+                                        value="{{$paciente->correo}}" onlyread>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Fecha de nacimiento:</label></br>
                                     <input type="date" class="form-control" id="nacimiento" name="nacimiento"
-                                        value="">
+                                        value="{{$paciente->nacimiento}}" onlyread>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">

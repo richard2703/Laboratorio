@@ -146,6 +146,7 @@ CREATE TABLE pacientes (
     apellido VARCHAR(255) NOT NULL,
     nacimiento DATE NOT NULL,
     telefono VARCHAR(255) NOT NULL,
+    correo VARCHAR(255) NULL,
     PRIMARY KEY (id)
 );
 

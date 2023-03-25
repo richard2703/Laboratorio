@@ -48,6 +48,12 @@
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Correo Electronico:</label></br>
+                                    <input type="email" class="form-control" id="correo" name="correo"
+                                        value="">
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Fecha de nacimiento:</label></br>
                                     <input type="date" class="form-control" id="nacimiento" name="nacimiento"
                                         value="">

@@ -13,6 +13,6 @@ class pacientes extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre', 'apellido', 'telefono', 'nacimiento'
+        'nombre', 'apellido', 'telefono', 'nacimiento','correo'
     ];
 }

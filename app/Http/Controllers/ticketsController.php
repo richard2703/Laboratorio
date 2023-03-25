@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
 use App\Models\pacientes;
+use App\Models\maquilas;
 use Illuminate\Support\Facades\DB;
 
 
@@ -20,13 +21,15 @@ class ticketsController extends Controller
         $tickets = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->paginate(10);
+            // dd($tickets);
         return view('tickets.indextickets', compact('tickets'));
     }
 
     public function create()
     {
         $examenes = examenes::get();
-        return view('tickets.createTickets', compact('examenes'));
+        $maquilas = maquilas::get();
+        return view('tickets.createTickets', compact('examenes','maquilas'));
     }
 
     public function search(Request $request)
@@ -47,6 +50,7 @@ class ticketsController extends Controller
                 'apellido' => $persona->apellido,
                 'nacimiento' => $persona->nacimiento,
                 'telefono' => $persona->telefono,
+                'correo' => $persona->correo,
             ];
         }
 
@@ -87,19 +91,22 @@ class ticketsController extends Controller
 
     public function edit(tickets $ticket)
     {
+        $paciente = pacientes::where('id',$ticket->paciente_id)->first();
         $examenes = examenes::all();
         $ticket->load('examenes');
-        // dd($ticket);
-        return view('tickets.editTickets', compact('ticket', 'examenes'));
+        // dd($paciente);
+        return view('tickets.editTickets', compact('ticket', 'examenes','paciente'));
     }
 
     public function update(Request $request, tickets $ticket)
     {
-        $ticket->update($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
+        $ticket->update($request->only('maquila_id', 'total', 'abono', 'doctor'));
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);
-        $tickets = tickets::paginate(10);
-        return view('tickets.indextickets', compact('tickets'));
+        return redirect()->action([ticketsController::class, 'index']);
+
+        // $tickets = tickets::paginate(10);
+        // return view('tickets.indextickets', compact('tickets'));
     }
 
     public function destroy(tickets $ticket)
