@@ -16,26 +16,30 @@
     <section class="section">
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header ">
-                        <div class="row">
-                            <div class="col-12 col-md-9 card-title ">
-                                <h2 class="">{{ $ticket->nombre }}
-                                    {{ $ticket->apellido }} - {{ $examen->nombre }}</h2>
-                            </div>
-                            <div class="col-12 col-md-3 card-title">
-                                <label class="labelTitulo">Estatus:</label></br>
-                                <select class="form-select" id="estatus" name="estatus" aria-label="Default">
-                                    <option value="1" {{ $toma->estatus == 1 ? 'selected' : '' }}>Revisando
-                                    </option>
-                                    <option value="2" {{ $toma->estatus == 2 ? 'selected' : '' }}>Terminado
-                                    </option>
-                                </select>
+                <form action="{{ route('resultados.update') }}" method="post" class="form-horizontal">
+
+                    <div class="card">
+                        <div class="card-header ">
+                            <div class="row">
+                                <div class="col-12 col-md-9 card-title ">
+                                    <h2 class="">{{ $ticket->nombre }}
+                                        {{ $ticket->apellido }} - {{ $examen->nombre }}</h2>
+                                </div>
+                                <div class="col-12 col-md-3 card-title">
+                                    <label class="labelTitulo">Estatus:</label></br>
+                                    <select class="form-select" id="estatus" name="estatus" aria-label="Default">
+                                        <option value="1" {{ $toma->estatus == 1 ? 'selected' : '' }}>Revisando
+                                        </option>
+                                        <option value="2" {{ $toma->estatus == 2 ? 'selected' : '' }}>Terminado
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <form action="{{ route('resultados.update') }}" method="post" class="form-horizontal">
+                        {{--  <form action="{{ route('resultados.update') }}" method="post" class="form-horizontal">  --}}
                         @csrf
+                        <input type="hidden" name="examenes_id" value={{ $examen->examenid }}>
+                        <input type="hidden" name="ticket_id" value={{ $ticket->id }}>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 ">
@@ -78,8 +82,9 @@
                             <button type="submit" class="btn btn-primary" onclick="alertaGuardar()">Guardar</button>
                         </div>
                         <!--End footer-->
-                    </form>
-                </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </section>

@@ -27,8 +27,8 @@
                     </div>
                     <form action="{{ route('resultados.store') }}" method="post" class="form-horizontal">
                         @csrf
-                        <input type="hidden" name="examenes_id" value={{ $ticket->id }}>
-                        <input type="hidden" name="ticket_id" value={{ $examen->id }}>
+                        <input type="hidden" name="examenes_id" value={{ $examen->examenid }}>
+                        <input type="hidden" name="ticket_id" value={{ $ticket->id }}>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 ">

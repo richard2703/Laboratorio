@@ -39,7 +39,7 @@ class resultadosController extends Controller
             ->first();
         $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
             ->where('examenes.id', $request->examen)
             ->first();
         $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id')
@@ -49,19 +49,19 @@ class resultadosController extends Controller
 
         $examen->toma = $request->toma;
 
-        // dd($request->toma);
+        // dd($examen);
         // MANDAR A VER LOS PARAMETROS Y LLENARLOS
         return view('resultados.createresultados', compact('ticket', 'examen', 'parametros'));
     }
 
     public function store(Request $request)
     {
-        // dd($request->parametro);
+        // dd($request);
         $toma = tomas::find($request->toma);
         $toma->estatus = 1;
         $toma->nota = $request->nota;
         $toma->comentario = $request->comentario;
-        $toma->save();
+        // $toma->save();
         // dd($toma);
         $c = count($request->parametro);
         for ($i = 0; $i < $c; $i++) {
@@ -70,9 +70,10 @@ class resultadosController extends Controller
             $resultado->ticket_id = $request->ticket_id;
             $resultado->parametros_id = $request->parametro[$i];
             $resultado->resultado = $request->respuesta[$i];
+            // dd($resultado);
             $resultado->save();
         }
-        return redirect()->action([resultadosController::class, 'index']);
+        return redirect()->action([resultadosController::class, 'index'], ['ticket' => $request->ticket_id]);
     }
 
     public function show(resultados $resultados)
@@ -88,9 +89,10 @@ class resultadosController extends Controller
             ->first();
         $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
             ->where('examenes.id', $request->examen)
             ->first();
+
         $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
             ->join('resultados', 'resultados.parametros_id', 'parametros.id')
             ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta', 'resultados.id as toma', 'resultados.resultado')
@@ -111,16 +113,17 @@ class resultadosController extends Controller
         $toma->nota = $request->nota;
         $toma->comentario = $request->comentario;
         $toma->save();
-        // dd($toma);
         $c = count($request->parametro);
         for ($i = 0; $i < $c; $i++) {
-            $resultado = resultados::find($request->parametro[$i]);
+            $resultado = resultados::where("ticket_id", $request->ticket_id)
+                ->where("examenes_id", $request->examenes_id)
+                ->where("parametros_id", $request->parametro[$i])
+                ->first();
             $resultado->resultado = $request->respuesta[$i];
             $resultado->save();
         }
         // return redirect()->action([resultadosController::class, 'index']);
-                return redirect()->action([HomeController::class, 'index']);
-
+        return redirect()->action([resultadosController::class, 'index'], ['ticket' => $request->ticket_id]);
     }
 
     /**
@@ -131,7 +134,7 @@ class resultadosController extends Controller
      */
     public function destroy(resultados $resultados)
     {
-        dd('destroy');
+        dd('Borrar');
     }
     public function pdfResultado(Request $request)
     {
@@ -172,6 +175,9 @@ class resultadosController extends Controller
 
         // return view('resultados.pdfResultado', compact('ticket', 'examen', 'parametros', 'toma'));
 
+        // return PDF::loadView('resultados.pdftest', compact('ticket', 'examen', 'parametros', 'toma'))
+        //     ->setPaper('a4')
+        //     ->stream('archivo.pdf');
         return PDF::loadView('resultados.pdfResultado', compact('ticket', 'examen', 'parametros', 'toma'))
             ->setPaper('a4')
             ->stream('archivo.pdf');
