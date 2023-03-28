@@ -34,7 +34,7 @@ puede ser de altura y anchura completas.
         }
 
         header img {
-            height: 105px;
+            height: 130px;
             /*            width: 65px;
             padding-top: 8px;
             padding-left: 8px*/
@@ -45,7 +45,7 @@ puede ser de altura y anchura completas.
         }
 
         main {
-            margin-top: 90px
+            margin-top: 500px
         }
 
         /** Definir las reglas del pie de página **/
@@ -69,6 +69,7 @@ puede ser de altura y anchura completas.
 
         .titulo {
             color: #0c3e65;
+            display: contents;
         }
 
         .pl-3 {
@@ -83,39 +84,31 @@ puede ser de altura y anchura completas.
 <body>
     <!-- Defina bloques de encabezado y pie de página antes de su contenido -->
     <header class="row">
-        <div class="col">
-            <img src="img\header.png" alt="">
-
-
+        <div class="col titulo">
+            <img src="img\header2.png" alt="">
         </div>
         <div class="col">
-            <p>
-                {{--  Cabecera del documento  --}}
-            </p>
+            <strong>Fecha: </strong>
+            {{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat(' D \d\e MMMM \d\e\l Y') }} <br>
+            <strong>Paciente:</strong> {{ $ticket->nombre }}
+            {{ $ticket->apellido }} <strong class="pl-3">Edad: </strong> br
+            {{ \Carbon\Carbon::parse($ticket->nacimiento)->age }} <br>
+            <strong>DR(A): </strong>
+            @if ($ticket->doctor == null || $ticket->doctor == '')
+                A quien corresponda
+            @elseif (1 == 1)
+                {{ $ticket->doctor }}
+            @endif
         </div>
 
     </header>
 
     <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
     <main>
-        <div class="content
-            p-3">
+        <div class="content p-3">
             <div class="titulo">
-                <p class=" text-uppercase mb-2 "><strong>Fecha: </strong>
-                    {{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat(' D \d\e MMMM \d\e\l Y') }}
-                </p>
-                <p class=" text-uppercase mb-2"><strong>Paciente:</strong> {{ $ticket->nombre }}
-                    {{ $ticket->apellido }} <strong class="pl-3">Edad: </strong>
-                    {{ \Carbon\Carbon::parse($ticket->nacimiento)->age }}
-                </p>
-                <p class=" text-uppercase mb-2"><strong>DR(A): </strong>
-                    @if ($ticket->doctor == null || $ticket->doctor == '')
-                        A quien corresponda
-                    @elseif (1 == 1)
-                        {{ $ticket->doctor }}
-                    @endif
-                </p>
                 <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->nombre }}</strong></h1>
+
             </div>
             <div class="col-10 mx-auto">
                 <div class="table-responsive">
