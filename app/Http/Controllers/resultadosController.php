@@ -173,12 +173,13 @@ class resultadosController extends Controller
         //     'titulo' => 'Styde.net'
         // ];
 
-        return view('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'));
+        // return view('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'));
 
         // return PDF::loadView('resultados.pdftest', compact('ticket', 'examen', 'parametros', 'toma'))
         //     ->setPaper('a4')
         //     ->stream('archivo.pdf');
         return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'))
+            // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->setPaper('a4')
             ->stream('archivo.pdf');
     }

@@ -12,6 +12,7 @@ puede ser de altura y anchura completas.
 
         /** Defina ahora los márgenes reales de cada página en el PDF **/
         body {
+            font-family: 'Helvetica';
             margin-top: 2cm;
             margin-left: 2cm;
             margin-right: 2cm;
@@ -21,7 +22,7 @@ puede ser de altura y anchura completas.
         /** Definir las reglas del encabezado **/
         header {
             position: fixed;
-            top: 0cm;
+            top: .5cm;
             left: 0cm;
             right: 0cm;
             height: 2cm;
@@ -30,11 +31,11 @@ puede ser de altura y anchura completas.
             /*background-color: #03a9f4;*/
             color: white;
             /*text-align: center;*/
-            line-height: 1.5cm;
+            line-height: 1cm;
         }
 
         header img {
-            height: 130px;
+            height: 150px;
             /*            width: 65px;
             padding-top: 8px;
             padding-left: 8px*/
@@ -45,7 +46,7 @@ puede ser de altura y anchura completas.
         }
 
         main {
-            margin-top: 500px
+            margin-top: 120px
         }
 
         /** Definir las reglas del pie de página **/
@@ -54,13 +55,24 @@ puede ser de altura y anchura completas.
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 2cm;
 
             /** Estilos extra personales **/
-            background-color: #0c3e65;
-            color: white;
+            /*background-color: #0c3e65;
+            color: white;*/
             text-align: center;
             line-height: 1.5cm;
+        }
+
+        footer img {
+            height: 95px;
+            padding-bottom: 30px;
+            /*            width: 65px;
+            padding-top: 8px;
+            padding-left: 8px*/
+        }
+
+        li {
+            list-style: none;
         }
 
         .page-break {
@@ -83,22 +95,29 @@ puede ser de altura y anchura completas.
 
 <body>
     <!-- Defina bloques de encabezado y pie de página antes de su contenido -->
-    <header class="row">
-        <div class="col titulo">
+    <header>
+        <div style="padding: 10px; float: left; width: 30%; text-align: justify;" class=" ">
             <img src="img\header2.png" alt="">
+
         </div>
-        <div class="col">
-            <strong>Fecha: </strong>
-            {{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat(' D \d\e MMMM \d\e\l Y') }} <br>
-            <strong>Paciente:</strong> {{ $ticket->nombre }}
-            {{ $ticket->apellido }} <strong class="pl-3">Edad: </strong> br
-            {{ \Carbon\Carbon::parse($ticket->nacimiento)->age }} <br>
-            <strong>DR(A): </strong>
-            @if ($ticket->doctor == null || $ticket->doctor == '')
-                A quien corresponda
-            @elseif (1 == 1)
-                {{ $ticket->doctor }}
-            @endif
+        <div style="padding: 10px; float: right; width: 70%; text-align: justify;" class=" titulo ">
+            <ul style="font-size: larger; padding-top: 15px;">
+                <li><strong>Fecha: </strong>
+                    {{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat(' D \d\e MMMM \d\e\l Y') }}
+                </li>
+                <li><strong>Paciente:</strong> {{ $ticket->nombre }}
+                    {{ $ticket->apellido }} <strong class="pl-3">Edad: </strong>
+                    {{ \Carbon\Carbon::parse($ticket->nacimiento)->age }}</li>
+                <li><strong>DR(A): </strong>
+                    @if ($ticket->doctor == null || $ticket->doctor == '')
+                        A quien corresponda
+                    @elseif (1 == 1)
+                        {{ $ticket->doctor }}
+                    @endif
+                </li>
+
+            </ul>
+
         </div>
 
     </header>
@@ -106,7 +125,7 @@ puede ser de altura y anchura completas.
     <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
     <main>
         <div class="content p-3">
-            <div class="titulo">
+            <div class="titulo text-center">
                 <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->nombre }}</strong></h1>
 
             </div>
@@ -169,7 +188,8 @@ puede ser de altura y anchura completas.
     </main>
 
     <footer>
-        Copyright © {{ date('Y') }}
+        <img src="img\foder.png" alt="">
+        {{--  Copyright © {{ date('Y') }}  --}}
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
