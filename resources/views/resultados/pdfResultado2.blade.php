@@ -79,7 +79,7 @@ puede ser de altura y anchura completas.
             page-break-after: always;
         }
 
-        .titulo {
+        strong {
             color: #0c3e65;
             display: contents;
         }
@@ -98,9 +98,9 @@ puede ser de altura y anchura completas.
     <header>
         <div style="padding: 10px; float: left; width: 30%; text-align: justify;" class=" ">
             <img src="img\header2.png" alt="">
-
+            {{--  <img src="https://q2ces.com/img/login/logoQcem2.svg" alt="">  --}}
         </div>
-        <div style="padding: 10px; float: right; width: 70%; text-align: justify;" class=" titulo ">
+        <div style="padding: 10px; float: right; width: 70%; text-align: justify;">
             <ul style="font-size: larger; padding-top: 15px;">
                 <li><strong>Fecha: </strong>
                     {{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat(' D \d\e MMMM \d\e\l Y') }}
@@ -125,7 +125,7 @@ puede ser de altura y anchura completas.
     <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
     <main>
         <div class="content p-3">
-            <div class="titulo text-center">
+            <div class="text-center">
                 <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->nombre }}</strong></h1>
 
             </div>
