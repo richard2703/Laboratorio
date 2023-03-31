@@ -61,8 +61,7 @@
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Correo Electronico:</label></br>
-                                    <input type="email" class="form-control" id="correo" name="correo"
-                                        value="">
+                                    <input type="email" class="form-control" id="correo" name="correo" value="">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
@@ -82,7 +81,7 @@
                                         aria-label="Default select example">
                                         <option selected>Seleccione</option>
                                         @forelse ($maquilas as $maquila)
-                                        <option value="{{$maquila->id}}">{{$maquila->nombre}}</option>
+                                            <option value="{{ $maquila->id }}">{{ $maquila->nombre }}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -100,7 +99,19 @@
                                 </div>
 
                                 <div class="col-12 ">
-                                    <label class="form-label">Examenes:</label></br>
+                                    <div class="row">
+                                        <div class="col-12 col-md-2">
+                                            <h4 class="form-label">Examenes:</h4>
+                                        </div>
+                                        <div class="col-12 col-md-7 d-flex align-items-center">
+                                            <input type="text" class="form-control" id="searchexamen"
+                                                name="searchexamen" placeholder="Buscar Examen">
+                                            <i class="busqueda bi bi-search"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 ">
                                     <div class="row position-relative d-flex">
                                         @forelse ($examenes as $examene)
                                             <div class=" col-12 col-sm-6 col-lg-4 my-1">
@@ -167,6 +178,41 @@
                 $('#telefono').val(ui.item.telefono);
                 $('#nacimiento').val(ui.item.nacimiento);
                 $('#correo').val(ui.item.correo);
+            }
+
+        });
+    </script>
+
+    <script>
+        var curso = ['html', 'hola', 'hi'];
+        $('#searchexamen').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "{{ route('search.ticket.examen') }}",
+
+                    dataType: 'json',
+                    data: {
+                        term: request.term,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        response(data);
+                    }
+                });
+            },
+            minChars: 1,
+            width: 402,
+            matchContains: "word",
+            autoFill: true,
+            minLength: 1,
+            select: function(event, ui) {
+                // Rellenar los campos con los datos de la persona seleccionada
+                $('#' + ui.item.id).prop("checked", true);
+                var total = parseFloat($('#total').val()) + parseFloat(ui.item.costo);
+
+                $('#total').val(parseFloat(total));
+
+
             }
 
         });

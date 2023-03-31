@@ -21,7 +21,7 @@ class ticketsController extends Controller
         $tickets = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->paginate(10);
-            // dd($tickets);
+        // dd($tickets);
         return view('tickets.indextickets', compact('tickets'));
     }
 
@@ -29,7 +29,7 @@ class ticketsController extends Controller
     {
         $examenes = examenes::get();
         $maquilas = maquilas::get();
-        return view('tickets.createTickets', compact('examenes','maquilas'));
+        return view('tickets.createTickets', compact('examenes', 'maquilas'));
     }
 
     public function search(Request $request)
@@ -51,6 +51,28 @@ class ticketsController extends Controller
                 'nacimiento' => $persona->nacimiento,
                 'telefono' => $persona->telefono,
                 'correo' => $persona->correo,
+            ];
+        }
+
+        return $sugerencias;
+        // return response()->json($sugerencias);
+    }
+
+    public function searchexamen(Request $request)
+    {
+        // $term = $request->input('term');
+        $term = $request->get('term');
+
+        $examenes = examenes::where('nombre', 'LIKE', '%' . $term . '%')->get();
+
+        $sugerencias = [];
+        foreach ($examenes as $examene) {
+            $sugerencias[] = [
+                'value' => $examene->nombre . " $" . $examene->costo . " $" . $examene->Maquila,
+                'id' => $examene->id,
+                'nombre' => $examene->nombre,
+                'costo' => $examene->costo,
+
             ];
         }
 
@@ -91,11 +113,11 @@ class ticketsController extends Controller
 
     public function edit(tickets $ticket)
     {
-        $paciente = pacientes::where('id',$ticket->paciente_id)->first();
+        $paciente = pacientes::where('id', $ticket->paciente_id)->first();
         $examenes = examenes::all();
         $ticket->load('examenes');
         // dd($paciente);
-        return view('tickets.editTickets', compact('ticket', 'examenes','paciente'));
+        return view('tickets.editTickets', compact('ticket', 'examenes', 'paciente'));
     }
 
     public function update(Request $request, tickets $ticket)
