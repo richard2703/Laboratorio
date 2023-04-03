@@ -128,6 +128,8 @@ CREATE TABLE examenes(
   costo float(10,2) null,
   maquila float(10,2) null,
   leyenda text null ,
+  metodologia varchar(255) NULL,
+  muestra varchar (255) NULL,
   PRIMARY KEY (id)
 );
 

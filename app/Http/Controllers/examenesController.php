@@ -28,7 +28,7 @@ class examenesController extends Controller
         // $examen = examenes::find(1);
         // dd($request);
 
-        $examen = examenes::create($request->only('nombre', 'costo', 'maquila'));
+        $examen = examenes::create($request->only('nombre', 'costo', 'maquila', 'metodologia', 'muestra'));
         $examen->parametros()->sync($request->input('parametros', []));
         Session::flash('message', 1);
         return redirect()->action([examenesController::class, 'index']);
@@ -47,10 +47,10 @@ class examenesController extends Controller
 
     public function update(Request $request, examenes $examene)
     {
-        $examene->update($request->only('nombre', 'costo', 'maquila'));
+        $examene->update($request->only('nombre', 'costo', 'maquila', 'metodologia', 'muestra'));
         $examene->parametros()->sync($request->input('parametros', []));
         Session::flash('message', 1);
-        $examenes = examenes::paginate(10);
+        // $examenes = examenes::paginate(15);
         return redirect()->action([examenesController::class, 'index']);
     }
 
