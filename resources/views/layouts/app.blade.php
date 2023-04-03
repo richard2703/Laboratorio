@@ -305,6 +305,14 @@
             <!-- End Dashboard Nav -->
 
             <li class="nav-item ">
+                <a class="nav-link {{ $activePage == 'Dashboard' ? '' : 'collapsed' }}"
+                    href="{{ route('test.print') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>TEST</span>
+                </a>
+            </li>
+
+            <li class="nav-item ">
                 <a class="nav-link {{ $activePage == 'tickets' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
                     data-bs-toggle="collapse" href="#">
                     <i class="bi bi-receipt"></i><span>Tickets</span><i class="bi bi-chevron-down ms-auto"></i>

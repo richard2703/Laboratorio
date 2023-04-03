@@ -11,6 +11,8 @@ use App\Models\examenes;
 use App\Models\pacientes;
 use App\Models\maquilas;
 use Illuminate\Support\Facades\DB;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\Printer;
 
 
 class ticketsController extends Controller
@@ -136,5 +138,23 @@ class ticketsController extends Controller
         $ticket->delete();
         Session::flash('message', 2);
         return redirect()->action([ticketsController::class, 'index']);
+    }
+
+    public function test()
+    {
+        $nombreImpresora = "POS-58 USB";
+        $connector = new WindowsPrintConnector($nombreImpresora);
+        $impresora = new Printer($connector);
+        $impresora->setJustification(Printer::JUSTIFY_CENTER);
+        $impresora->setTextSize(2, 2);
+        $impresora->text("Imprimiendo\n");
+        $impresora->text("ticket\n");
+        $impresora->text("desde\n");
+        $impresora->text("Laravel\n");
+        $impresora->setTextSize(1, 1);
+        $impresora->text("https://parzibyte.me");
+        $impresora->feed(5);
+        $impresora->close();
+        dd('test.print');
     }
 }

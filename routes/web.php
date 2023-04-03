@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ticket/{ticket}/resultados/editar', [App\Http\Controllers\resultadosController::class, 'edit'])->name('resultados.edit');
     Route::post('/ticket/resultados/update', [App\Http\Controllers\resultadosController::class, 'update'])->name('resultados.update');
     Route::post('/resultados', [App\Http\Controllers\resultadosController::class, 'pdfResultado'])->name('resultados.pdf');
+    Route::get('test/print', [App\Http\Controllers\ticketsController::class, 'test'])->name('test.print');
+
 
     Route::get('/pdf', [App\Http\Controllers\resultadosController::class, 'pdftest'])->name('resultados.pdftest');
 });
