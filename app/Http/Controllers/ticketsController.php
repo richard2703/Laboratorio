@@ -13,6 +13,8 @@ use App\Models\maquilas;
 use Illuminate\Support\Facades\DB;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
+use PDF;
+
 
 
 class ticketsController extends Controller
@@ -140,21 +142,41 @@ class ticketsController extends Controller
         return redirect()->action([ticketsController::class, 'index']);
     }
 
+
     public function test()
     {
-        $nombreImpresora = "POS-58 USB";
-        $connector = new WindowsPrintConnector($nombreImpresora);
-        $impresora = new Printer($connector);
-        $impresora->setJustification(Printer::JUSTIFY_CENTER);
-        $impresora->setTextSize(2, 2);
-        $impresora->text("Imprimiendo\n");
-        $impresora->text("ticket\n");
-        $impresora->text("desde\n");
-        $impresora->text("Laravel\n");
-        $impresora->setTextSize(1, 1);
-        $impresora->text("https://parzibyte.me");
-        $impresora->feed(5);
-        $impresora->close();
-        dd('test.print');
+
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'pacientes.nacimiento', 'tickets.id', 'tickets.total', 'tickets.abono', 'tickets.created_at', 'tickets.doctor')
+            ->where('tickets.id', 8)
+            ->first();
+
+        // dd($ticket);
+
+        // return view('tickets.ticketPDF');
+
+        return PDF::loadView('tickets.ticketPDF')
+            ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
     }
+
+    // IMPRECION CON IMPRESORA DE TICKETS
+    // public function test()
+    // {
+    //     $nombreImpresora = "POS-58 USB";
+    //     $connector = new WindowsPrintConnector($nombreImpresora);
+    //     $impresora = new Printer($connector);
+    //     $impresora->setJustification(Printer::JUSTIFY_CENTER);
+    //     $impresora->setTextSize(2, 2);
+    //     $impresora->text("Imprimiendo\n");
+    //     $impresora->text("ticket\n");
+    //     $impresora->text("desde\n");
+    //     $impresora->text("Laravel\n");
+    //     $impresora->setTextSize(1, 1);
+    //     $impresora->text("https://parzibyte.me");
+    //     $impresora->feed(5);
+    //     $impresora->close();
+    //     dd('test.print');
+    // }
 }
