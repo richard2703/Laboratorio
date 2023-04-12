@@ -156,7 +156,7 @@ class ticketsController extends Controller
         // return view('tickets.ticketPDF');
 
         return PDF::loadView('tickets.ticketPDF')
-            ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->setPaper('a4')
             ->stream('archivo.pdf');
     }
