@@ -419,27 +419,6 @@ fieldset[disabled] .btn-success.active {
   color: #ff5555 !important;
 }
 
-.btn-neutral:hover,
-.btn-neutral:focus,
-.btn-neutral:not(:disabled):not(.disabled):active,
-.btn-neutral:not(:disabled):not(.disabled).active,
-.btn-neutral:not(:disabled):not(.disabled):active:focus,
-.btn-neutral:not(:disabled):not(.disabled).active:focus,
-.btn-neutral:active:hover,
-.btn-neutral.active:hover,
-.show>.btn-neutral.dropdown-toggle,
-.show>.btn-neutral.dropdown-toggle:focus,
-.show>.btn-neutral.dropdown-toggle:hover {
-  background-color: #FFFFFF;
-  color: #fa7a50;
-  box-shadow: none;
-}
-
-.btn-neutral:hover,
-.btn-neutral:focus {
-  color: #fa7a50 !important;
-}
-
 .btn-neutral:hover:not(.nav-link),
 .btn-neutral:focus:not(.nav-link) {
   box-shadow: none;
@@ -577,46 +556,6 @@ fieldset[disabled] .btn-link.active {
   top: 50%;
   margin-top: -1px;
   right: 8px;
-}
-
-.btn-facebook,
-.btn-facebook:hover,
-.btn-facebookfocus,
-.btn-facebook:active,
-.btn-facebook:active:focus {
-  color: #3b5998 !important;
-}
-
-.btn-twitter,
-.btn-twitter:hover,
-.btn-twitterfocus,
-.btn-twitter:active,
-.btn-twitter:active:focus {
-  color: #55acee !important;
-}
-
-.btn-google,
-.btn-google:hover,
-.btn-googlefocus,
-.btn-google:active,
-.btn-google:active:focus {
-  color: #dd4b39 !important;
-}
-
-.btn-github,
-.btn-github:hover,
-.btn-githubfocus,
-.btn-github:active,
-.btn-github:active:focus {
-  color: #333333 !important;
-}
-
-.btn-linkedin,
-.btn-linkedin:hover,
-.btn-linkedinfocus,
-.btn-linkedin:active,
-.btn-linkedin:active:focus {
-  color: #0077B5 !important;
 }
 
 .form-control::-moz-placeholder {
@@ -3355,50 +3294,7 @@ img {
   display: block;
 }
 
-.footer {
-  padding: 24px 0;
-}
 
-.footer.footer-default {
-  background-color: #f2f2f2;
-}
-
-.footer nav {
-  display: inline-block;
-  float: left;
-}
-
-.footer ul {
-  margin-bottom: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.footer ul li {
-  display: inline-block;
-}
-
-.footer ul li a {
-  color: inherit;
-  padding: 0.5rem;
-  font-size: 0.8571em;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-.footer ul li a:hover {
-  text-decoration: none;
-}
-
-.footer .copyright {
-  font-size: 0.8571em;
-}
-
-.footer:after {
-  display: table;
-  clear: both;
-  content: " ";
-}
 
 .card {
   border: 0;
@@ -4519,9 +4415,7 @@ img {
   .section-nucleo-icons .container .row>[class*="col-"]:first-child {
     text-align: center;
   }
-  .footer .copyright {
-    text-align: right;
-  }
+
   .section-nucleo-icons .icons-container {
     margin-top: 65px;
   }
@@ -4728,6 +4622,64 @@ img {
   border: 1px solid;
   }
 
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* FOOTER */
+
+.footer {
+  padding: 24px 0;
+  background-color: var(--texto);
+  color: var(--activo);
+}
+
+.footer .copyright {
+  text-align: center;
+  padding-top: 20px
+}
+
+/* .footer nav {
+  display: inline-block;
+  float: left;
+} */
+
+.footer ul {
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* .footer ul li {
+  display: inline-block;
+} */
+
+.footer ul li a {
+  color: inherit;
+  padding: 0.5rem;
+  font-size: 0.8571em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.footer ul li a:hover {
+  text-decoration: none;
+}
+
+.footer .copyright {
+  font-size: 0.8571em;
+}
+
+.footer:after {
+  display: table;
+  clear: both;
+  content: " ";
+}
+
+.footer h3 {
+  font-size: 1.825em;
+  margin-bottom: 10px;
+  line-height: 1.4em;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
 /* Botones propios */
 
 .btn-primary {
@@ -4754,6 +4706,18 @@ img {
   box-shadow: none; */
   }
 
+.btn-redes {
+  background-color: var(--titulo);
+  color: var(--activo);
+  box-shadow: none;}
+
+.btn-redes:hover,
+.btn-redes:focus {
+  background-color: var(--activo);
+  color: var(--test) ;
+}
+
+  /* /////////////////////////////////////////////////////////////////////////////////////////// */
   /* ICONOS SERVICIOS */
   .nav-pills.nav-pills-just-icons .nav-item .nav-link {
     text-align: center;
@@ -4811,6 +4775,7 @@ img {
     font-size: 24px;
   }
 
+  /* /////////////////////////////////////////////////////////////////////////////////////////// */
   /* TEXTOS */
   p {
     line-height: 1.61em;

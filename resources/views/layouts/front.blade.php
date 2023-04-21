@@ -13,8 +13,11 @@
         name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    {{--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">  --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Files -->
     <link href="{{ asset('css/front/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/front/css/now-ui-kit.css?v=1.3.0') }}" rel="stylesheet" />
@@ -30,7 +33,7 @@
             <div class="navbar-translate">
                 <a class="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip"
                     title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
-                    <img class="logo-nav" src="{{asset('img/logo.png')}}" alt="">
+                    <img class="logo-nav" src="{{ asset('img/logo.png') }}" alt="">
 
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse"
@@ -42,7 +45,7 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation"
-                data-nav-image="{{asset('css/front/img/blurred-image-1.jpg')}}">
+                data-nav-image="{{ asset('css/front/img/blurred-image-1.jpg') }}">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
@@ -85,8 +88,7 @@
                         </div>
                     </li>  --}}
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="#"
-                            target="_blank">
+                        <a class="nav-link btn btn-primary" href="#" target="_blank">
                             <i class="now-ui-icons arrows-1_share-66"></i>
                             <p>Resultados</p>
                         </a>
@@ -121,43 +123,108 @@
         @yield('content')
 
     </div>
-        <footer class="footer" data-background-color="black">
-            <div class=" container ">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://presentation.creative-tim.com">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright" id="copyright">
+    <footer class="footer" data-background-color="black">
+        <div class=" container d-flex ">
+            <div class="row">
+                <div class="col-4">
+                    <h3 class="title">Sucursales</h3>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="https://www.creative-tim.com">
+                                    Creative Tim
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://presentation.creative-tim.com">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://blog.creative-tim.com">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-4">
+                    <h3 class="title">Servicios</h3>
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="https://www.creative-tim.com">
+                                    Analicis clinicos </a>
+                            </li>
+                            <li>
+                                <a href="http://presentation.creative-tim.com">
+                                    Cardiologia
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://blog.creative-tim.com">
+                                    Gastroenterologia
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-4">
+                    <h3 class="title">Contactanos</h3>
+                    <nav>
+                        <ul>
+                            <li>
+                                <div class="text-left col-12 ">
+                                    <a target="_blank" href="https://www.instagram.com/"
+                                        class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
+                                        title="Siguenos">
+                                        {{--  <i class="fab fa-twitter"></i>  --}}
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a target="_blank" href="https://www.facebook.com/"
+                                        class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
+                                        title="Danos Like">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </a>
+                                    <a target="_blank" href="https://www.facebook.com/"
+                                        class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
+                                        title="Envianos un mensaje">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="d-flex">
+                                    <i class="fa fa-phone-alt me-3"></i>
+                                    <p class="mb-2 textTels"> +52 33 21 83 64 72</p>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="mb-2"><i class="fa fa-envelope me-3"></i> contacto@previda.com</p>
+
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="copyright col-12" id="copyright">
                     &copy;
                     <script>
                         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                     </script>, Designed by
-                    <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    <a href="https://www.invisionapp.com" target="_blank">Richard.corp</a>. Coded by
+                    <a href="https://www.creative-tim.com" target="_blank">Richard.corp</a>.
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
     <!--   Core JS Files   -->
     <script src="{{ asset('css/front/js/core/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('css/front/js/core/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('css/front/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
-    
-   
+
+
     <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
     <script src="{{ asset('css/front/js/plugins/bootstrap-datepicker.js') }}" type="text/javascript"></script>
     <!--  Google Maps Plugin    -->

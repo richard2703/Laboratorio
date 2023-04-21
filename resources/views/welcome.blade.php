@@ -1,129 +1,129 @@
 @extends('layouts.front', ['activePage' => 'Dashboard', 'activeItem' => ''])
 
 @section('content')
-
-<div class="main">
-    <div class="section" id="carousel">
-        <div class="container">
-            <div class="title">
-                {{--  <h4>Carousel</h4>  --}}
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-                            </li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active">
-                                <img class="d-block" src="{{asset('css/front/img/bg1.jpg')}}" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Nature, United States</h5>
+    <div class="main">
+        <div class="section" id="carousel">
+            <div class="container">
+                <div class="title">
+                    {{--  <h4>Carousel</h4>  --}}
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                                </li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img class="d-block" src="{{ asset('css/front/img/bg1.jpg') }}" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Nature, United States</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block" src="{{ asset('css/front/img/bg3.jpg') }}" alt="Second slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Somewhere Beyond, United States</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block" src="{{ asset('css/front/img/bg4.jpg') }}" alt="Third slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Yellowstone National Park, United States</h5>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <img class="d-block" src="{{asset('css/front/img/bg3.jpg')}}" alt="Second slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Somewhere Beyond, United States</h5>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block" src="{{asset('css/front/img/bg4.jpg')}}" alt="Third slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Yellowstone National Park, United States</h5>
-                                </div>
-                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                data-slide="prev">
+                                <i class="now-ui-icons arrows-1_minimal-left"></i>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                data-slide="next">
+                                <i class="now-ui-icons arrows-1_minimal-right"></i>
+                            </a>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                            data-slide="prev">
-                            <i class="now-ui-icons arrows-1_minimal-left"></i>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                            data-slide="next">
-                            <i class="now-ui-icons arrows-1_minimal-right"></i>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="section section-tabs">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <h3 class="title">Servicios</h3>
-                    {{--  <p class="category">Tabs with Icons on Card</p>  --}}
-                    <!-- Nav tabs -->
-                    <div class="card">
-                        <div class="card-header">
-                            <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons justify-content-center" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
-                                        <i class="far fa-gem"></i> Home
-                                    </a>
-                                </li>
-                                {{--  <li class="nav-item">
+        <div class="section section-tabs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 ml-auto mr-auto">
+                        <h2 class="title">Servicios</h2>
+                        {{--  <p class="category">Tabs with Icons on Card</p>  --}}
+                        <!-- Nav tabs -->
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons justify-content-center"
+                                    role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+                                            <i class="far fa-gem"></i> Home
+                                        </a>
+                                    </li>
+                                    {{--  <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#home"
                                         role="tab">
                                         <i class="now-ui-icons objects_umbrella-13"></i> Home
                                     </a>
                                 </li>  --}}
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
-                                        <i class="now-ui-icons shopping_cart-simple"></i> Profile
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
-                                        <i class="now-ui-icons shopping_shop"></i> Messages
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
-                                        <i class="now-ui-icons ui-2_settings-90"></i> Settings
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <!-- Tab panes -->
-                            <div class="tab-content text-center">
-                                <div class="tab-pane active" id="home" role="tabpanel">
-                                    <p>I think that’s a responsibility that I have, to push possibilities, to
-                                        show people, this is the level that things could be at. So when you get
-                                        something that has the name Kanye West on it, it’s supposed to be
-                                        pushing the furthest possibilities. I will be the leader of a company
-                                        that ends up being worth billions of dollars, because I got the answers.
-                                        I understand culture. I am the nucleus.</p>
-                                </div>
-                                <div class="tab-pane" id="profile" role="tabpanel">
-                                    <p> I will be the leader of a company that ends up being worth billions of
-                                        dollars, because I got the answers. I understand culture. I am the
-                                        nucleus. I think that’s a responsibility that I have, to push
-                                        possibilities, to show people, this is the level that things could be
-                                        at. I think that’s a responsibility that I have, to push possibilities,
-                                        to show people, this is the level that things could be at. </p>
-                                </div>
-                                <div class="tab-pane" id="messages" role="tabpanel">
-                                    <p>I think that’s a responsibility that I have, to push possibilities, to
-                                        show people, this is the level that things could be at. So when you get
-                                        something that has the name Kanye West on it, it’s supposed to be
-                                        pushing the furthest possibilities. I will be the leader of a company
-                                        that ends up being worth billions of dollars, because I got the answers.
-                                        I understand culture. I am the nucleus.</p>
-                                </div>
-                                <div class="tab-pane" id="settings" role="tabpanel">
-                                    <p>
-                                        "I will be the leader of a company that ends up being worth billions of
-                                        dollars, because I got the answers. I understand culture. I am the
-                                        nucleus. I think that’s a responsibility that I have, to push
-                                        possibilities, to show people, this is the level that things could be
-                                        at."
-                                    </p>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                                            <i class="now-ui-icons shopping_cart-simple"></i> Profile
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                                            <i class="now-ui-icons shopping_shop"></i> Messages
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                                            <i class="now-ui-icons ui-2_settings-90"></i> Settings
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <!-- Tab panes -->
+                                <div class="tab-content text-center">
+                                    <div class="tab-pane active" id="home" role="tabpanel">
+                                        <p>I think that’s a responsibility that I have, to push possibilities, to
+                                            show people, this is the level that things could be at. So when you get
+                                            something that has the name Kanye West on it, it’s supposed to be
+                                            pushing the furthest possibilities. I will be the leader of a company
+                                            that ends up being worth billions of dollars, because I got the answers.
+                                            I understand culture. I am the nucleus.</p>
+                                    </div>
+                                    <div class="tab-pane" id="profile" role="tabpanel">
+                                        <p> I will be the leader of a company that ends up being worth billions of
+                                            dollars, because I got the answers. I understand culture. I am the
+                                            nucleus. I think that’s a responsibility that I have, to push
+                                            possibilities, to show people, this is the level that things could be
+                                            at. I think that’s a responsibility that I have, to push possibilities,
+                                            to show people, this is the level that things could be at. </p>
+                                    </div>
+                                    <div class="tab-pane" id="messages" role="tabpanel">
+                                        <p>I think that’s a responsibility that I have, to push possibilities, to
+                                            show people, this is the level that things could be at. So when you get
+                                            something that has the name Kanye West on it, it’s supposed to be
+                                            pushing the furthest possibilities. I will be the leader of a company
+                                            that ends up being worth billions of dollars, because I got the answers.
+                                            I understand culture. I am the nucleus.</p>
+                                    </div>
+                                    <div class="tab-pane" id="settings" role="tabpanel">
+                                        <p>
+                                            "I will be the leader of a company that ends up being worth billions of
+                                            dollars, because I got the answers. I understand culture. I am the
+                                            nucleus. I think that’s a responsibility that I have, to push
+                                            possibilities, to show people, this is the level that things could be
+                                            at."
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -131,88 +131,94 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="section ">
-        <div class="container">
-            <h2 class="title">Sucursales</h2>
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <h3 class="title">Matriz</h3>
-                    <h5 class="description">
-                        Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
-                        official package contains over 2.100 thin icons which are looking great in combination
-                        with Now UI Kit PRO Make sure you check all of them and usee those that you like the
-                        most.
-                    </h5>
-                    <!-- <div class="nucleo-container">
-                        <img src="{{asset('css/front/img/nucleo.svg')}}" alt="">
-                    </div> -->
-                    <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
-                        Demo Icons</a>
-                    <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
-                        target="_blank">View All Icons</a>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <h3 class="title">San Jacinto</h3>
-                    <h5 class="description">
-                        Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
-                        official package contains over 2.100 thin icons which are looking great in combination
-                        with Now UI Kit PRO Make sure you check all of them and usee those that you like the
-                        most.
-                    </h5>
-                    <!-- <div class="nucleo-container">
-                        <img src="{{asset('css/front/img/nucleo.svg')}}" alt="">
-                    </div> -->
-                    <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
-                        Demo Icons</a>
-                    <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
-                        target="_blank">View All Icons</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="section section-tabs section-nucleo-icons">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <h2 class="title">Nucleo Icons</h2>
-                    <h5 class="description">
-                        Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
-                        official package contains over 2.100 thin icons which are looking great in combination
-                        with Now UI Kit PRO Make sure you check all of them and usee those that you like the
-                        most.
-                    </h5>
-                    <!-- <div class="nucleo-container">
-                        <img src="{{asset('css/front/img/nucleo.svg')}}" alt="">
-                    </div> -->
-                    <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
-                        Demo Icons</a>
-                    <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
-                        target="_blank">View All Icons</a>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="icons-container">
-                        <i class="now-ui-icons ui-1_send"></i>
-                        <i class="now-ui-icons ui-2_like"></i>
-                        <i class="now-ui-icons transportation_air-baloon"></i>
-                        <i class="now-ui-icons text_bold"></i>
-                        <i class="now-ui-icons tech_headphones"></i>
-                        <i class="now-ui-icons emoticons_satisfied"></i>
-                        <i class="now-ui-icons shopping_cart-simple"></i>
-                        <i class="now-ui-icons objects_spaceship"></i>
-                        <i class="now-ui-icons media-2_note-03"></i>
-                        <i class="now-ui-icons ui-2_favourite-28"></i>
-                        <i class="now-ui-icons design_palette"></i>
-                        <i class="now-ui-icons clothes_tie-bow"></i>
-                        <i class="now-ui-icons location_pin"></i>
-                        <i class="now-ui-icons objects_key-25"></i>
-                        <i class="now-ui-icons travel_istanbul"></i>
+        <div class="section ">
+            <div class="container">
+                <h2 class="title">Sucursales</h2>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">Matriz</h3>
+                        <h5 class="description">
+                            Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
+                            official package contains over 2.100 thin icons which are looking great in combination
+                            with Now UI Kit PRO Make sure you check all of them and usee those that you like the
+                            most.
+                        </h5>
+                        <!-- <div class="nucleo-container">
+                                                                <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                                                            </div> -->
+                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
+                            Demo Icons</a>
+                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
+                            target="_blank">View All Icons</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">San Jacinto</h3>
+                        <h5 class="description">
+                            Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
+                            official package contains over 2.100 thin icons which are looking great in combination
+                            with Now UI Kit PRO Make sure you check all of them and usee those that you like the
+                            most.
+                        </h5>
+                        <!-- <div class="nucleo-container">
+                                                                <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                                                            </div> -->
+                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
+                            Demo Icons</a>
+                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
+                            target="_blank">View All Icons</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{--  <div class="section section-images">
+        <div class="section section-tabs section-nucleo-icons">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <h2 class="title">Contactanos</h2>
+                        <div class="col-lg-6 col-md-6 " style="
+                        text-align: start;">
+                            <h5 class="mb-4">Matriz</h5>
+                            <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i> José María Heredia 2387
+                                Guadalajara,
+                                Jal., Méx.</p>
+                            <div class="d-flex">
+                                <i class="fa fa-phone-alt me-3"></i>
+                                <p class="mb-2 textTels">+52 33 21 83 64 72</br>
+                                    +52 33 36 40 22 90</p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="nucleo-container">
+                                                                <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                                                            </div> -->
+                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
+                            Demo Icons</a>
+                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
+                            target="_blank">View All Icons</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="icons-container">
+                            <i class="now-ui-icons ui-1_send"></i>
+                            <i class="now-ui-icons ui-2_like"></i>
+                            <i class="now-ui-icons transportation_air-baloon"></i>
+                            <i class="now-ui-icons text_bold"></i>
+                            <i class="now-ui-icons tech_headphones"></i>
+                            <i class="now-ui-icons emoticons_satisfied"></i>
+                            <i class="now-ui-icons shopping_cart-simple"></i>
+                            <i class="now-ui-icons objects_spaceship"></i>
+                            <i class="now-ui-icons media-2_note-03"></i>
+                            <i class="now-ui-icons ui-2_favourite-28"></i>
+                            <i class="now-ui-icons design_palette"></i>
+                            <i class="now-ui-icons clothes_tie-bow"></i>
+                            <i class="now-ui-icons location_pin"></i>
+                            <i class="now-ui-icons objects_key-25"></i>
+                            <i class="now-ui-icons travel_istanbul"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--  <div class="section section-images">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -229,7 +235,7 @@
             </div>
         </div>
     </div>  --}}
-    {{--  <div class="section section-basic" id="basic-elements">
+        {{--  <div class="section section-basic" id="basic-elements">
         <div class="container">
             <h3 class="title">Basic Elements</h3>
             <h4>Buttons</h4>
@@ -1481,54 +1487,53 @@
             </div>
         </div>
     </div>  --}}
-</div>
-<!-- Sart Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    <i class="now-ui-icons ui-1_simple-remove"></i>
-                </button>
-                <h4 class="title title-up">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                    there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
-                    Semantics, a large language ocean. A small river named Duden flows by their place and
-                    supplies it with the necessary regelialia. It is a paradisematic country, in which roasted
-                    parts of sentences fly into your mouth.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default">Nice Button</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-        </div>
     </div>
-</div>
-<!--  End Modal -->
-<!-- Mini Modal -->
-<div class="modal fade modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center">
-                <div class="modal-profile">
-                    <i class="now-ui-icons users_circle-08"></i>
+    <!-- Sart Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                    <h4 class="title title-up">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                        there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
+                        Semantics, a large language ocean. A small river named Duden flows by their place and
+                        supplies it with the necessary regelialia. It is a paradisematic country, in which roasted
+                        parts of sentences fly into your mouth.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default">Nice Button</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            <div class="modal-body">
-                <p>Always have an access to your profile</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link btn-neutral">Back</button>
-                <button type="button" class="btn btn-link btn-neutral"
-                    data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    <!--  End Modal -->
+    <!-- Mini Modal -->
+    <div class="modal fade modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="modal-profile">
+                        <i class="now-ui-icons users_circle-08"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p>Always have an access to your profile</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link btn-neutral">Back</button>
+                    <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--  End Modal -->
+    <!--  End Modal -->
 @endsection
