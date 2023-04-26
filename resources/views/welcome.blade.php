@@ -143,9 +143,9 @@
                             with Now UI Kit PRO Make sure you check all of them and usee those that you like the
                             most.
                         </h5>
-                        <!-- <div class="nucleo-container">
-                                                                <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
-                                                            </div> -->
+                        <div class="nucleo-container">
+                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                        </div>
                         <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
                             Demo Icons</a>
                         <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
@@ -159,9 +159,9 @@
                             with Now UI Kit PRO Make sure you check all of them and usee those that you like the
                             most.
                         </h5>
-                        <!-- <div class="nucleo-container">
-                                                                <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
-                                                            </div> -->
+                        {{--  <div class="nucleo-container">
+                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                        </div>  --}}
                         <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
                             Demo Icons</a>
                         <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
@@ -188,9 +188,9 @@
                             </div>
                         </div>
 
-                        <!-- <div class="nucleo-container">
-                                                                <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
-                                                            </div> -->
+                        {{--  <div class="nucleo-container">
+                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                        </div>  --}}
                         <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
                             Demo Icons</a>
                         <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"

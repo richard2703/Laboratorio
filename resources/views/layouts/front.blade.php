@@ -13,8 +13,8 @@
         name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    {{--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">  --}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,9 +27,34 @@
 </head>
 
 <body class="index-page sidebar-collapse">
+
+    <!-- Topbar Start -->
+    <div class="container-fluid topbar ">
+        <div class="row g-0 d-none d-lg-flex">
+            <div class="col-lg-6 ps-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center text-white">
+                    <span>Follow Us:</span>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-right  px-0">
+                <div class="h-100 topbar-right d-inline-flex align-items-center text-white py-2 px-3">
+                    <i class="far fa-user-circle" style="
+                    font-size: 25px;"></i>
+                    {{--  <span class="fs-5 fw-bold me-2"><i class="fa fa-phone-alt me-2"></i>Call Us:</span>
+                    <span class="fs-5 fw-bold">+012 345 6789</span>  --}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="0">
-        <div class="container">
+    <nav class="sticky-top navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="0">
+        <div class="container container-nav">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip"
                     title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
@@ -46,7 +71,7 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation"
                 data-nav-image="{{ asset('css/front/img/blurred-image-1.jpg') }}">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
@@ -119,6 +144,7 @@
         </div>
     </nav>
     <!-- End Navbar -->
+
     <div class="">
         @yield('content')
 
@@ -223,6 +249,7 @@
     <script src="{{ asset('css/front/js/core/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('css/front/js/core/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('css/front/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/d4151dc3e6.js" crossorigin="anonymous"></script>
 
 
     <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->

@@ -17,9 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function () {
-    return view('test');
+Route::group(['middleware' => ['role:1Admin']], function () {
+    Route::get('test', function () {
+        return view('test');
+    });
 });
+
+
+// Route::get('test', function () {
+//     return view('test');
+// });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {

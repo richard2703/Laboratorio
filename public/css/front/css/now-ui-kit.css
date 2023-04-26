@@ -3739,7 +3739,9 @@ img {
 }
 
 .section {
-  padding: 70px 0;
+  /* padding: 70px 0; */
+  padding: 30px 0 70px 0;
+  /* padding-bottom: 70px; */
   position: relative;
   background: #FFFFFF;
 }
@@ -4775,6 +4777,10 @@ img {
     font-size: 24px;
   }
 
+  .container-nav{
+    max-width: 100%;
+  }
+
   /* /////////////////////////////////////////////////////////////////////////////////////////// */
   /* TEXTOS */
   p {
@@ -4789,3 +4795,24 @@ img {
 .section-tabs {
   background: var(--titulo);
 }
+
+.topbar{
+  background: var(--texto)
+}
+
+.topbar-right {
+  position: relative;
+  background: var(--test);
+}
+
+.topbar-right::before {
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 100%;
+  top: 0;
+  left: -15px;
+  transform: skewX(-30deg);
+  background-color: var(--test);
+}
+
