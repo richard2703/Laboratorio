@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/resultados', function () {
+//     return view('resultados');
+// });
+Route::get('resultado', [App\Http\Controllers\resultadosClienteController::class, 'buscar'])->name('resultado.buscar');
+Route::post('resultado/ticket', [App\Http\Controllers\resultadosClienteController::class, 'index'])->name('resultado.index');
+
+
 
 Route::group(['middleware' => ['role:1Admin']], function () {
     Route::get('test', function () {

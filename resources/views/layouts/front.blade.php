@@ -42,8 +42,9 @@
             </div>
             <div class="col-lg-6 text-right  px-0">
                 <div class="h-100 topbar-right d-inline-flex align-items-center text-white py-2 px-3">
-                    <i class="far fa-user-circle" style="
-                    font-size: 25px;"></i>
+                    <a href="{{ route('login') }}">
+                        <i class="far fa-user-circle"></i>
+                    </a>
                     {{--  <span class="fs-5 fw-bold me-2"><i class="fa fa-phone-alt me-2"></i>Call Us:</span>
                     <span class="fs-5 fw-bold">+012 345 6789</span>  --}}
                 </div>
@@ -56,8 +57,7 @@
     <nav class="sticky-top navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="0">
         <div class="container container-nav">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip"
-                    title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
+                <a class="navbar-brand" href="#">
                     <img class="logo-nav" src="{{ asset('img/logo.png') }}" alt="">
 
                 </a>
@@ -78,7 +78,7 @@
                             <p>Inicio</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{--  <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>Servicios</p>
@@ -95,7 +95,7 @@
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>Contacto</p>
                         </a>
-                    </li>
+                    </li>  --}}
                     {{--  <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1"
                             data-toggle="dropdown">
@@ -113,7 +113,7 @@
                         </div>
                     </li>  --}}
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="#" target="_blank">
+                        <a class="nav-link btn btn-primary" href="{{ route('resultado.buscar') }}">
                             <i class="now-ui-icons arrows-1_share-66"></i>
                             <p>Resultados</p>
                         </a>
