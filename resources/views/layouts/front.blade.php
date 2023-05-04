@@ -23,6 +23,8 @@
     <link href="{{ asset('css/front/css/now-ui-kit.css?v=1.3.0') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, dont include it in your project -->
     <link href="{{ asset('css/front/demo/demo.css') }}" rel="stylesheet" />
+    <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+
 
 </head>
 

@@ -21,8 +21,7 @@ Route::get('/', function () {
 // });
 Route::get('resultado', [App\Http\Controllers\resultadosClienteController::class, 'buscar'])->name('resultado.buscar');
 Route::post('resultado/ticket', [App\Http\Controllers\resultadosClienteController::class, 'index'])->name('resultado.index');
-
-
+Route::post('resultado/imprimir', [App\Http\Controllers\resultadosClienteController::class, 'pdfResultado'])->name('resultado.pdf');
 
 Route::group(['middleware' => ['role:1Admin']], function () {
     Route::get('test', function () {

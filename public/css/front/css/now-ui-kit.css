@@ -4690,6 +4690,24 @@ img {
   background-color: transparent;
 }
 
+.boton-descarga{
+  /* border-width: 1px; */
+  border-radius: 30px;
+  padding: 5px 10px;
+  background-color: var(--titulo);
+  color: var(--activo);
+  box-shadow: none;
+  border:0;
+}
+.boton-descarga:hover{
+	background-color: var(--activo);
+	border-color: var(--test);
+  color: var(--test);
+  border: 1px solid;
+  background-color: transparent;
+
+}
+
   /* /////////////////////////////////////////////////////////////////////////////////////////// */
   /* Inputs */
 
@@ -4813,4 +4831,12 @@ img {
   transform: skewX(-25deg);
   background-color: var(--test);
 }
+
+  /* /////////////////////////////////////////////////////////////////////////////////////////// */
+  /* CArd resultados Usuarios */
+
+  .card-resultados {
+    /* max-width: 350px; */
+    margin: 0 auto;
+  }
 
