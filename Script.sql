@@ -171,6 +171,7 @@ CREATE TABLE tickets(
   total float default 0 ,
   abono float default 0 ,
   doctor varchar(250),
+  pass varchar(250),
   created_at datetime NULL,
   updated_at datetime NULL,
   PRIMARY KEY (id),

@@ -12,6 +12,7 @@ use App\Models\examenparametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Support\Facades\Session;
 
 
 class resultadosClienteController extends Controller
@@ -26,18 +27,22 @@ class resultadosClienteController extends Controller
     public function index(Request $request)
     {
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
-            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono', 'tickets.pass')
             ->where('tickets.id', $request->ticket)
             ->first();
-        // dd($ticket);
 
-        $examenes = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id', 'tomas.tickets_id')
-            ->select('examenes.id', 'examenes.nombre', 'tomas.estatus', 'tomas.id as toma')
-            ->where('tomas.tickets_id', $ticket->id)
-            ->paginate(10);
-        // $tomas = tomas::paginate(10);
-        return view('ticket', compact('ticket', 'examenes'));
-        // return view('ticket');
+        if (strtoupper($ticket->pass) == strtoupper($request->contra)) {
+            // dd('listo');
+            $examenes = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id', 'tomas.tickets_id')
+                ->select('examenes.id', 'examenes.nombre', 'tomas.estatus', 'tomas.id as toma')
+                ->where('tomas.tickets_id', $ticket->id)
+                ->paginate(10);
+            // $tomas = tomas::paginate(10);
+            return view('ticket', compact('ticket', 'examenes'));
+        }
+        // dd($request->contra, $ticket);
+        Session::flash('message', 1);
+        return redirect()->action([resultadosClienteController::class, 'buscar']);
     }
 
     /**

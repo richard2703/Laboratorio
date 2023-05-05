@@ -23,7 +23,7 @@
                                         <th>Examen</th>
                                         <th>Estatus de examen</th>
                                         <th>Descargar</th>
-                                        <th>Estatus de cobro</th>
+                                        <th>Saldo Pendiente</th>
                                     </thead>
                                     <tbody class="text-center">
                                         @forelse ($examenes as $examene)
@@ -39,7 +39,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($examene->estatus == 2)
+                                                    @if ($ticket->abono > $ticket->total && $examene->estatus == 2)
                                                         <form action="{{ route('resultado.pdf') }}" method="POST"
                                                             style="display: inline-block;" target="_blank">
                                                             @csrf
@@ -53,34 +53,13 @@
                                                                 <i class="bi bi-download h3"></i>
                                                             </button>
                                                         </form>
-                                                    @elseif ($examene->estatus != 2)
+                                                    @else
                                                         <i class="bi bi-hourglass h3"></i>
                                                     @endif
+
                                                 </td>
-                                                <td class="td-actions text-right">
-                                                    {{--  @can('user_edit')
-															@if ($examene->estatus == 0)
-																<form action="{{ route('resultados.create', $ticket->id) }}"
-																	method="POST" style="display: inline-block;">
-																	@csrf
-																	<input type="hidden" name="examen" value="{{ $examene->id }}">
-																	<input type="hidden" name="toma" value="{{ $examene->toma }}">
-																	<button class="boton" type="submit" rel="tooltip">
-																		<i class="bi bi-pencil h3 "></i>
-																	</button>
-																</form>
-															@elseif ($examene->estatus >= 1)
-																<form action="{{ route('resultados.edit', $ticket->id) }}"
-																	method="POST" style="display: inline-block;">
-																	@csrf
-																	<input type="hidden" name="examen" value="{{ $examene->id }}">
-																	<input type="hidden" name="toma" value="{{ $examene->toma }}">
-																	<button class="boton" type="submit" rel="tooltip">
-																		<i class="bi bi-card-text h3"></i>
-																	</button>
-																</form>
-															@endif
-														@endcan  --}}
+                                                <td class="td-actions ">
+                                                    $ {{ $ticket->total - $ticket->abono }}
                                                 </td>
                                             </tr>
                                         @empty

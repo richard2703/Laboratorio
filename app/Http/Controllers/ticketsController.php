@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
 use PDF;
+use Illuminate\Support\Str;
+
 
 
 
@@ -86,25 +88,21 @@ class ticketsController extends Controller
 
     public function store(Request $request)
     {
+        $ticket = new tickets();
         if (!$request->paciente_id) {
             // Guardar al paciente
-            // dd($request);
             $paciente = pacientes::create($request->only('nombre', 'apellido', 'telefono', 'nacimiento'));
-            $ticket = new tickets();
             $ticket->paciente_id = $paciente->id;
-            $ticket->maquila_id = $request->maquila_id;
-            $ticket->total = $request->total;
-            $ticket->abono = $request->abono;
-            $ticket->doctor = $request->doctor;
-            $ticket->save();
-
-            // $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
-            $ticket->examenes()->sync($request->input('examenes', []));
-            Session::flash('message', 1);
-            return redirect()->action([ticketsController::class, 'index']);
+        } else {
+            $ticket->paciente_id = $request->paciente_id;
         }
-        // dd($request);
-        $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
+        $ticket->maquila_id = $request->maquila_id;
+        $ticket->total = $request->total;
+        $ticket->abono = $request->abono;
+        $ticket->doctor = $request->doctor;
+        $ticket->pass = Str::random(6);
+        $ticket->save();
+
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);
         return redirect()->action([ticketsController::class, 'index']);

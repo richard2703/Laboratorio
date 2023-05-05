@@ -39,4 +39,13 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{ asset('js/alertas.js') }}"></script>
+
+        <script>
+            var slug = '{{ Session::get('message') }}';
+            if (slug == 1) {
+                error();
+            }
+        </script>
     @endsection
