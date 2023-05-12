@@ -127,6 +127,7 @@ CREATE TABLE parametros(
 CREATE TABLE examenes(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   nombre varchar(255) NOT NULL,
+  abreviacion varchar(255) NOT NULL,
   costo float(10,2) null,
   maquila float(10,2) null,
   leyenda text null ,

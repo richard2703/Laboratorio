@@ -26,6 +26,7 @@ class ticketsController extends Controller
     {
         $tickets = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
+            ->orderby('created_at', 'desc')
             ->paginate(10);
         // dd($tickets);
         return view('tickets.indextickets', compact('tickets'));

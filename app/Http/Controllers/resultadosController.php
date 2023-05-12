@@ -175,7 +175,7 @@ class resultadosController extends Controller
         //     'titulo' => 'Styde.net'
         // ];
 
-        // return view('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'));
+        // return view('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma', 'bandera'));
 
         // return PDF::loadView('resultados.pdftest', compact('ticket', 'examen', 'parametros', 'toma'))
         //     ->setPaper('a4')

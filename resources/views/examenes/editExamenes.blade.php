@@ -50,6 +50,14 @@
                                     </div>
                                 </div>
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="nombre" class="form-label">Abreviacion:</label>
+                                    <input type="text" class="form-control" name="abreviacion" id="abreviacion"
+                                        value="{{ $examene->abreviacion }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
+                                </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                     <label for="costo" class="form-label">Costo:</label></br>
                                     <input type="number" class="form-control" id="costo" name="costo"
                                         value="{{ $examene->costo }}" required>
