@@ -119,6 +119,8 @@ CREATE TABLE parametros(
   escrito varchar (255) null,
   referencia varchar(255) null,
   respuesta int null,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT NULL,
   PRIMARY KEY (id)
  );
 

@@ -137,7 +137,7 @@
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Bajo:</label></br>
                                                     <input class="form-control text-center" type="number" step="0.01"
-                                                        min="0.01" id="bajo" name="bajo"></br>
+                                                        min="0.00" id="bajo" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Alto:</label></br>
@@ -237,7 +237,7 @@
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Bajo:</label></br>
                                                     <input class="form-control text-center" type="number" step="0.01"
-                                                        min="0.01" id="bajoU" name="bajo"></br>
+                                                        min="0.00" id="bajoU" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Alto:</label></br>

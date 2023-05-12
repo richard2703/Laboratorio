@@ -19,10 +19,10 @@
                     <div class="card-header ">
                         <div class="col text-end">
                             <!-- @can('user_create')
-                                <a href="#">
-                                    <button type="button" class="btn btn-primary">Nuevo Paciente</button>
-                                </a>
-                            @endcan -->
+        <a href="#">
+                                                                                            <button type="button" class="btn btn-primary">Nuevo Paciente</button>
+                                                                                        </a>
+    @endcan -->
                         </div>
                     </div>
                     <form action="{{ route('tickets.update', $ticket->id) }}" method="post" class="form-horizontal">
@@ -33,31 +33,32 @@
                             <div class="row">
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Nombre:</label></br>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{$paciente->nombre}}" onlyread>
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                        value="{{ $paciente->nombre }}" readonly>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Apellido:</label></br>
                                     <input type="text" class="form-control" id="apellido" name="apellido"
-                                        value="{{$paciente->apellido}}" onlyread>
+                                        value="{{ $paciente->apellido }}" readonly>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Telefono:</label></br>
                                     <input type="text" class="form-control" id="telefono" name="telefono"
-                                        value="{{$paciente->telefono}}" onlyread>
+                                        value="{{ $paciente->telefono }}" readonly>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Correo Electronico:</label></br>
                                     <input type="email" class="form-control" id="correo" name="correo"
-                                        value="{{$paciente->correo}}" onlyread>
+                                        value="{{ $paciente->correo }}" readonly>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Fecha de nacimiento:</label></br>
                                     <input type="date" class="form-control" id="nacimiento" name="nacimiento"
-                                        value="{{$paciente->nacimiento}}" onlyread>
+                                        value="{{ $paciente->nacimiento }}" readonly>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
@@ -68,13 +69,15 @@
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Maquila:</label></br>
-                                    <select class="form-control" id="maquila" name="maquila"
+                                    <select class="form-control" id="maquila_id" name="maquila_id"
                                         aria-label="Default select example">
                                         <option selected>Seleccione</option>
-                                        <option value="1" {{ $ticket->maquila = 1 ? 'selected' : '' }}>Maquinaria 1
-                                        </option>
-                                        <option value="2" {{ $ticket->maquila = 2 ? 'selected' : '' }}>Maquinaria 2
-                                        </option>
+                                        @forelse ($maquilas as $maquila)
+                                            <option value="{{ $maquila->id }}"
+                                                {{ $ticket->maquila_id == $maquila->id ? 'selected' : '' }}>
+                                                {{ $maquila->nombre }} </option>
+                                        @empty
+                                        @endforelse
                                     </select>
                                 </div>
 

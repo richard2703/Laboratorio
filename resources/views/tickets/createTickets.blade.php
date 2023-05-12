@@ -44,13 +44,14 @@
                             <div class="row">
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Nombre:</label></br>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" value="">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" value=""
+                                        required>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Apellido:</label></br>
-                                    <input type="text" class="form-control" id="apellido" name="apellido"
-                                        value="">
+                                    <input type="text" class="form-control" id="apellido" name="apellido" value=""
+                                        required>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
@@ -67,7 +68,7 @@
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Fecha de nacimiento:</label></br>
                                     <input type="date" class="form-control" id="nacimiento" name="nacimiento"
-                                        value="">
+                                        value="" required>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
@@ -77,7 +78,7 @@
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Maquila:</label></br>
-                                    <select class="form-control" id="maquila" name="maquila"
+                                    <select class="form-control" id="maquila_id" name="maquila_id"
                                         aria-label="Default select example">
                                         <option selected>Seleccione</option>
                                         @forelse ($maquilas as $maquila)
@@ -95,7 +96,8 @@
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Abono:</label></br>
-                                    <input type="text" class="form-control" id="abono" name="abono" value="">
+                                    <input type="text" class="form-control" id="abono" name="abono" value=""
+                                        required>
                                 </div>
 
                                 <div class="col-12 ">

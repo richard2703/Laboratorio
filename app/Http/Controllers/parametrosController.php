@@ -11,7 +11,7 @@ class parametrosController extends Controller
 {
     public function index()
     {
-        $parametros = parametros::paginate(5);
+        $parametros = parametros::orderBy('id', 'desc')->paginate(15);
         return view('examenes.indexParametros', compact('parametros'));
     }
 

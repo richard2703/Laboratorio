@@ -126,7 +126,7 @@ puede ser de altura y anchura completas.
     <main>
         <div class="content p-3">
             <div class="text-center">
-                <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->nombre }}</strong></h1>
+                <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->examennombre }}</strong></h1>
 
             </div>
             <div class="col-10 mx-auto">
@@ -140,9 +140,18 @@ puede ser de altura y anchura completas.
                         </thead>
                         <tbody>
                             {{--  {{ $ticket->maquila = 1 ? 'selected' : '' }}  --}}
+                            {{ $bandera == $examen->examennombre }}
+                            {{ $bandera }}
                             @forelse ($parametros as $parametro)
+                                @if ($bandera != $parametro->tipo)
+                                    {{ $bandera = $parametro->tipo }}
+                                    <tr>
+                                        <td><b> {{ $parametro->tipo }} </b></td>
+                                    </tr>
+                                @else
+                                @endif
                                 <tr>
-                                    <td><b> {{ $parametro->nombre }} </b></td>
+                                    <td> {{ $parametro->nombre }}</td>
                                     <td>
                                         @if ($parametro->respuesta == 1)
                                             @if ($parametro->resultado <= $parametro->bajo || $parametro->resultado >= $parametro->alto)

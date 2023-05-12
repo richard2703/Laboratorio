@@ -39,7 +39,7 @@ class resultadosController extends Controller
             ->first();
         $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
+            ->select('examenes.nombre as examennombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
             ->where('examenes.id', $request->examen)
             ->first();
         $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id')
@@ -61,7 +61,7 @@ class resultadosController extends Controller
         $toma->estatus = 1;
         $toma->nota = $request->nota;
         $toma->comentario = $request->comentario;
-        // $toma->save();
+        $toma->save();
         // dd($toma);
         $c = count($request->parametro);
         for ($i = 0; $i < $c; $i++) {
@@ -144,7 +144,7 @@ class resultadosController extends Controller
             ->first();
         $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+            ->select('examenes.nombre as examennombre', 'parametros.nombre', 'parametros.id')
             ->where('examenes.id', $request->examen)
             ->first();
         $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
@@ -165,6 +165,8 @@ class resultadosController extends Controller
             )
             ->where('examenparametro.examenes_id', $request->examen)
             ->get();
+        // dd($parametros);
+        $bandera = "";
         $toma = tomas::find($request->toma);
         $examen->toma = $request->toma;
 
@@ -178,7 +180,7 @@ class resultadosController extends Controller
         // return PDF::loadView('resultados.pdftest', compact('ticket', 'examen', 'parametros', 'toma'))
         //     ->setPaper('a4')
         //     ->stream('archivo.pdf');
-        return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'))
+        return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma', 'bandera'))
             // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->setPaper('a4')
             ->stream('archivo.pdf');

@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col card-title ">
                                 <h2 class="">{{ $ticket->nombre }}
-                                    {{ $ticket->apellido }} - {{ $examen->nombre }}</h2>
+                                    {{ $ticket->apellido }} - {{ $examen->examennombre }}</h2>
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,11 @@
                                                 <input type="hidden" name="parametro[]" value={{ $parametro->id }}>
                                                 <label class="form-label">{{ $parametro->nombre }} </label>
                                                 @if ($parametro->respuesta == 1)
-                                                    <input type="number" name="respuesta[]" id=""
-                                                        class="form-control" value="">
+                                                    <input type="number" step="0.01" min="0.00" name="respuesta[]"
+                                                        id="" class="form-control" value="" required>
                                                 @elseif ($parametro->respuesta == 2)
                                                     <input type="text" name="respuesta[]" id=""
-                                                        class="form-control" value="">
+                                                        class="form-control" value="" required>
                                                 @endif
                                             </div>
                                         @empty

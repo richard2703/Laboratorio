@@ -118,8 +118,10 @@ class ticketsController extends Controller
         $paciente = pacientes::where('id', $ticket->paciente_id)->first();
         $examenes = examenes::all();
         $ticket->load('examenes');
-        // dd($paciente);
-        return view('tickets.editTickets', compact('ticket', 'examenes', 'paciente'));
+        $maquilas = maquilas::get();
+
+        // dd($ticket);
+        return view('tickets.editTickets', compact('ticket', 'examenes', 'paciente', 'maquilas'));
     }
 
     public function update(Request $request, tickets $ticket)
