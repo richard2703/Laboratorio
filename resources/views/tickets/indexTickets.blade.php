@@ -34,6 +34,7 @@
                                     <th>Telefono</th>
                                     <th>Total</th>
                                     <th>Abono </th>
+                                    <th>Ticket</th>
                                     <th class="text-right">Acciones</th>
                                 </thead>
                                 <tbody>
@@ -45,6 +46,9 @@
                                             <td>{{ $ticket->telefono }}</td>
                                             <td>{{ $ticket->total }}</td>
                                             <td>{{ $ticket->abono }}</td>
+                                            <td><a href="{{ route('tickets.show', $ticket->id) }}" Target="_blank">
+                                                    <i class="bi bi-download h3"></i></a>
+                                            </td>
                                             <td class="td-actions text-right">
                                                 @can('user_show')
                                                     <a href="{{ route('resultados.index', $ticket->id) }}"><i
@@ -83,6 +87,31 @@
     </section>
 
     <script src="{{ asset('js/alertas.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+
+    <script>
+        function pdf(id) {
+            $.ajax({
+                type: 'get',
+                url: 'test/print',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id
+                },
+                success: function(data) {
+                    var nuevaPestana = window.open();
+                    nuevaPestana.document.write(data);
+
+                },
+                error: function() {
+                    console.log('Error');
+                }
+            });
+
+
+        };
+    </script>
 
     <script>
         function Guardado() {
@@ -107,6 +136,7 @@
         var slug = '{{ Session::get('message') }}';
         if (slug == 1) {
             Guardado();
+            pdf(slug);
 
         }
         if (slug == 2) {

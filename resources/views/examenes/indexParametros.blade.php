@@ -31,6 +31,8 @@
                                 <thead class="labelTitulo">
                                     <th>ID</th>
                                     <th>Nombre</th>
+                                    <th>Tipo</th>
+                                    <th>Referencia</th>
                                     <th>Baja</th>
                                     <th>Alta </th>
                                     <th class="text-right">Acciones</th>
@@ -40,6 +42,8 @@
                                         <tr>
                                             <td>{{ $parametro->id }}</td>
                                             <td>{{ $parametro->nombre }}</td>
+                                            <td>{{ $parametro->tipo }}</td>
+                                            <td>{{ $parametro->referencia }}</td>
                                             <td>{{ $parametro->bajo }}</td>
                                             <td>{{ $parametro->alto }}</td>
                                             <td class="td-actions text-right">

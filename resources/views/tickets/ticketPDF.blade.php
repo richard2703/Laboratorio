@@ -69,8 +69,10 @@ puede ser de altura y anchura completas.
                             <tr>
                                 <th class="col1"><img class="wlogo" src="img\header2.png" alt=""></th>
                                 <th class="col2"><img class="hlogo" src="img\matriz2.png" alt=""></th>
-                                <th class="col3">Fecha: <br> 14/12/10 </th>
-                                <th class="col4">Folio:<br>12545</b></th>
+                                <th class="col3">Fecha:
+                                    <br>{{ \Carbon\Carbon::parse($ticket->created_at)->format('d/m/y') }}
+                                </th>
+                                <th class="col4">Folio:<br>{{ $ticket->id }}</b></th>
 
                             </tr>
                         </thead>
@@ -84,21 +86,32 @@ puede ser de altura y anchura completas.
                         <tbody>
                             <tr>
                                 <td class="pru1"><strong>Nombre del medico:</strong></td>
-                                <td class="col2">Ricardo Rios</td>
+                                <td class="col2">
+                                    @if ($ticket->doctor == null)
+                                        A quien corresponda
+                                    @else
+                                        {{ $ticket->doctor }}
+                                    @endif
+                                </td>
                                 <td class="col3"></td>
                                 <td class="col4"></td>
                             </tr>
                             <tr>
                                 <td class=""><strong>Paciente :</strong></td>
-                                <td class="">Ricardo santos navarro sanchez hernandez</td>
+                                <td class="">{{ $ticket->nombre }} {{ $ticket->apellido }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td class=""><strong>Telefono:</strong></td>
-                                <td class="">3310242355</td>
+                                <td class="">{{ $ticket->telefono }}</td>
                                 <td class=""><strong>Email:</strong></td>
-                                <td class="">richard.2703.rr@gmail.com111
+                                <td class="">
+                                    @if ($ticket->correo == null)
+                                        Sin registro
+                                    @else
+                                        {{ $ticket->correo }}
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>
@@ -115,7 +128,13 @@ puede ser de altura y anchura completas.
                             <strong>Estudios: </strong>
                         </li>
                         <li>
-                            BH, QSG, R.Febriles
+                            @forelse ($examenes as $examene)
+                                {{ $examene->abreviacion }},
+                            @empty
+                                <tr>
+                                    <td colspan="2">Sin registros.</td>
+                                </tr>
+                            @endforelse
                         </li>
                     </ul>
 
@@ -132,10 +151,10 @@ puede ser de altura y anchura completas.
                         <tbody>
                             <tr>
                                 <td class="pru1">15/12/10</td>
-                                <td class="col2">150 $</td>
-                                <td class="col3">100 $</td>
-                                <td class="col4">50 $</td>
-                                <td class="col4">125AD5</td>
+                                <td class="col2">$ {{ $ticket->total }}</td>
+                                <td class="col3">$ {{ $ticket->abono }}</td>
+                                <td class="col4">$ {{ $ticket->total - $ticket->abono }}</td>
+                                <td class="col4">{{ $ticket->pass }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -151,8 +170,10 @@ puede ser de altura y anchura completas.
                             <tr>
                                 <th class="col1"><img class="wlogo" src="img\header2.png" alt=""></th>
                                 <th class="col2"><img class="hlogo" src="img\matriz2.png" alt=""></th>
-                                <th class="col3">Fecha: <br> 14/12/10 </th>
-                                <th class="col4">Folio:<br>12545</b></th>
+                                <th class="col3">Fecha:
+                                    <br>{{ \Carbon\Carbon::parse($ticket->created_at)->format('d/m/y') }}
+                                </th>
+                                <th class="col4">Folio:<br>{{ $ticket->id }}</b></th>
 
                             </tr>
                         </thead>
@@ -166,21 +187,32 @@ puede ser de altura y anchura completas.
                         <tbody>
                             <tr>
                                 <td class="pru1"><strong>Nombre del medico:</strong></td>
-                                <td class="col2">Ricardo Rios</td>
+                                <td class="col2">
+                                    @if ($ticket->doctor == null)
+                                        A quien corresponda
+                                    @else
+                                        {{ $ticket->doctor }}
+                                    @endif
+                                </td>
                                 <td class="col3"></td>
                                 <td class="col4"></td>
                             </tr>
                             <tr>
                                 <td class=""><strong>Paciente :</strong></td>
-                                <td class="">Ricardo santos navarro sanchez hernandez</td>
+                                <td class="">{{ $ticket->nombre }} {{ $ticket->apellido }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td class=""><strong>Telefono:</strong></td>
-                                <td class="">3310242355</td>
+                                <td class="">{{ $ticket->telefono }}</td>
                                 <td class=""><strong>Email:</strong></td>
-                                <td class="">richard.2703.rr@gmail.com111
+                                <td class="">
+                                    @if ($ticket->correo == null)
+                                        Sin registro
+                                    @else
+                                        {{ $ticket->correo }}
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>
@@ -197,7 +229,13 @@ puede ser de altura y anchura completas.
                             <strong>Estudios: </strong>
                         </li>
                         <li>
-                            BH, QSG, R.Febriles
+                            @forelse ($examenes as $examene)
+                                {{ $examene->abreviacion }},
+                            @empty
+                                <tr>
+                                    <td colspan="2">Sin registros.</td>
+                                </tr>
+                            @endforelse
                         </li>
                     </ul>
 
@@ -214,10 +252,10 @@ puede ser de altura y anchura completas.
                         <tbody>
                             <tr>
                                 <td class="pru1">15/12/10</td>
-                                <td class="col2">150 $</td>
-                                <td class="col3">100 $</td>
-                                <td class="col4">50 $</td>
-                                <td class="col4">125AD5</td>
+                                <td class="col2">$ {{ $ticket->total }}</td>
+                                <td class="col3">$ {{ $ticket->abono }}</td>
+                                <td class="col4">$ {{ $ticket->total - $ticket->abono }}</td>
+                                <td class="col4">{{ $ticket->pass }}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
 use App\Models\pacientes;
 use App\Models\maquilas;
+use App\Models\tomas;
 use Illuminate\Support\Facades\DB;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
@@ -109,9 +110,40 @@ class ticketsController extends Controller
         return redirect()->action([ticketsController::class, 'index']);
     }
 
-    public function show(tickets $tickets)
+    public function show(tickets $ticket)
     {
-        //
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select(
+                'pacientes.nombre',
+                'pacientes.apellido',
+                'pacientes.telefono',
+                'pacientes.nacimiento',
+                'pacientes.correo',
+                'tickets.id',
+                'tickets.total',
+                'tickets.abono',
+                'tickets.created_at',
+                'tickets.doctor',
+                'tickets.total',
+                'tickets.abono',
+                'tickets.total',
+                'tickets.pass'
+            )
+            ->where('tickets.id', $ticket->id)
+            ->first();
+
+        $examenes = tomas::join('examenes', 'examenes.id', 'tomas.examenes_id')
+            ->select('examenes.abreviacion')
+            ->where('tomas.tickets_id', $ticket->id)
+            ->get();
+
+
+        // dd($examenes);
+
+        return PDF::loadView('tickets.ticketPDF', compact('ticket', 'examenes'))
+            // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
     }
 
     public function edit(tickets $ticket)

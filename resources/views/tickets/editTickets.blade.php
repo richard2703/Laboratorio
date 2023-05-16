@@ -20,8 +20,8 @@
                         <div class="col text-end">
                             <!-- @can('user_create')
         <a href="#">
-                                                                                            <button type="button" class="btn btn-primary">Nuevo Paciente</button>
-                                                                                        </a>
+                                                                                                            <button type="button" class="btn btn-primary">Nuevo Paciente</button>
+                                                                                                        </a>
     @endcan -->
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                     <label class="form-label">Maquila:</label></br>
                                     <select class="form-control" id="maquila_id" name="maquila_id"
                                         aria-label="Default select example">
-                                        <option selected>Seleccione</option>
+                                        <option value=''>Seleccione</option>
                                         @forelse ($maquilas as $maquila)
                                             <option value="{{ $maquila->id }}"
                                                 {{ $ticket->maquila_id == $maquila->id ? 'selected' : '' }}>

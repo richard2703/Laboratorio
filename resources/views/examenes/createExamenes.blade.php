@@ -94,7 +94,7 @@
                                             <div class=" col-12 col-sm-6 col-lg-4 my-1">
                                                 <input type="checkbox" class="form-check-input" id="{{ $parametro->id }}"
                                                     name="parametros[]" value="{{ $parametro->id }}">
-                                                <label for="{{ $parametro->id }}">
+                                                <label for="{{ $parametro->id }}"><strong>{{ $parametro->tipo }} </strong>
                                                     {{ $parametro->nombre }}</label>
                                             </div>
                                         @empty

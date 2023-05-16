@@ -200,52 +200,6 @@ puede ser de altura y anchura completas.
                                     <td colspan="2">Sin registros.</td>
                                 </tr>
                             @endforelse
-
-                            @forelse ($parametros as $parametro)
-                                @if ($bandera != $parametro->tipo)
-                                    {{ $bandera = $parametro->tipo }}
-                                    <tr>
-                                        <td><b> {{ $parametro->tipo }} </b></td>
-                                    </tr>
-                                @else
-                                @endif
-                                <tr>
-                                    <td> {{ $parametro->nombre }}</td>
-                                    <td>
-                                        @if ($parametro->respuesta == 1)
-                                            @if ($parametro->resultado <= $parametro->bajo || $parametro->resultado >= $parametro->alto)
-                                                <b> {{ $parametro->resultado }}</b>
-                                            @else
-                                                {{ $parametro->resultado }}
-                                            @endif
-                                        @elseif ($parametro->respuesta == 2)
-                                            @if ($parametro->resultado != $parametro->referencia)
-                                                <b> {{ $parametro->resultado }}</b>
-                                            @else
-                                                {{ $parametro->resultado }}
-                                            @endif
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($parametro->medicion == null || $parametro->medicion == '')
-                                            N/A
-                                        @elseif (1 == 1)
-                                            {{ $parametro->medicion }}
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($parametro->respuesta == 1)
-                                            {{ $parametro->bajo }} - {{ $parametro->alto }}
-                                        @elseif ($parametro->respuesta == 2)
-                                            {{ $parametro->referencia }}
-                                        @endif
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="2">Sin registros.</td>
-                                </tr>
-                            @endforelse
                         </tbody>
                     </table>
                 </div>
