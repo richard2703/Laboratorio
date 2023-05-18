@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('examenes_create')
                                 <a href="{{ route('examenes.create') }}">
                                     <button type="button" class="btn btn-primary">Nuevo Examen</button>
                                 </a>
@@ -47,11 +47,11 @@
                                                     <a href="{{ route('users.show', $parametro->id) }}">
                                                         <i class="bi bi-person-vcard  colorVolverGral"></i></a>
                                                 @endcan  --}}
-                                                @can('user_edit')
+                                                @can('examenes_edit')
                                                     <a href="{{ route('examenes.edit', $examen->id) }}"><i
                                                             class="bi bi-pencil h3 px-2"></i></a>
                                                 @endcan
-                                                @can('user_destroy')
+                                                @can('examenes_destroy')
                                                     <form class="alertaBorrar" <form class="alertaBorrar"
                                                         action="{{ route('examenes.destroy', $examen->id) }}" method="POST"
                                                         style="display: inline-block;">

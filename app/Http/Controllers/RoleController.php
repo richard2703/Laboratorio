@@ -45,6 +45,8 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if(Gate::denies('role_create'), 403);
+
         $role = Role::create($request->only('name'));
 
         // $role->permissions()->sync($request->input('permissions', []));
@@ -61,7 +63,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        // abort_if(Gate::denies('role_show'), 403);
+        abort_if(Gate::denies('role_show'), 403);
 
         $role->load('permissions');
         return view('roles.show', compact('role'));
@@ -75,7 +77,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        // abort_if(Gate::denies('role_edit'), 403);
+        abort_if(Gate::denies('role_edit'), 403);
 
         $permissions = Permission::all()->pluck('name', 'id');
         $role->load('permissions');
@@ -92,6 +94,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        abort_if(Gate::denies('role_edit'), 403);
+
         $role->update($request->only('name'));
 
         // $role->permissions()->sync($request->input('permissions', []));
@@ -108,7 +112,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        // abort_if(Gate::denies('role_delete'), 403);
+        abort_if(Gate::denies('role_delete'), 403);
 
         $role->delete();
 

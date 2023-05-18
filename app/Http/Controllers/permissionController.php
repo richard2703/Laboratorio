@@ -16,9 +16,9 @@ class permissionController extends Controller
      */
     public function index()
     {
-        // abort_if(Gate::denies('permission_index'), 403);
+        abort_if(Gate::denies('permission_index'), 403);
 
-        $permissions = Permission::paginate(5);
+        $permissions = Permission::paginate(15);
 
         return view('permissions.index', compact('permissions'));
     }
@@ -43,6 +43,8 @@ class permissionController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if(Gate::denies('permission_create'), 403);
+
         Permission::create($request->only('name'));
 
         return redirect()->route('permissions.index');
@@ -83,6 +85,8 @@ class permissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
+        abort_if(Gate::denies('permission_edit'), 403);
+
         $permission->update($request->only('name'));
 
         return redirect()->route('permissions.index');

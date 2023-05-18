@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('parametros_create')
                                 {{--  <a href="{{ route('permissions.create') }}">  --}}
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#modal-nuevo">Nuevo permiso</button>
@@ -51,13 +51,13 @@
                                                     <a href="{{ route('users.show', $parametro->id) }}">
                                                         <i class="bi bi-person-vcard  colorVolverGral"></i></a>
                                                 @endcan  --}}
-                                                @can('user_edit')
+                                                @can('parametros_edit')
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#modal-update"
                                                         onclick="cargar('{{ $parametro->id }}','{{ $parametro->nombre }}','{{ $parametro->bajo }}','{{ $parametro->alto }}','{{ $parametro->tipo }}','{{ $parametro->medicion }}','{{ $parametro->referencia }}')"><i
                                                             class="bi bi-pencil h3 px-2"></i>
                                                     </a>
                                                 @endcan
-                                                @can('user_destroy')
+                                                @can('parametros_destroy')
                                                     <form class="alertaBorrar"
                                                         action="{{ route('parametros.destroy', $parametro->id) }}"
                                                         method="POST" style="display: inline-block;">
