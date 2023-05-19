@@ -74,7 +74,7 @@
                                                 @endif
                                             </td>
                                             <td class="td-actions text-right">
-                                                @can('user_edit')
+                                                @canany(['resultados_edit', 'resultados_create'])
                                                     @if ($examene->estatus == 0)
                                                         <form action="{{ route('resultados.create', $ticket->id) }}"
                                                             method="POST" style="display: inline-block;">

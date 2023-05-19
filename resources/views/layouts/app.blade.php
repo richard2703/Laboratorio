@@ -310,37 +310,44 @@
                     <span>TEST</span>
                 </a>
             </li>  --}}
+            @canany(['tickets_index', 'tickets_create'])
+                <li class="nav-item ">
+                    <a class="nav-link {{ $activePage == 'tickets' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
+                        data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-receipt"></i><span>Tickets</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="tables-nav" class="nav-content collapse {{ $activePage == 'tickets' ? 'show' : '' }}"
+                        data-bs-parent="#sidebar-nav">
+                        @can('tickets_create')
+                            <li>
+                                <a href="{{ route('tickets.create') }}"
+                                    class="{{ $activeItem == 'newTicket' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Nuevo Ticket</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('tickets_index')
+                            <li>
+                                <a href="{{ route('tickets.index') }}"
+                                    class="{{ $activeItem == 'tickets' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Tickets</span>
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
 
-            <li class="nav-item ">
-                <a class="nav-link {{ $activePage == 'tickets' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
-                    data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-receipt"></i><span>Tickets</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="tables-nav" class="nav-content collapse {{ $activePage == 'tickets' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('tickets.create') }}"
-                            class="{{ $activeItem == 'newTicket' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Nuevo Ticket</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('tickets.index') }}"
-                            class="{{ $activeItem == 'tickets' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Tickets</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
             {{--  <!-- Tickets -->  --}}
-
-            <li class="nav-item collapsed">
-                <a class="nav-link {{ $activePage == 'pacientes' ? '' : 'collapsed' }}"
-                    href="{{ route('pacientes.index') }}">
-                    <i class="bi bi-person"></i>
-                    <span>Pacientes</span>
-                </a>
-            </li>
+            @can('pacientes_index')
+                <li class="nav-item collapsed">
+                    <a class="nav-link {{ $activePage == 'pacientes' ? '' : 'collapsed' }}"
+                        href="{{ route('pacientes.index') }}">
+                        <i class="bi bi-person"></i>
+                        <span>Pacientes</span>
+                    </a>
+                </li>
+            @endcan
             {{--  <!-- Pacientes -->  --}}
 
             <li class="nav-heading">Administracion</li>

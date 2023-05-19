@@ -12,12 +12,15 @@ use App\Models\examenparametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Support\Facades\Gate;
 
 class resultadosController extends Controller
 {
 
     public function index($ticket)
     {
+        abort_if(Gate::denies('resultados_index'), 403);
+
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
@@ -33,6 +36,8 @@ class resultadosController extends Controller
 
     public function create(Request $request, $ticket)
     {
+        abort_if(Gate::denies('resultados_create'), 403);
+
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
@@ -56,6 +61,8 @@ class resultadosController extends Controller
 
     public function store(Request $request)
     {
+        abort_if(Gate::denies('resultados_create'), 403);
+
         // dd($request);
         $toma = tomas::find($request->toma);
         $toma->estatus = 1;
@@ -83,6 +90,8 @@ class resultadosController extends Controller
 
     public function edit(Request $request, $ticket)
     {
+        abort_if(Gate::denies('resultados_edit'), 403);
+
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
@@ -107,6 +116,8 @@ class resultadosController extends Controller
 
     public function update(Request $request)
     {
+        abort_if(Gate::denies('resultados_edit'), 403);
+
         // dd($request);
         $toma = tomas::find($request->toma);
         $toma->estatus = $request->estatus;

@@ -16,25 +16,27 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
 use PDF;
 use Illuminate\Support\Str;
-
-
-
+use Illuminate\Support\Facades\Gate;
 
 class ticketsController extends Controller
 {
 
     public function index()
     {
+        abort_if(Gate::denies('tickets_index'), 403);
+
         $tickets = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->orderby('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(15);
         // dd($tickets);
         return view('tickets.indextickets', compact('tickets'));
     }
 
     public function create()
     {
+        abort_if(Gate::denies('tickets_create'), 403);
+
         $examenes = examenes::get();
         $maquilas = maquilas::get();
         return view('tickets.createTickets', compact('examenes', 'maquilas'));
@@ -90,6 +92,8 @@ class ticketsController extends Controller
 
     public function store(Request $request)
     {
+        abort_if(Gate::denies('tickets_create'), 403);
+
         $ticket = new tickets();
         if (!$request->paciente_id) {
             // Guardar al paciente
@@ -112,6 +116,8 @@ class ticketsController extends Controller
 
     public function show(tickets $ticket)
     {
+        abort_if(Gate::denies('tickets_show'), 403);
+
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select(
                 'pacientes.nombre',
@@ -148,6 +154,8 @@ class ticketsController extends Controller
 
     public function edit(tickets $ticket)
     {
+        abort_if(Gate::denies('tickets_edit'), 403);
+
         $paciente = pacientes::where('id', $ticket->paciente_id)->first();
         $examenes = examenes::all();
         $ticket->load('examenes');
@@ -159,6 +167,8 @@ class ticketsController extends Controller
 
     public function update(Request $request, tickets $ticket)
     {
+        abort_if(Gate::denies('tickets_edit'), 403);
+
         $ticket->update($request->only('maquila_id', 'total', 'abono', 'doctor'));
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);
@@ -170,6 +180,8 @@ class ticketsController extends Controller
 
     public function destroy(tickets $ticket)
     {
+        abort_if(Gate::denies('tickets_destroy'), 403);
+
         $ticket->delete();
         Session::flash('message', 2);
         return redirect()->action([ticketsController::class, 'index']);

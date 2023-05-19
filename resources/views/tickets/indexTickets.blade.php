@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('tickets_create')
                                 <a href="{{ route('tickets.create') }}">
                                     <button type="button" class="btn btn-primary">Nuevo Ticket</button>
                                 </a>
@@ -50,15 +50,15 @@
                                                     <i class="bi bi-download h3"></i></a>
                                             </td>
                                             <td class="td-actions text-right">
-                                                @can('user_show')
+                                                @can('resultados_index')
                                                     <a href="{{ route('resultados.index', $ticket->id) }}"><i
                                                             class="bi bi-card-text h3"></i></a>
                                                 @endcan
-                                                @can('user_edit')
+                                                @can('tickets_edit')
                                                     <a href="{{ route('tickets.edit', $ticket->id) }}"><i
                                                             class="bi bi-pencil h3 px-2"></i></a>
                                                 @endcan
-                                                @can('user_destroy')
+                                                @can('tickets_destroy')
                                                     <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST"
                                                         style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf

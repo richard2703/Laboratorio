@@ -65,7 +65,8 @@ INSERT INTO permissions VALUES
 (42,'resultados_create','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
 (43,'resultados_show','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
 (44,'resultados_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
-(45,'resultados_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16')
+(45,'resultados_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(46,'resultados_autorizar','web','2022-07-25 20:54:16','2022-07-25 20:54:16')
 ;
 
 CREATE TABLE users (
