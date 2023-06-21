@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('tickets_create')
                                 <a href="{{ route('tickets.create') }}">
                                     <button type="button" class="btn btn-primary">Nuevo Ticket</button>
                                 </a>
@@ -34,6 +34,7 @@
                                     <th>Telefono</th>
                                     <th>Total</th>
                                     <th>Abono </th>
+                                    <th>Ticket</th>
                                     <th class="text-right">Acciones</th>
                                 </thead>
                                 <tbody>
@@ -45,16 +46,19 @@
                                             <td>{{ $ticket->telefono }}</td>
                                             <td>{{ $ticket->total }}</td>
                                             <td>{{ $ticket->abono }}</td>
+                                            <td><a href="{{ route('tickets.show', $ticket->id) }}" Target="_blank">
+                                                    <i class="bi bi-download h3"></i></a>
+                                            </td>
                                             <td class="td-actions text-right">
-                                                @can('user_show')
+                                                @can('resultados_index')
                                                     <a href="{{ route('resultados.index', $ticket->id) }}"><i
                                                             class="bi bi-card-text h3"></i></a>
                                                 @endcan
-                                                @can('user_edit')
+                                                @can('tickets_edit')
                                                     <a href="{{ route('tickets.edit', $ticket->id) }}"><i
                                                             class="bi bi-pencil h3 px-2"></i></a>
                                                 @endcan
-                                                @can('user_destroy')
+                                                @can('tickets_destroy')
                                                     <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST"
                                                         style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
@@ -83,6 +87,31 @@
     </section>
 
     <script src="{{ asset('js/alertas.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+
+    <script>
+        function pdf(id) {
+            $.ajax({
+                type: 'get',
+                url: 'test/print',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "id": id
+                },
+                success: function(data) {
+                    var nuevaPestana = window.open();
+                    nuevaPestana.document.write(data);
+
+                },
+                error: function() {
+                    console.log('Error');
+                }
+            });
+
+
+        };
+    </script>
 
     <script>
         function Guardado() {
@@ -107,6 +136,7 @@
         var slug = '{{ Session::get('message') }}';
         if (slug == 1) {
             Guardado();
+            pdf(slug);
 
         }
         if (slug == 2) {

@@ -35,7 +35,38 @@ INSERT INTO permissions VALUES
 (12,'user_create','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
 (13,'user_show','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
 (14,'user_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
-(15,'user_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16')
+(15,'user_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(16,'examenes_index','web','2022-07-25 20:54:15','2022-07-25 20:54:15'),
+(17,'examenes_create','web','2022-07-25 20:54:15','2022-07-25 20:54:15'),
+(18,'examenes_show','web','2022-07-25 20:54:15','2022-07-25 20:54:15'),
+(19,'examenes_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(20,'examenes_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(21,'parametros_index','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(22,'parametros_create','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(23,'parametros_show','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(24,'parametros_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(25,'parametros_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(26,'maquilas_index','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(27,'maquilas_create','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(28,'maquilas_show','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(29,'maquilas_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(30,'maquilas_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(31,'pacientes_index','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(32,'pacientes_create','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(33,'pacientes_show','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(34,'pacientes_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(35,'pacientes_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(36,'tickets_index','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(37,'tickets_create','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(38,'tickets_show','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(39,'tickets_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(40,'tickets_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(41,'resultados_index','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(42,'resultados_create','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(43,'resultados_show','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(44,'resultados_edit','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(45,'resultados_destroy','web','2022-07-25 20:54:16','2022-07-25 20:54:16'),
+(46,'resultados_autorizar','web','2022-07-25 20:54:16','2022-07-25 20:54:16')
 ;
 
 CREATE TABLE users (
@@ -119,15 +150,20 @@ CREATE TABLE parametros(
   escrito varchar (255) null,
   referencia varchar(255) null,
   respuesta int null,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT NULL,
   PRIMARY KEY (id)
  );
 
 CREATE TABLE examenes(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   nombre varchar(255) NOT NULL,
+  abreviacion varchar(255) NOT NULL,
   costo float(10,2) null,
   maquila float(10,2) null,
   leyenda text null ,
+  metodologia varchar(255) NULL,
+  muestra varchar (255) NULL,
   PRIMARY KEY (id)
 );
 
@@ -169,6 +205,7 @@ CREATE TABLE tickets(
   total float default 0 ,
   abono float default 0 ,
   doctor varchar(250),
+  pass varchar(250),
   created_at datetime NULL,
   updated_at datetime NULL,
   PRIMARY KEY (id),

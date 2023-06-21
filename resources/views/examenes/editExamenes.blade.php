@@ -50,6 +50,14 @@
                                     </div>
                                 </div>
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="nombre" class="form-label">Abreviacion:</label>
+                                    <input type="text" class="form-control" name="abreviacion" id="abreviacion"
+                                        value="{{ $examene->abreviacion }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
+                                </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                     <label for="costo" class="form-label">Costo:</label></br>
                                     <input type="number" class="form-control" id="costo" name="costo"
                                         value="{{ $examene->costo }}" required>
@@ -61,6 +69,19 @@
                                     <label for="maquila" class="form-label">Costo Maquila:</label></br>
                                     <input type="number" class="form-control" id="maquila" name="maquila"
                                         value="{{ $examene->maquila }}">
+                                </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="maquila" class="form-label">Metodologia:</label></br>
+                                    <input type="text" class="form-control" id="metodologia" name="metodologia"
+                                        value="{{ $examene->metodologia }}">
+                                </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="maquila" class="form-label">Tipo de muestra:</label></br>
+                                    <input type="text" class="form-control" id="muestra" name="muestra"
+                                        value="{{ $examene->muestra }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
                                 </div>
                                 <div class="col-12 ">
                                     <label class="form-label">Parametros:</label></br>

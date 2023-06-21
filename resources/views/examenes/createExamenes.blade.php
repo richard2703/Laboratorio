@@ -44,8 +44,16 @@
                             <div class="row g-3">
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                     <label for="nombre" class="form-label">Nombre:</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" value="{{ old('nombre') }}"
-                                        required>
+                                    <input type="text" class="form-control" name="nombre" id="nombre"
+                                        value="{{ old('nombre') }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
+                                </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="nombre" class="form-label">Abreviacion:</label>
+                                    <input type="text" class="form-control" name="abreviacion" id="abreviacion"
+                                        value="{{ old('abreviacion') }}" required>
                                     <div class="invalid-tooltip">
                                         Es Obligatorio!
                                     </div>
@@ -66,6 +74,19 @@
                                         Es Obligatorio!
                                     </div>
                                 </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="maquila" class="form-label">Metodologia:</label></br>
+                                    <input type="text" class="form-control" id="metodologia" name="metodologia"
+                                        value="{{ old('metodologia') }}">
+                                </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="maquila" class="form-label">Tipo de muestra:</label></br>
+                                    <input type="text" class="form-control" id="muestra" name="muestra"
+                                        value="{{ old('muestra') }}" required>
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
+                                </div>
                                 <div class="col-12 ">
                                     <label for="nombre" class="form-label">Parametros:</label></br>
                                     <div class="row position-relative d-flex">
@@ -73,7 +94,7 @@
                                             <div class=" col-12 col-sm-6 col-lg-4 my-1">
                                                 <input type="checkbox" class="form-check-input" id="{{ $parametro->id }}"
                                                     name="parametros[]" value="{{ $parametro->id }}">
-                                                <label for="{{ $parametro->id }}">
+                                                <label for="{{ $parametro->id }}"><strong>{{ $parametro->tipo }} </strong>
                                                     {{ $parametro->nombre }}</label>
                                             </div>
                                         @empty

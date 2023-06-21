@@ -16,10 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/resultados', function () {
+//     return view('resultados');
+// });
+Route::get('resultado', [App\Http\Controllers\resultadosClienteController::class, 'buscar'])->name('resultado.buscar');
+Route::post('resultado/ticket', [App\Http\Controllers\resultadosClienteController::class, 'index'])->name('resultado.index');
+Route::post('resultado/imprimir', [App\Http\Controllers\resultadosClienteController::class, 'pdfResultado'])->name('resultado.pdf');
 
-Route::get('test', function () {
-    return view('test');
+Route::group(['middleware' => ['role:1Admin']], function () {
+    Route::get('test', function () {
+        return view('test');
+    });
 });
+
+
+// Route::get('test', function () {
+//     return view('test');
+// });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
@@ -40,6 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ticket/{ticket}/resultados/editar', [App\Http\Controllers\resultadosController::class, 'edit'])->name('resultados.edit');
     Route::post('/ticket/resultados/update', [App\Http\Controllers\resultadosController::class, 'update'])->name('resultados.update');
     Route::post('/resultados', [App\Http\Controllers\resultadosController::class, 'pdfResultado'])->name('resultados.pdf');
+    Route::get('test/print', [App\Http\Controllers\ticketsController::class, 'test'])->name('test.print');
+
 
     Route::get('/pdf', [App\Http\Controllers\resultadosController::class, 'pdftest'])->name('resultados.pdftest');
 });

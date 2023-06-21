@@ -13,7 +13,7 @@ class tickets extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'paciente_id', 'maquila_id', 'total', 'abono', 'doctor'
+        'paciente_id', 'maquila_id', 'total', 'abono', 'doctor', 'pass'
     ];
     public function examenes()
     {

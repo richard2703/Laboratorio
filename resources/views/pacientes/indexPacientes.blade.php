@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('pacientes_create')
                                 <a href="{{ route('pacientes.create') }}">
                                     <button type="button" class="btn btn-primary">Nuevo Paciente</button>
                                 </a>
@@ -46,14 +46,14 @@
                                             <td>{{ $paciente->nacimiento }}</td>
 
                                             <td class="td-actions text-right">
-                                                @can('user_show')
+                                                @can('pacientes_show')
                                                     <a href="#"><i class="bi bi-card-text h3"></i></a>
                                                 @endcan
-                                                @can('user_edit')
+                                                @can('pacientes_edit')
                                                     <a href="{{ route('pacientes.edit', $paciente->id) }}"><i
                                                             class="bi bi-pencil h3 px-2"></i></a>
                                                 @endcan
-                                                @can('user_destroy')
+                                                @can('pacientes_destroy')
                                                     <form action="#" method="POST" style="display: inline-block;"
                                                         onsubmit="return confirm('Seguro?')">
                                                         @csrf

@@ -74,13 +74,13 @@
 
                 <li class="nav-item dropdown">
 
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    {{--  <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-bell"></i>
                         <span class="badge bg-primary badge-number">4</span>
-                    </a>
+                    </a>  --}}
                     {{--  <!-- End Notification Icon -->  --}}
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    {{--  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                         <li class="dropdown-header">
                             You have 4 new notifications
                             <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
@@ -144,21 +144,21 @@
                             <a href="#">Show all notifications</a>
                         </li>
 
-                    </ul>
+                    </ul>  --}}
                     {{--  <!-- End Notification Dropdown Items -->  --}}
 
                 </li>
                 {{--  <!-- End Notification Nav -->  --}}
 
                 <li class="nav-item dropdown">
-
+                    {{--  
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-chat-left-text"></i>
                         <span class="badge bg-success badge-number">3</span>
-                    </a>
+                    </a>  --}}
                     {{--  <!-- End Messages Icon -->  --}}
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                    {{--  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                         <li class="dropdown-header">
                             You have 3 new messagessi
                             <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
@@ -213,7 +213,7 @@
                             <a href="#">Show all messages</a>
                         </li>
 
-                    </ul>
+                    </ul>  --}}
                     {{--  <!-- End Messages Dropdown Items -->  --}}
 
                 </li>
@@ -223,17 +223,17 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                        {{--  <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">  --}}
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
                     </a>
                     {{--  <!-- End Profile Iamge Icon -->  --}}
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
+                            <h6>{{ auth()->user()->name }}</h6>
+                            {{--  <span>Web Designer</span>  --}}
                         </li>
-                        <li>
+                        {{--  <li>
                             <hr class="dropdown-divider">
                         </li>
 
@@ -262,7 +262,7 @@
                                 <i class="bi bi-question-circle"></i>
                                 <span>Need Help</span>
                             </a>
-                        </li>
+                        </li>  --}}
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -271,8 +271,7 @@
                             <form action="{{ route('logout') }}" method="POST" style="display: inline-block;"
                                 onsubmit="return confirm('Seguro?')">
                                 @csrf
-                                <button class="dropdown-item d-flex align-items-center" type="submit"
-                                    rel="tooltip">
+                                <button class="dropdown-item d-flex align-items-center" type="submit" rel="tooltip">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Sign Out</span>
                                 </button>
@@ -304,101 +303,133 @@
             </li>
             <!-- End Dashboard Nav -->
 
-            <li class="nav-item ">
-                <a class="nav-link {{ $activePage == 'tickets' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
-                    data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-receipt"></i><span>Tickets</span><i class="bi bi-chevron-down ms-auto"></i>
+            {{--  <li class="nav-item ">
+                <a class="nav-link {{ $activePage == 'Dashboard' ? '' : 'collapsed' }}"
+                    href="{{ route('test.print') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>TEST</span>
                 </a>
-                <ul id="tables-nav" class="nav-content collapse {{ $activePage == 'tickets' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('tickets.create') }}"
-                            class="{{ $activeItem == 'newTicket' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Nuevo Ticket</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('tickets.index') }}"
-                            class="{{ $activeItem == 'tickets' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Tickets</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            {{--  <!-- Tickets -->  --}}
+            </li>  --}}
+            @canany(['tickets_index', 'tickets_create'])
+                <li class="nav-item ">
+                    <a class="nav-link {{ $activePage == 'tickets' ? '' : 'collapsed' }}" data-bs-target="#tables-nav"
+                        data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-receipt"></i><span>Tickets</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="tables-nav" class="nav-content collapse {{ $activePage == 'tickets' ? 'show' : '' }}"
+                        data-bs-parent="#sidebar-nav">
+                        @can('tickets_create')
+                            <li>
+                                <a href="{{ route('tickets.create') }}"
+                                    class="{{ $activeItem == 'newTicket' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Nuevo Ticket</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('tickets_index')
+                            <li>
+                                <a href="{{ route('tickets.index') }}"
+                                    class="{{ $activeItem == 'tickets' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Tickets</span>
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
 
-            <li class="nav-item collapsed">
-                <a class="nav-link {{ $activePage == 'pacientes' ? '' : 'collapsed' }}"
-                    href="{{ route('pacientes.index') }}">
-                    <i class="bi bi-person"></i>
-                    <span>Pacientes</span>
-                </a>
-            </li>
+            {{--  <!-- Tickets -->  --}}
+            @can('pacientes_index')
+                <li class="nav-item collapsed">
+                    <a class="nav-link {{ $activePage == 'pacientes' ? '' : 'collapsed' }}"
+                        href="{{ route('pacientes.index') }}">
+                        <i class="bi bi-person"></i>
+                        <span>Pacientes</span>
+                    </a>
+                </li>
+            @endcan
             {{--  <!-- Pacientes -->  --}}
 
             <li class="nav-heading">Administracion</li>
-
-            <li class="nav-item collapsed">
-                <a class="nav-link {{ $activePage == 'maquilas' ? '' : 'collapsed' }}"
-                    href="{{ route('maquilas.index') }}">
-                    <i class="bi bi-shop"></i>
-                    <span>Maquilas</span>
-                </a>
-            </li>
+            @can('maquilas_index')
+                <li class="nav-item collapsed">
+                    <a class="nav-link {{ $activePage == 'maquilas' ? '' : 'collapsed' }}"
+                        href="{{ route('maquilas.index') }}">
+                        <i class="bi bi-shop"></i>
+                        <span>Maquilas</span>
+                    </a>
+                </li>
+            @endcan
             {{--  <!-- Maquilas -->  --}}
+            @can('examenes_index')
+                <li class="nav-item">
+                    <a class="nav-link {{ $activePage == 'examenes' ? '' : 'collapsed' }} "
+                        data-bs-target="#examenes-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-clipboard2-pulse"></i>
+                        <span>Examenes y Parametros</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="examenes-nav" class="nav-content collapse {{ $activePage == 'examenes' ? 'show' : '' }}"
+                        data-bs-parent="#sidebar-nav">
+                        @can('examenes_index')
+                        @endcan
+                        <li>
+                            <a href="{{ route('examenes.index') }}"
+                                class="{{ $activeItem == 'examenes' ? 'active' : '' }}">
+                                <i class="bi bi-circle"></i><span>Examenes</span>
+                            </a>
+                        </li>
+                        @can('parametros_index')
+                            <li>
+                                <a href="{{ route('parametros.index') }}"
+                                    class=" {{ $activeItem == 'parametros' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Parametros</span>
+                                </a>
+                            </li>
+                        @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{ $activePage == 'examenes' ? '' : 'collapsed' }} "
-                    data-bs-target="#examenes-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-clipboard2-pulse"></i>
-                    <span>Examenes y Parametros</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="examenes-nav" class="nav-content collapse {{ $activePage == 'examenes' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('examenes.index') }}"
-                            class="{{ $activeItem == 'examenes' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Examenes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('parametros.index') }}"
-                            class=" {{ $activeItem == 'parametros' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Parametros</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            @endcan
+
+
             {{--  <!-- Usuarios Examenes y Parametros -->  --}}
 
+            @can('user_index')
+                <li class="nav-item">
+                    <a class="nav-link {{ $activePage == 'usuarios' ? '' : 'collapsed' }} "
+                        data-bs-target="#usuarios-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-people"></i>
+                        <span>Usuarios y Permisos</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="usuarios-nav" class="nav-content collapse {{ $activePage == 'usuarios' ? 'show' : '' }}"
+                        data-bs-parent="#sidebar-nav">
+                        @can('user_index')
+                            <li>
+                                <a href="{{ route('users.index') }}"
+                                    class="{{ $activeItem == 'usuarios' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Usuarios</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('role_index')
+                            <li>
+                                <a href="{{ route('roles.index') }}" class=" {{ $activeItem == 'Roles' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Roles</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('permission_index')
+                            <li>
+                                <a href="{{ route('permissions.index') }}"
+                                    class="{{ $activeItem == 'Permisos' ? 'active' : '' }}">
+                                    <i class="bi bi-circle"></i><span>Permisos</span>
+                                </a>
+                            </li>
+                        @endcan
 
-            <li class="nav-item">
-                <a class="nav-link {{ $activePage == 'usuarios' ? '' : 'collapsed' }} "
-                    data-bs-target="#usuarios-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-people"></i>
-                    <span>Usuarios y Permisos</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="usuarios-nav" class="nav-content collapse {{ $activePage == 'usuarios' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('users.index') }}"
-                            class="{{ $activeItem == 'usuarios' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Usuarios</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('roles.index') }}" class=" {{ $activeItem == 'Roles' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Roles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('permissions.index') }}"
-                            class="{{ $activeItem == 'Permisos' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Permisos</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            @endcan
             {{--  <!-- Usuarios Roles y permisos -->  --}}
 
         </ul>

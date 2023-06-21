@@ -26,13 +26,15 @@
                                         {{ $ticket->apellido }} - {{ $examen->nombre }}</h2>
                                 </div>
                                 <div class="col-12 col-md-3 card-title">
-                                    <label class="labelTitulo">Estatus:</label></br>
-                                    <select class="form-select" id="estatus" name="estatus" aria-label="Default">
-                                        <option value="1" {{ $toma->estatus == 1 ? 'selected' : '' }}>Revisando
-                                        </option>
-                                        <option value="2" {{ $toma->estatus == 2 ? 'selected' : '' }}>Terminado
-                                        </option>
-                                    </select>
+                                    @can('resultados_autorizar')
+                                        <label class="labelTitulo">Estatus:</label></br>
+                                        <select class="form-select" id="estatus" name="estatus" aria-label="Default">
+                                            <option value="1" {{ $toma->estatus == 1 ? 'selected' : '' }}>Revisando
+                                            </option>
+                                            <option value="2" {{ $toma->estatus == 2 ? 'selected' : '' }}>Terminado
+                                            </option>
+                                        </select>
+                                    @endcan
                                 </div>
                             </div>
                         </div>

@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('maquilas_create')
                                 <a href="{{ route('maquilas.create') }}">
                                     <button type="button" class="btn btn-primary">Nuevo Maquila</button>
                                 </a>
@@ -50,14 +50,14 @@
                                             <td>{{ $maquila->encargado }}</td>
 
                                             <td class="td-actions text-right">
-                                                @can('user_show')
+                                                @can('maquilas_show')
                                                     <a href="#"><i class="bi bi-card-text h3"></i></a>
                                                 @endcan
-                                                @can('user_edit')
+                                                @can('maquilas_edit')
                                                     <a href="{{ route('maquilas.edit', $maquila->id) }}"><i
                                                             class="bi bi-pencil h3 px-2"></i></a>
                                                 @endcan
-                                                @can('user_destroy')
+                                                @can('maquilas_destroy')
                                                     <form action="#" method="POST" style="display: inline-block;"
                                                         onsubmit="return confirm('Seguro?')">
                                                         @csrf

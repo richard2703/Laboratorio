@@ -10,23 +10,33 @@ use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
 use App\Models\pacientes;
 use App\Models\maquilas;
+use App\Models\tomas;
 use Illuminate\Support\Facades\DB;
-
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\Printer;
+use PDF;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 class ticketsController extends Controller
 {
 
     public function index()
     {
+        abort_if(Gate::denies('tickets_index'), 403);
+
         $tickets = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
-            ->paginate(10);
+            ->orderby('created_at', 'desc')
+            ->paginate(15);
         // dd($tickets);
         return view('tickets.indextickets', compact('tickets'));
     }
 
     public function create()
     {
+        abort_if(Gate::denies('tickets_create'), 403);
+
         $examenes = examenes::get();
         $maquilas = maquilas::get();
         return view('tickets.createTickets', compact('examenes', 'maquilas'));
@@ -82,46 +92,83 @@ class ticketsController extends Controller
 
     public function store(Request $request)
     {
+        abort_if(Gate::denies('tickets_create'), 403);
+
+        $ticket = new tickets();
         if (!$request->paciente_id) {
             // Guardar al paciente
-            // dd($request);
             $paciente = pacientes::create($request->only('nombre', 'apellido', 'telefono', 'nacimiento'));
-            $ticket = new tickets();
             $ticket->paciente_id = $paciente->id;
-            $ticket->maquila_id = $request->maquila_id;
-            $ticket->total = $request->total;
-            $ticket->abono = $request->abono;
-            $ticket->doctor = $request->doctor;
-            $ticket->save();
-
-            // $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
-            $ticket->examenes()->sync($request->input('examenes', []));
-            Session::flash('message', 1);
-            return redirect()->action([ticketsController::class, 'index']);
+        } else {
+            $ticket->paciente_id = $request->paciente_id;
         }
-        // dd($request);
-        $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
+        $ticket->maquila_id = $request->maquila_id;
+        $ticket->total = $request->total;
+        $ticket->abono = $request->abono;
+        $ticket->doctor = $request->doctor;
+        $ticket->pass = Str::random(6);
+        $ticket->save();
+
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);
         return redirect()->action([ticketsController::class, 'index']);
     }
 
-    public function show(tickets $tickets)
+    public function show(tickets $ticket)
     {
-        //
+        abort_if(Gate::denies('tickets_show'), 403);
+
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select(
+                'pacientes.nombre',
+                'pacientes.apellido',
+                'pacientes.telefono',
+                'pacientes.nacimiento',
+                'pacientes.correo',
+                'tickets.id',
+                'tickets.total',
+                'tickets.abono',
+                'tickets.created_at',
+                'tickets.doctor',
+                'tickets.total',
+                'tickets.abono',
+                'tickets.total',
+                'tickets.pass'
+            )
+            ->where('tickets.id', $ticket->id)
+            ->first();
+
+        $examenes = tomas::join('examenes', 'examenes.id', 'tomas.examenes_id')
+            ->select('examenes.abreviacion')
+            ->where('tomas.tickets_id', $ticket->id)
+            ->get();
+
+
+        // dd($examenes);
+
+        return PDF::loadView('tickets.ticketPDF', compact('ticket', 'examenes'))
+            // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
     }
 
     public function edit(tickets $ticket)
     {
+        abort_if(Gate::denies('tickets_edit'), 403);
+
         $paciente = pacientes::where('id', $ticket->paciente_id)->first();
         $examenes = examenes::all();
         $ticket->load('examenes');
-        // dd($paciente);
-        return view('tickets.editTickets', compact('ticket', 'examenes', 'paciente'));
+        $maquilas = maquilas::get();
+
+        // dd($ticket);
+        return view('tickets.editTickets', compact('ticket', 'examenes', 'paciente', 'maquilas'));
     }
 
     public function update(Request $request, tickets $ticket)
     {
+        abort_if(Gate::denies('tickets_edit'), 403);
+
         $ticket->update($request->only('maquila_id', 'total', 'abono', 'doctor'));
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);
@@ -133,8 +180,48 @@ class ticketsController extends Controller
 
     public function destroy(tickets $ticket)
     {
+        abort_if(Gate::denies('tickets_destroy'), 403);
+
         $ticket->delete();
         Session::flash('message', 2);
         return redirect()->action([ticketsController::class, 'index']);
     }
+
+
+    public function test()
+    {
+
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'pacientes.nacimiento', 'tickets.id', 'tickets.total', 'tickets.abono', 'tickets.created_at', 'tickets.doctor')
+            ->where('tickets.id', 8)
+            ->first();
+
+        // dd($ticket);
+
+        // return view('tickets.ticketPDF');
+
+        return PDF::loadView('tickets.ticketPDF')
+            // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
+    }
+
+    // IMPRECION CON IMPRESORA DE TICKETS
+    // public function test()
+    // {
+    //     $nombreImpresora = "POS-58 USB";
+    //     $connector = new WindowsPrintConnector($nombreImpresora);
+    //     $impresora = new Printer($connector);
+    //     $impresora->setJustification(Printer::JUSTIFY_CENTER);
+    //     $impresora->setTextSize(2, 2);
+    //     $impresora->text("Imprimiendo\n");
+    //     $impresora->text("ticket\n");
+    //     $impresora->text("desde\n");
+    //     $impresora->text("Laravel\n");
+    //     $impresora->setTextSize(1, 1);
+    //     $impresora->text("https://parzibyte.me");
+    //     $impresora->feed(5);
+    //     $impresora->close();
+    //     dd('test.print');
+    // }
 }

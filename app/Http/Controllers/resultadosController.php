@@ -12,12 +12,15 @@ use App\Models\examenparametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Support\Facades\Gate;
 
 class resultadosController extends Controller
 {
 
     public function index($ticket)
     {
+        abort_if(Gate::denies('resultados_index'), 403);
+
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
@@ -33,13 +36,15 @@ class resultadosController extends Controller
 
     public function create(Request $request, $ticket)
     {
+        abort_if(Gate::denies('resultados_create'), 403);
+
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
             ->first();
         $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
+            ->select('examenes.nombre as examennombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
             ->where('examenes.id', $request->examen)
             ->first();
         $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id')
@@ -56,12 +61,14 @@ class resultadosController extends Controller
 
     public function store(Request $request)
     {
+        abort_if(Gate::denies('resultados_create'), 403);
+
         // dd($request);
         $toma = tomas::find($request->toma);
         $toma->estatus = 1;
         $toma->nota = $request->nota;
         $toma->comentario = $request->comentario;
-        // $toma->save();
+        $toma->save();
         // dd($toma);
         $c = count($request->parametro);
         for ($i = 0; $i < $c; $i++) {
@@ -83,6 +90,8 @@ class resultadosController extends Controller
 
     public function edit(Request $request, $ticket)
     {
+        abort_if(Gate::denies('resultados_edit'), 403);
+
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
@@ -107,6 +116,8 @@ class resultadosController extends Controller
 
     public function update(Request $request)
     {
+        abort_if(Gate::denies('resultados_edit'), 403);
+
         // dd($request);
         $toma = tomas::find($request->toma);
         $toma->estatus = $request->estatus;
@@ -144,7 +155,7 @@ class resultadosController extends Controller
             ->first();
         $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+            ->select('examenes.nombre as examennombre', 'parametros.nombre', 'parametros.id')
             ->where('examenes.id', $request->examen)
             ->first();
         $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
@@ -165,6 +176,8 @@ class resultadosController extends Controller
             )
             ->where('examenparametro.examenes_id', $request->examen)
             ->get();
+        // dd($parametros);
+        $bandera = "";
         $toma = tomas::find($request->toma);
         $examen->toma = $request->toma;
 
@@ -173,12 +186,12 @@ class resultadosController extends Controller
         //     'titulo' => 'Styde.net'
         // ];
 
-        // return view('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'));
+        // return view('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma', 'bandera'));
 
         // return PDF::loadView('resultados.pdftest', compact('ticket', 'examen', 'parametros', 'toma'))
         //     ->setPaper('a4')
         //     ->stream('archivo.pdf');
-        return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'))
+        return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma', 'bandera'))
             // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->setPaper('a4')
             ->stream('archivo.pdf');

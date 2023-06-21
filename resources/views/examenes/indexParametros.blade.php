@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('parametros_create')
                                 {{--  <a href="{{ route('permissions.create') }}">  --}}
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#modal-nuevo">Nuevo permiso</button>
@@ -31,6 +31,8 @@
                                 <thead class="labelTitulo">
                                     <th>ID</th>
                                     <th>Nombre</th>
+                                    <th>Tipo</th>
+                                    <th>Referencia</th>
                                     <th>Baja</th>
                                     <th>Alta </th>
                                     <th class="text-right">Acciones</th>
@@ -40,6 +42,8 @@
                                         <tr>
                                             <td>{{ $parametro->id }}</td>
                                             <td>{{ $parametro->nombre }}</td>
+                                            <td>{{ $parametro->tipo }}</td>
+                                            <td>{{ $parametro->referencia }}</td>
                                             <td>{{ $parametro->bajo }}</td>
                                             <td>{{ $parametro->alto }}</td>
                                             <td class="td-actions text-right">
@@ -47,13 +51,13 @@
                                                     <a href="{{ route('users.show', $parametro->id) }}">
                                                         <i class="bi bi-person-vcard  colorVolverGral"></i></a>
                                                 @endcan  --}}
-                                                @can('user_edit')
+                                                @can('parametros_edit')
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#modal-update"
                                                         onclick="cargar('{{ $parametro->id }}','{{ $parametro->nombre }}','{{ $parametro->bajo }}','{{ $parametro->alto }}','{{ $parametro->tipo }}','{{ $parametro->medicion }}','{{ $parametro->referencia }}')"><i
                                                             class="bi bi-pencil h3 px-2"></i>
                                                     </a>
                                                 @endcan
-                                                @can('user_destroy')
+                                                @can('parametros_destroy')
                                                     <form class="alertaBorrar"
                                                         action="{{ route('parametros.destroy', $parametro->id) }}"
                                                         method="POST" style="display: inline-block;">
@@ -137,7 +141,7 @@
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Bajo:</label></br>
                                                     <input class="form-control text-center" type="number" step="0.01"
-                                                        min="0.01" id="bajo" name="bajo"></br>
+                                                        min="0.00" id="bajo" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Alto:</label></br>
@@ -237,7 +241,7 @@
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Bajo:</label></br>
                                                     <input class="form-control text-center" type="number" step="0.01"
-                                                        min="0.01" id="bajoU" name="bajo"></br>
+                                                        min="0.00" id="bajoU" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="form-label" for="">Alto:</label></br>

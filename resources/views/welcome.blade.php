@@ -1,1014 +1,1539 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-    <!-- Styles -->
-    <style>
-        /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
-        *,
-        ::after,
-        ::before {
-            box-sizing: border-box;
-            border-width: 0;
-            border-style: solid;
-            border-color: #e5e7eb
-        }
-
-        ::after,
-        ::before {
-            --tw-content: ''
-        }
-
-        html {
-            line-height: 1.5;
-            -webkit-text-size-adjust: 100%;
-            -moz-tab-size: 4;
-            tab-size: 4;
-            font-family: Figtree, sans-serif;
-            font-feature-settings: normal
-        }
-
-        body {
-            margin: 0;
-            line-height: inherit
-        }
-
-        hr {
-            height: 0;
-            color: inherit;
-            border-top-width: 1px
-        }
-
-        abbr:where([title]) {
-            -webkit-text-decoration: underline dotted;
-            text-decoration: underline dotted
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-size: inherit;
-            font-weight: inherit
-        }
-
-        a {
-            color: inherit;
-            text-decoration: inherit
-        }
-
-        b,
-        strong {
-            font-weight: bolder
-        }
-
-        code,
-        kbd,
-        pre,
-        samp {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 1em
-        }
-
-        small {
-            font-size: 80%
-        }
-
-        sub,
-        sup {
-            font-size: 75%;
-            line-height: 0;
-            position: relative;
-            vertical-align: baseline
-        }
-
-        sub {
-            bottom: -.25em
-        }
-
-        sup {
-            top: -.5em
-        }
-
-        table {
-            text-indent: 0;
-            border-color: inherit;
-            border-collapse: collapse
-        }
-
-        button,
-        input,
-        optgroup,
-        select,
-        textarea {
-            font-family: inherit;
-            font-size: 100%;
-            font-weight: inherit;
-            line-height: inherit;
-            color: inherit;
-            margin: 0;
-            padding: 0
-        }
-
-        button,
-        select {
-            text-transform: none
-        }
-
-        [type=button],
-        [type=reset],
-        [type=submit],
-        button {
-            -webkit-appearance: button;
-            background-color: transparent;
-            background-image: none
-        }
-
-        :-moz-focusring {
-            outline: auto
-        }
-
-        :-moz-ui-invalid {
-            box-shadow: none
-        }
-
-        progress {
-            vertical-align: baseline
-        }
-
-        ::-webkit-inner-spin-button,
-        ::-webkit-outer-spin-button {
-            height: auto
-        }
-
-        [type=search] {
-            -webkit-appearance: textfield;
-            outline-offset: -2px
-        }
-
-        ::-webkit-search-decoration {
-            -webkit-appearance: none
-        }
-
-        ::-webkit-file-upload-button {
-            -webkit-appearance: button;
-            font: inherit
-        }
-
-        summary {
-            display: list-item
-        }
-
-        blockquote,
-        dd,
-        dl,
-        figure,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        hr,
-        p,
-        pre {
-            margin: 0
-        }
-
-        fieldset {
-            margin: 0;
-            padding: 0
-        }
-
-        legend {
-            padding: 0
-        }
-
-        menu,
-        ol,
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0
-        }
-
-        textarea {
-            resize: vertical
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            opacity: 1;
-            color: #9ca3af
-        }
-
-        [role=button],
-        button {
-            cursor: pointer
-        }
-
-        :disabled {
-            cursor: default
-        }
-
-        audio,
-        canvas,
-        embed,
-        iframe,
-        img,
-        object,
-        svg,
-        video {
-            display: block;
-            vertical-align: middle
-        }
-
-        img,
-        video {
-            max-width: 100%;
-            height: auto
-        }
-
-        [hidden] {
-            display: none
-        }
-
-        *,
-        ::before,
-        ::after {
-            --tw-border-spacing-x: 0;
-            --tw-border-spacing-y: 0;
-            --tw-translate-x: 0;
-            --tw-translate-y: 0;
-            --tw-rotate: 0;
-            --tw-skew-x: 0;
-            --tw-skew-y: 0;
-            --tw-scale-x: 1;
-            --tw-scale-y: 1;
-            --tw-pan-x: ;
-            --tw-pan-y: ;
-            --tw-pinch-zoom: ;
-            --tw-scroll-snap-strictness: proximity;
-            --tw-ordinal: ;
-            --tw-slashed-zero: ;
-            --tw-numeric-figure: ;
-            --tw-numeric-spacing: ;
-            --tw-numeric-fraction: ;
-            --tw-ring-inset: ;
-            --tw-ring-offset-width: 0px;
-            --tw-ring-offset-color: #fff;
-            --tw-ring-color: rgb(59 130 246 / 0.5);
-            --tw-ring-offset-shadow: 0 0 #0000;
-            --tw-ring-shadow: 0 0 #0000;
-            --tw-shadow: 0 0 #0000;
-            --tw-shadow-colored: 0 0 #0000;
-            --tw-blur: ;
-            --tw-brightness: ;
-            --tw-contrast: ;
-            --tw-grayscale: ;
-            --tw-hue-rotate: ;
-            --tw-invert: ;
-            --tw-saturate: ;
-            --tw-sepia: ;
-            --tw-drop-shadow: ;
-            --tw-backdrop-blur: ;
-            --tw-backdrop-brightness: ;
-            --tw-backdrop-contrast: ;
-            --tw-backdrop-grayscale: ;
-            --tw-backdrop-hue-rotate: ;
-            --tw-backdrop-invert: ;
-            --tw-backdrop-opacity: ;
-            --tw-backdrop-saturate: ;
-            --tw-backdrop-sepia:
-        }
-
-        ::-webkit-backdrop {
-            --tw-border-spacing-x: 0;
-            --tw-border-spacing-y: 0;
-            --tw-translate-x: 0;
-            --tw-translate-y: 0;
-            --tw-rotate: 0;
-            --tw-skew-x: 0;
-            --tw-skew-y: 0;
-            --tw-scale-x: 1;
-            --tw-scale-y: 1;
-            --tw-pan-x: ;
-            --tw-pan-y: ;
-            --tw-pinch-zoom: ;
-            --tw-scroll-snap-strictness: proximity;
-            --tw-ordinal: ;
-            --tw-slashed-zero: ;
-            --tw-numeric-figure: ;
-            --tw-numeric-spacing: ;
-            --tw-numeric-fraction: ;
-            --tw-ring-inset: ;
-            --tw-ring-offset-width: 0px;
-            --tw-ring-offset-color: #fff;
-            --tw-ring-color: rgb(59 130 246 / 0.5);
-            --tw-ring-offset-shadow: 0 0 #0000;
-            --tw-ring-shadow: 0 0 #0000;
-            --tw-shadow: 0 0 #0000;
-            --tw-shadow-colored: 0 0 #0000;
-            --tw-blur: ;
-            --tw-brightness: ;
-            --tw-contrast: ;
-            --tw-grayscale: ;
-            --tw-hue-rotate: ;
-            --tw-invert: ;
-            --tw-saturate: ;
-            --tw-sepia: ;
-            --tw-drop-shadow: ;
-            --tw-backdrop-blur: ;
-            --tw-backdrop-brightness: ;
-            --tw-backdrop-contrast: ;
-            --tw-backdrop-grayscale: ;
-            --tw-backdrop-hue-rotate: ;
-            --tw-backdrop-invert: ;
-            --tw-backdrop-opacity: ;
-            --tw-backdrop-saturate: ;
-            --tw-backdrop-sepia:
-        }
-
-        ::backdrop {
-            --tw-border-spacing-x: 0;
-            --tw-border-spacing-y: 0;
-            --tw-translate-x: 0;
-            --tw-translate-y: 0;
-            --tw-rotate: 0;
-            --tw-skew-x: 0;
-            --tw-skew-y: 0;
-            --tw-scale-x: 1;
-            --tw-scale-y: 1;
-            --tw-pan-x: ;
-            --tw-pan-y: ;
-            --tw-pinch-zoom: ;
-            --tw-scroll-snap-strictness: proximity;
-            --tw-ordinal: ;
-            --tw-slashed-zero: ;
-            --tw-numeric-figure: ;
-            --tw-numeric-spacing: ;
-            --tw-numeric-fraction: ;
-            --tw-ring-inset: ;
-            --tw-ring-offset-width: 0px;
-            --tw-ring-offset-color: #fff;
-            --tw-ring-color: rgb(59 130 246 / 0.5);
-            --tw-ring-offset-shadow: 0 0 #0000;
-            --tw-ring-shadow: 0 0 #0000;
-            --tw-shadow: 0 0 #0000;
-            --tw-shadow-colored: 0 0 #0000;
-            --tw-blur: ;
-            --tw-brightness: ;
-            --tw-contrast: ;
-            --tw-grayscale: ;
-            --tw-hue-rotate: ;
-            --tw-invert: ;
-            --tw-saturate: ;
-            --tw-sepia: ;
-            --tw-drop-shadow: ;
-            --tw-backdrop-blur: ;
-            --tw-backdrop-brightness: ;
-            --tw-backdrop-contrast: ;
-            --tw-backdrop-grayscale: ;
-            --tw-backdrop-hue-rotate: ;
-            --tw-backdrop-invert: ;
-            --tw-backdrop-opacity: ;
-            --tw-backdrop-saturate: ;
-            --tw-backdrop-sepia:
-        }
-
-        .relative {
-            position: relative
-        }
-
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto
-        }
-
-        .mx-6 {
-            margin-left: 1.5rem;
-            margin-right: 1.5rem
-        }
-
-        .ml-4 {
-            margin-left: 1rem
-        }
-
-        .mt-16 {
-            margin-top: 4rem
-        }
-
-        .mt-6 {
-            margin-top: 1.5rem
-        }
-
-        .mt-4 {
-            margin-top: 1rem
-        }
-
-        .-mt-px {
-            margin-top: -1px
-        }
-
-        .mr-1 {
-            margin-right: 0.25rem
-        }
-
-        .flex {
-            display: flex
-        }
-
-        .inline-flex {
-            display: inline-flex
-        }
-
-        .grid {
-            display: grid
-        }
-
-        .h-16 {
-            height: 4rem
-        }
-
-        .h-7 {
-            height: 1.75rem
-        }
-
-        .h-6 {
-            height: 1.5rem
-        }
-
-        .h-5 {
-            height: 1.25rem
-        }
-
-        .min-h-screen {
-            min-height: 100vh
-        }
-
-        .w-auto {
-            width: auto
-        }
-
-        .w-16 {
-            width: 4rem
-        }
-
-        .w-7 {
-            width: 1.75rem
-        }
-
-        .w-6 {
-            width: 1.5rem
-        }
-
-        .w-5 {
-            width: 1.25rem
-        }
-
-        .max-w-7xl {
-            max-width: 80rem
-        }
-
-        .shrink-0 {
-            flex-shrink: 0
-        }
-
-        .scale-100 {
-            --tw-scale-x: 1;
-            --tw-scale-y: 1;
-            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr))
-        }
-
-        .items-center {
-            align-items: center
-        }
-
-        .justify-center {
-            justify-content: center
-        }
-
-        .gap-6 {
-            gap: 1.5rem
-        }
-
-        .gap-4 {
-            gap: 1rem
-        }
-
-        .self-center {
-            align-self: center
-        }
-
-        .rounded-lg {
-            border-radius: 0.5rem
-        }
-
-        .rounded-full {
-            border-radius: 9999px
-        }
-
-        .bg-gray-100 {
-            --tw-bg-opacity: 1;
-            background-color: rgb(243 244 246 / var(--tw-bg-opacity))
-        }
-
-        .bg-white {
-            --tw-bg-opacity: 1;
-            background-color: rgb(255 255 255 / var(--tw-bg-opacity))
-        }
-
-        .bg-red-50 {
-            --tw-bg-opacity: 1;
-            background-color: rgb(254 242 242 / var(--tw-bg-opacity))
-        }
-
-        .bg-dots-darker {
-            background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E")
-        }
-
-        .from-gray-700\/50 {
-            --tw-gradient-from: rgb(55 65 81 / 0.5);
-            --tw-gradient-to: rgb(55 65 81 / 0);
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
-        }
-
-        .via-transparent {
-            --tw-gradient-to: rgb(0 0 0 / 0);
-            --tw-gradient-stops: var(--tw-gradient-from), transparent, var(--tw-gradient-to)
-        }
-
-        .bg-center {
-            background-position: center
-        }
-
-        .stroke-red-500 {
-            stroke: #ef4444
-        }
-
-        .stroke-gray-400 {
-            stroke: #9ca3af
-        }
-
-        .p-6 {
-            padding: 1.5rem
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem
-        }
-
-        .text-center {
-            text-align: center
-        }
-
-        .text-right {
-            text-align: right
-        }
-
-        .text-xl {
-            font-size: 1.25rem;
-            line-height: 1.75rem
-        }
-
-        .text-sm {
-            font-size: 0.875rem;
-            line-height: 1.25rem
-        }
-
-        .font-semibold {
-            font-weight: 600
-        }
-
-        .leading-relaxed {
-            line-height: 1.625
-        }
-
-        .text-gray-600 {
-            --tw-text-opacity: 1;
-            color: rgb(75 85 99 / var(--tw-text-opacity))
-        }
-
-        .text-gray-900 {
-            --tw-text-opacity: 1;
-            color: rgb(17 24 39 / var(--tw-text-opacity))
-        }
-
-        .text-gray-500 {
-            --tw-text-opacity: 1;
-            color: rgb(107 114 128 / var(--tw-text-opacity))
-        }
-
-        .underline {
-            -webkit-text-decoration-line: underline;
-            text-decoration-line: underline
-        }
-
-        .antialiased {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
-        }
-
-        .shadow-2xl {
-            --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
-            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
-        }
-
-        .shadow-gray-500\/20 {
-            --tw-shadow-color: rgb(107 114 128 / 0.2);
-            --tw-shadow: var(--tw-shadow-colored)
-        }
-
-        .transition-all {
-            transition-property: all;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms
-        }
-
-        .selection\:bg-red-500 *::selection {
-            --tw-bg-opacity: 1;
-            background-color: rgb(239 68 68 / var(--tw-bg-opacity))
-        }
-
-        .selection\:text-white *::selection {
-            --tw-text-opacity: 1;
-            color: rgb(255 255 255 / var(--tw-text-opacity))
-        }
-
-        .selection\:bg-red-500::selection {
-            --tw-bg-opacity: 1;
-            background-color: rgb(239 68 68 / var(--tw-bg-opacity))
-        }
-
-        .selection\:text-white::selection {
-            --tw-text-opacity: 1;
-            color: rgb(255 255 255 / var(--tw-text-opacity))
-        }
-
-        .hover\:text-gray-900:hover {
-            --tw-text-opacity: 1;
-            color: rgb(17 24 39 / var(--tw-text-opacity))
-        }
-
-        .hover\:text-gray-700:hover {
-            --tw-text-opacity: 1;
-            color: rgb(55 65 81 / var(--tw-text-opacity))
-        }
-
-        .focus\:rounded-sm:focus {
-            border-radius: 0.125rem
-        }
-
-        .focus\:outline:focus {
-            outline-style: solid
-        }
-
-        .focus\:outline-2:focus {
-            outline-width: 2px
-        }
-
-        .focus\:outline-red-500:focus {
-            outline-color: #ef4444
-        }
-
-        .group:hover .group-hover\:stroke-gray-600 {
-            stroke: #4b5563
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            .motion-safe\:hover\:scale-\[1\.01\]:hover {
-                --tw-scale-x: 1.01;
-                --tw-scale-y: 1.01;
-                transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-            }
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .dark\:bg-gray-900 {
-                --tw-bg-opacity: 1;
-                background-color: rgb(17 24 39 / var(--tw-bg-opacity))
-            }
-
-            .dark\:bg-gray-800\/50 {
-                background-color: rgb(31 41 55 / 0.5)
-            }
-
-            .dark\:bg-red-800\/20 {
-                background-color: rgb(153 27 27 / 0.2)
-            }
-
-            .dark\:bg-dots-lighter {
-                background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E")
-            }
-
-            .dark\:bg-gradient-to-bl {
-                background-image: linear-gradient(to bottom left, var(--tw-gradient-stops))
-            }
-
-            .dark\:stroke-gray-600 {
-                stroke: #4b5563
-            }
-
-            .dark\:text-gray-400 {
-                --tw-text-opacity: 1;
-                color: rgb(156 163 175 / var(--tw-text-opacity))
-            }
-
-            .dark\:text-white {
-                --tw-text-opacity: 1;
-                color: rgb(255 255 255 / var(--tw-text-opacity))
-            }
-
-            .dark\:shadow-none {
-                --tw-shadow: 0 0 #0000;
-                --tw-shadow-colored: 0 0 #0000;
-                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
-            }
-
-            .dark\:ring-1 {
-                --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-                --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-                box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
-            }
-
-            .dark\:ring-inset {
-                --tw-ring-inset: inset
-            }
-
-            .dark\:ring-white\/5 {
-                --tw-ring-color: rgb(255 255 255 / 0.05)
-            }
-
-            .dark\:hover\:text-white:hover {
-                --tw-text-opacity: 1;
-                color: rgb(255 255 255 / var(--tw-text-opacity))
-            }
-
-            .group:hover .dark\:group-hover\:stroke-gray-400 {
-                stroke: #9ca3af
-            }
-        }
-
-        @media (min-width: 640px) {
-            .sm\:fixed {
-                position: fixed
-            }
-
-            .sm\:top-0 {
-                top: 0px
-            }
-
-            .sm\:right-0 {
-                right: 0px
-            }
-
-            .sm\:ml-0 {
-                margin-left: 0px
-            }
-
-            .sm\:flex {
-                display: flex
-            }
-
-            .sm\:items-center {
-                align-items: center
-            }
-
-            .sm\:justify-center {
-                justify-content: center
-            }
-
-            .sm\:justify-between {
-                justify-content: space-between
-            }
-
-            .sm\:text-left {
-                text-align: left
-            }
-
-            .sm\:text-right {
-                text-align: right
-            }
-        }
-
-        @media (min-width: 768px) {
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr))
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .lg\:gap-8 {
-                gap: 2rem
-            }
-
-            .lg\:p-8 {
-                padding: 2rem
-            }
-        }
-    </style>
-</head>
-
-<body class="antialiased">
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-        @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                @auth
-                    <a href="{{ url('/home') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                        in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
-            <div class="flex justify-center">
-                <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
-                    <path
-                        d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z"
-                        fill="#FF2D20" />
-                </svg>
-            </div>
-
-            <div class="mt-16">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                    <a href="https://laravel.com/docs"
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                        <div>
-                            <div
-                                class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                                </svg>
+@extends('layouts.front', ['activePage' => 'Dashboard', 'activeItem' => ''])
+
+@section('content')
+    <div class="main">
+        <div class="section" id="carousel">
+            <div class="container">
+                <div class="title">
+                    {{--  <h4>Carousel</h4>  --}}
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                                </li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img class="d-block" src="{{ asset('css/front/img/bg1.jpg') }}" alt="First slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Nature, United States</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block" src="{{ asset('css/front/img/bg3.jpg') }}" alt="Second slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Somewhere Beyond, United States</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block" src="{{ asset('css/front/img/bg4.jpg') }}" alt="Third slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Yellowstone National Park, United States</h5>
+                                    </div>
+                                </div>
                             </div>
-
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Documentation</h2>
-
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Laravel has wonderful documentation covering every aspect of the framework. Whether you
-                                are a newcomer or have prior experience with Laravel, we recommend reading our
-                                documentation from beginning to end.
-                            </p>
-                        </div>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </a>
-
-                    <a href="https://laracasts.com"
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                        <div>
-                            <div
-                                class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                    <path stroke-linecap="round"
-                                        d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-                                </svg>
-                            </div>
-
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laracasts</h2>
-
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript
-                                development. Check them out, see for yourself, and massively level up your development
-                                skills in the process.
-                            </p>
-                        </div>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </a>
-
-                    <a href="https://laravel-news.com"
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                        <div>
-                            <div
-                                class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                                </svg>
-                            </div>
-
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laravel News</h2>
-
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Laravel News is a community driven portal and newsletter aggregating all of the latest
-                                and most important news in the Laravel ecosystem, including new package releases and
-                                tutorials.
-                            </p>
-                        </div>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </a>
-
-                    <div
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                        <div>
-                            <div
-                                class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" />
-                                </svg>
-                            </div>
-
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</h2>
-
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Laravel's robust library of first-party tools and libraries, such as <a
-                                    href="https://forge.laravel.com"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Forge</a>,
-                                <a href="https://vapor.laravel.com"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Vapor</a>,
-                                <a href="https://nova.laravel.com"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Nova</a>,
-                                and <a href="https://envoyer.io"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Envoyer</a>
-                                help you take your projects to the next level. Pair them with powerful open source
-                                libraries like <a href="https://laravel.com/docs/billing"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cashier</a>,
-                                <a href="https://laravel.com/docs/dusk"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dusk</a>,
-                                <a href="https://laravel.com/docs/broadcasting"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Echo</a>,
-                                <a href="https://laravel.com/docs/horizon"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Horizon</a>,
-                                <a href="https://laravel.com/docs/sanctum"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Sanctum</a>,
-                                <a href="https://laravel.com/docs/telescope"
-                                    class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Telescope</a>,
-                                and more.
-                            </p>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                data-slide="prev">
+                                <i class="now-ui-icons arrows-1_minimal-left"></i>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                data-slide="next">
+                                <i class="now-ui-icons arrows-1_minimal-right"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="section section-tabs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 ml-auto mr-auto">
+                        <h2 class="title">Servicios</h2>
+                        {{--  <p class="category">Tabs with Icons on Card</p>  --}}
+                        <!-- Nav tabs -->
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons justify-content-center"
+                                    role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+                                            <i class="far fa-gem"></i> Home
+                                        </a>
+                                    </li>
+                                    {{--  <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#home"
+                                        role="tab">
+                                        <i class="now-ui-icons objects_umbrella-13"></i> Home
+                                    </a>
+                                </li>  --}}
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                                            <i class="now-ui-icons shopping_cart-simple"></i> Profile
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                                            <i class="now-ui-icons shopping_shop"></i> Messages
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                                            <i class="now-ui-icons ui-2_settings-90"></i> Settings
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <!-- Tab panes -->
+                                <div class="tab-content text-center">
+                                    <div class="tab-pane active" id="home" role="tabpanel">
+                                        <p>I think that’s a responsibility that I have, to push possibilities, to
+                                            show people, this is the level that things could be at. So when you get
+                                            something that has the name Kanye West on it, it’s supposed to be
+                                            pushing the furthest possibilities. I will be the leader of a company
+                                            that ends up being worth billions of dollars, because I got the answers.
+                                            I understand culture. I am the nucleus.</p>
+                                    </div>
+                                    <div class="tab-pane" id="profile" role="tabpanel">
+                                        <p> I will be the leader of a company that ends up being worth billions of
+                                            dollars, because I got the answers. I understand culture. I am the
+                                            nucleus. I think that’s a responsibility that I have, to push
+                                            possibilities, to show people, this is the level that things could be
+                                            at. I think that’s a responsibility that I have, to push possibilities,
+                                            to show people, this is the level that things could be at. </p>
+                                    </div>
+                                    <div class="tab-pane" id="messages" role="tabpanel">
+                                        <p>I think that’s a responsibility that I have, to push possibilities, to
+                                            show people, this is the level that things could be at. So when you get
+                                            something that has the name Kanye West on it, it’s supposed to be
+                                            pushing the furthest possibilities. I will be the leader of a company
+                                            that ends up being worth billions of dollars, because I got the answers.
+                                            I understand culture. I am the nucleus.</p>
+                                    </div>
+                                    <div class="tab-pane" id="settings" role="tabpanel">
+                                        <p>
+                                            "I will be the leader of a company that ends up being worth billions of
+                                            dollars, because I got the answers. I understand culture. I am the
+                                            nucleus. I think that’s a responsibility that I have, to push
+                                            possibilities, to show people, this is the level that things could be
+                                            at."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section ">
+            <div class="container">
+                <h2 class="title">Sucursales</h2>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">Matriz</h3>
+                        <h5 class="description">
+                            Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
+                            official package contains over 2.100 thin icons which are looking great in combination
+                            with Now UI Kit PRO Make sure you check all of them and usee those that you like the
+                            most.
+                        </h5>
+                        <div class="nucleo-container">
+                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                        </div>
+                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
+                            Demo Icons</a>
+                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
+                            target="_blank">View All Icons</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">San Jacinto</h3>
+                        <h5 class="description">
+                            Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
+                            official package contains over 2.100 thin icons which are looking great in combination
+                            with Now UI Kit PRO Make sure you check all of them and usee those that you like the
+                            most.
+                        </h5>
+                        {{--  <div class="nucleo-container">
+                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                        </div>  --}}
+                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
+                            Demo Icons</a>
+                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
+                            target="_blank">View All Icons</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-tabs section-nucleo-icons">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <h2 class="title">Contactanos</h2>
+                        <div class="col-lg-6 col-md-6 " style="
+                        text-align: start;">
+                            <h5 class="mb-4">Matriz</h5>
+                            <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i> José María Heredia 2387
+                                Guadalajara,
+                                Jal., Méx.</p>
+                            <div class="d-flex">
+                                <i class="fa fa-phone-alt me-3"></i>
+                                <p class="mb-2 textTels">+52 33 21 83 64 72</br>
+                                    +52 33 36 40 22 90</p>
+                            </div>
+                        </div>
 
-            <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
-                    <div class="flex items-center gap-4">
-                        <a href="https://github.com/sponsors/taylorotwell"
-                            class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                class="-mt-px mr-1 w-5 h-5 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                            </svg>
-                            Sponsor
-                        </a>
+                        {{--  <div class="nucleo-container">
+                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+                        </div>  --}}
+                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
+                            Demo Icons</a>
+                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
+                            target="_blank">View All Icons</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="icons-container">
+                            <i class="now-ui-icons ui-1_send"></i>
+                            <i class="now-ui-icons ui-2_like"></i>
+                            <i class="now-ui-icons transportation_air-baloon"></i>
+                            <i class="now-ui-icons text_bold"></i>
+                            <i class="now-ui-icons tech_headphones"></i>
+                            <i class="now-ui-icons emoticons_satisfied"></i>
+                            <i class="now-ui-icons shopping_cart-simple"></i>
+                            <i class="now-ui-icons objects_spaceship"></i>
+                            <i class="now-ui-icons media-2_note-03"></i>
+                            <i class="now-ui-icons ui-2_favourite-28"></i>
+                            <i class="now-ui-icons design_palette"></i>
+                            <i class="now-ui-icons clothes_tie-bow"></i>
+                            <i class="now-ui-icons location_pin"></i>
+                            <i class="now-ui-icons objects_key-25"></i>
+                            <i class="now-ui-icons travel_istanbul"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--  <div class="section section-images">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-images-container">
+                        <img src="{{asset('css/front/img/hero-image-1.png')}}" alt="">
+                    </div>
+                    <div class="hero-images-container-1">
+                        <img src="{{asset('css/front/img/hero-image-2.png')}}" alt="">
+                    </div>
+                    <div class="hero-images-container-2">
+                        <img src="{{asset('css/front/img/hero-image-3.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  --}}
+        {{--  <div class="section section-basic" id="basic-elements">
+        <div class="container">
+            <h3 class="title">Basic Elements</h3>
+            <h4>Buttons</h4>
+            <p class="category">Pick your style</p>
+            <div class="row">
+                <div class="col-md-10">
+                    <button class="btn btn-primary" type="button">Default</button>
+                    <button class="btn btn-primary btn-round" type="button">Round</button>
+                    <button class="btn btn-primary btn-round" type="button">
+                        <i class="now-ui-icons ui-2_favourite-28"></i> With Icon
+                    </button>
+                    <button class="btn btn-primary btn-icon btn-round" type="button">
+                        <i class="now-ui-icons ui-2_favourite-28"></i>
+                    </button>
+                    <button class="btn btn-primary btn-outline-primary btn-round"
+                        type="button">Outline</button>
+                </div>
+            </div>
+            <p class="category">Pick your size</p>
+            <div class="row">
+                <div class="col-md-10">
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Regular</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+            </div>
+            <p class="category">Pick your color</p>
+            <div class="row">
+                <div class="col-md-10">
+                    <button class="btn">Default</button>
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-info">Info</button>
+                    <button class="btn btn-success">Success</button>
+                    <button class="btn btn-warning">Warning</button>
+                    <button class="btn btn-danger">Danger</button>
+                    <button class="btn btn-neutral">Neutral</button>
+                </div>
+            </div>
+            <h4>Links</h4>
+            <div class="row">
+                <div class="col-md-8">
+                    <button class="btn btn-link">Default</button>
+                    <button class="btn btn-link btn-primary ">Primary</button>
+                    <button class="btn btn-link btn-info">Info</button>
+                    <button class="btn btn-link btn-success">Success</button>
+                    <button class="btn btn-link btn-warning">Warning</button>
+                    <button class="btn btn-link btn-danger">Danger</button>
+                </div>
+            </div>
+            <div class="space-70"></div>
+            <div id="inputs">
+                <h4>Inputs</h4>
+                <p class="category">Form Controls</p>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            <input type="text" value="" placeholder="Regular"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="form-group has-success">
+                            <input type="text" value="Success"
+                                class="form-control form-control-success" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="form-group has-danger">
+                            <input type="email" value="Error Input"
+                                class="form-control form-control-danger" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Left Font Awesome Icon">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Right Nucleo Icon">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i
+                                        class="now-ui-icons users_single-02"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-70"></div>
+            <div class="row" id="checkRadios">
+                <div class="col-sm-6 col-lg-3 mb-4">
+                    <p class="category">Checkboxes</p>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox">
+                            <span class="form-check-sign"></span>
+                            Unchecked
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <span class="form-check-sign"></span>
+                            Checked
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" disabled>
+                            <span class="form-check-sign"></span>
+                            Disabled Unchecked
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" checked disabled>
+                            <span class="form-check-sign"></span>
+                            Disabled Checked
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-4">
+                    <p class="category">Radios</p>
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="exampleRadios"
+                                id="exampleRadios1" value="option1">
+                            <span class="form-check-sign"></span>
+                            Radio is off
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="exampleRadios"
+                                id="exampleRadios1" value="option2" checked>
+                            <span class="form-check-sign"></span>
+                            Radio is on
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio disabled">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="exampleRadios1"
+                                id="exampleRadios2" value="option3" disabled>
+                            <span class="form-check-sign"></span>
+                            Disabled radio is off
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio disabled">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="exampleRadios1"
+                                id="exampleRadios2" value="option4" disabled checked>
+                            <span class="form-check-sign"></span>
+                            Disabled radio is on
+                        </label>
                     </div>
                 </div>
 
-                <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+            </div>
+        </div>
+    </div>
+    <div class="section section-navbars">
+        <div class="container" id="menu-dropdown">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Menu</h4>
+                    <nav class="navbar navbar-expand-lg bg-primary">
+                        <div class="container">
+                            <a class="navbar-brand" href="#">Menu</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="example-navbar"
+                                data-nav-image="{{asset('css/front/img/blurred-image-1.jpg')}}">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">
+                                            <p>Link</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <p>Link</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="http://example.com"
+                                            id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <p>
+                                                Dropdown
+                                            </p>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-md-6">
+                    <h4>Menu with Icons</h4>
+                    <nav class="navbar navbar-expand-lg bg-info">
+                        <div class="container">
+                            <a class="navbar-brand" href="#">Icons</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar-icons" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="example-navbar-icons">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#pablo"><i class="now-ui-icons ui-1_send"
+                                                aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#pablo"><i
+                                                class="now-ui-icons users_single-02"
+                                                aria-hidden="true"></i></a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle"
+                                            id="navbarDropdownMenuLink" data-toggle="dropdown">
+                                            <i class="now-ui-icons ui-1_settings-gear-63"
+                                                aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-header">Dropdown header</a>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="divider"></div>
+                                            <a class="dropdown-item" href="#">Separated link</a>
+                                            <div class="divider"></div>
+                                            <a class="dropdown-item" href="#">One more separated
+                                                link</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <h4>Navigation</h4>
+        </div>
+        <div id="navbar">
+            <div class="navigation-example" style="background-image:url('{{ asset('css/front/img/bg7.jpg')}}')">
+                <!-- Navbar Primary  -->
+                <nav class="navbar navbar-expand-lg bg-primary">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <a class="navbar-brand" href="#pablo">Primary color</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar-primary" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="example-navbar-primary">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="now-ui-icons objects_globe"></i>
+                                        <p>Discover</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="now-ui-icons users_circle-08"></i>
+                                        <p>Profile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                                        <p>Settings</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar Primary -->
+                <!-- Navbar Info -->
+                <nav class="navbar navbar-expand-lg bg-info">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <a class="navbar-brand" href="#pablo">Info Color</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar-info" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="example-navbar-info">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#pablo">
+                                        <p>Discover</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <p>Profile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <p>Settings</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar Info -->
+                <!-- Navbar Success -->
+                <nav class="navbar navbar-expand-lg bg-success">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <a class="navbar-brand" href="#">Success Color</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar-success" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="example-navbar-success">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="now-ui-icons objects_globe"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="now-ui-icons users_circle-08"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar Success -->
+                <!-- Navbar Warning -->
+                <nav class="navbar navbar-expand-lg bg-warning">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <a class="navbar-brand" href="#pablo">Warning Color</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar-warning" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="example-navbar-warning">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar Warning -->
+                <!-- Navbar Danger -->
+                <nav class="navbar navbar-expand-lg bg-danger">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <a class="navbar-brand" href="#pablo">Danger Color</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar-danger" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="example-navbar-danger">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-facebook-square"></i>
+                                        <p>Share</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-twitter"></i>
+                                        <p>Tweet</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-pinterest"></i>
+                                        <p>Pin</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar Danger -->
+                <!-- Navbar Transparent -->
+                <nav class="navbar navbar-expand-lg navbar-transparent">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <a class="navbar-brand" href="#pablo">Transparent</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#example-navbar-transparent"
+                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="example-navbar-transparent">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-facebook-square"></i>
+                                        <p>Facebook</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-twitter"></i>
+                                        <p>Twitter</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="fab fa-instagram"></i>
+                                        <p>Instagram</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar Transparent-->
+            </div>
+        </div>
+    </div>
+    <!-- End .section-navbars  -->
+    <div class="section section-tabs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+                    <p class="category">Tabs with Icons on Card</p>
+                    <!-- Nav tabs -->
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs justify-content-center" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#home"
+                                        role="tab">
+                                        <i class="now-ui-icons objects_umbrella-13"></i> Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                                        <i class="now-ui-icons shopping_cart-simple"></i> Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                                        <i class="now-ui-icons shopping_shop"></i> Messages
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                                        <i class="now-ui-icons ui-2_settings-90"></i> Settings
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <!-- Tab panes -->
+                            <div class="tab-content text-center">
+                                <div class="tab-pane active" id="home" role="tabpanel">
+                                    <p>I think that’s a responsibility that I have, to push possibilities, to
+                                        show people, this is the level that things could be at. So when you get
+                                        something that has the name Kanye West on it, it’s supposed to be
+                                        pushing the furthest possibilities. I will be the leader of a company
+                                        that ends up being worth billions of dollars, because I got the answers.
+                                        I understand culture. I am the nucleus.</p>
+                                </div>
+                                <div class="tab-pane" id="profile" role="tabpanel">
+                                    <p> I will be the leader of a company that ends up being worth billions of
+                                        dollars, because I got the answers. I understand culture. I am the
+                                        nucleus. I think that’s a responsibility that I have, to push
+                                        possibilities, to show people, this is the level that things could be
+                                        at. I think that’s a responsibility that I have, to push possibilities,
+                                        to show people, this is the level that things could be at. </p>
+                                </div>
+                                <div class="tab-pane" id="messages" role="tabpanel">
+                                    <p>I think that’s a responsibility that I have, to push possibilities, to
+                                        show people, this is the level that things could be at. So when you get
+                                        something that has the name Kanye West on it, it’s supposed to be
+                                        pushing the furthest possibilities. I will be the leader of a company
+                                        that ends up being worth billions of dollars, because I got the answers.
+                                        I understand culture. I am the nucleus.</p>
+                                </div>
+                                <div class="tab-pane" id="settings" role="tabpanel">
+                                    <p>
+                                        "I will be the leader of a company that ends up being worth billions of
+                                        dollars, because I got the answers. I understand culture. I am the
+                                        nucleus. I think that’s a responsibility that I have, to push
+                                        possibilities, to show people, this is the level that things could be
+                                        at."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+                    <p class="category">Tabs with Background on Card</p>
+                    <!-- Tabs with Background on Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist"
+                                data-background-color="orange">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#home1"
+                                        role="tab">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#profile1"
+                                        role="tab">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#messages1"
+                                        role="tab">Messages</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#settings1"
+                                        role="tab">Settings</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <!-- Tab panes -->
+                            <div class="tab-content text-center">
+                                <div class="tab-pane active" id="home1" role="tabpanel">
+                                    <p>I think that’s a responsibility that I have, to push possibilities, to
+                                        show people, this is the level that things could be at. So when you get
+                                        something that has the name Kanye West on it, it’s supposed to be
+                                        pushing the furthest possibilities. I will be the leader of a company
+                                        that ends up being worth billions of dollars, because I got the answers.
+                                        I understand culture. I am the nucleus.</p>
+                                </div>
+                                <div class="tab-pane" id="profile1" role="tabpanel">
+                                    <p> I will be the leader of a company that ends up being worth billions of
+                                        dollars, because I got the answers. I understand culture. I am the
+                                        nucleus. I think that’s a responsibility that I have, to push
+                                        possibilities, to show people, this is the level that things could be
+                                        at. I think that’s a responsibility that I have, to push possibilities,
+                                        to show people, this is the level that things could be at. </p>
+                                </div>
+                                <div class="tab-pane" id="messages1" role="tabpanel">
+                                    <p>I think that’s a responsibility that I have, to push possibilities, to
+                                        show people, this is the level that things could be at. So when you get
+                                        something that has the name Kanye West on it, it’s supposed to be
+                                        pushing the furthest possibilities. I will be the leader of a company
+                                        that ends up being worth billions of dollars, because I got the answers.
+                                        I understand culture. I am the nucleus.</p>
+                                </div>
+                                <div class="tab-pane" id="settings1" role="tabpanel">
+                                    <p>
+                                        "I will be the leader of a company that ends up being worth billions of
+                                        dollars, because I got the answers. I understand culture. I am the
+                                        nucleus. I think that’s a responsibility that I have, to push
+                                        possibilities, to show people, this is the level that things could be
+                                        at."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Tabs on plain Card -->
                 </div>
             </div>
         </div>
     </div>
-</body>
+    <!-- End Section Tabs -->
+    <div class="section section-pagination">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Progress Bars</h4>
+                    <div class="progress-container">
+                        <span class="progress-badge">Default</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                                <span class="progress-value">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-container progress-primary">
+                        <span class="progress-badge">Primary</span>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                style="width: 60%;">
+                                <span class="progress-value">60%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <h4>Navigation Pills</h4>
+                    <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#active" role="tablist">
+                                <i class="far fa-gem"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#link" role="tablist">
+                                <i class="fa fa-thermometer-full"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#link" role="tablist">
+                                <i class="fa fa-suitcase"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" data-toggle="tab" href="#disabled" role="tablist">
+                                <i class="fa fa-exclamation"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Pagination</h4>
+                    <ul class="pagination pagination-primary">
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#link">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#link">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#link">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#link">5</a>
+                        </li>
+                    </ul>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#link" aria-label="Previous">
+                                <span aria-hidden="true"><i class="fa fa-angle-double-left"
+                                        aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#link">1</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#link">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#link">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#link" aria-label="Next">
+                                <span aria-hidden="true"><i class="fa fa-angle-double-right"
+                                        aria-hidden="true"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <br>
+                    <h4>Labels</h4>
+                    <span class="badge badge-default">Default</span>
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-success">Success</span>
+                    <span class="badge badge-info">Info</span>
+                    <span class="badge badge-warning">Warning</span>
+                    <span class="badge badge-danger">Danger</span>
+                    <span class="badge badge-neutral">Neutral</span>
+                </div>
+            </div>
+            <br>
+            <div class="space"></div>
+            <h4>Notifications</h4>
+        </div>
+    </div>
+    <div class="section section-notifications">
+        <div class="alert alert-success" role="alert">
+            <div class="container">
+                <div class="alert-icon">
+                    <i class="now-ui-icons ui-2_like"></i>
+                </div>
+                <strong>Well done!</strong> You successfully read this important alert message.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="alert alert-info" role="alert">
+            <div class="container">
+                <div class="alert-icon">
+                    <i class="now-ui-icons travel_info"></i>
+                </div>
+                <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <div class="container">
+                <div class="alert-icon">
+                    <i class="now-ui-icons ui-1_bell-53"></i>
+                </div>
+                <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <div class="container">
+                <div class="alert-icon">
+                    <i class="now-ui-icons objects_support-17"></i>
+                </div>
+                <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--  end notifications -->
+    <!-- Typography -->
+    <div class="section">
+        <div class="container">
+            <h3 class="title">Typography</h3>
+            <div id="typography">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="typography-line">
+                            <h1>
+                                <span>Header 1</span>The Life of Now UI Kit
+                            </h1>
+                        </div>
+                        <div class="typography-line">
+                            <h2>
+                                <span>Header 2</span>The Life of Now UI Kit
+                            </h2>
+                        </div>
+                        <div class="typography-line">
+                            <h3>
+                                <span>Header 3</span>The Life of Now UI Kit
+                            </h3>
+                        </div>
+                        <div class="typography-line">
+                            <h4>
+                                <span>Header 4</span>The Life of Now UI Kit
+                            </h4>
+                        </div>
+                        <div class="typography-line">
+                            <h5>
+                                <span>Header 5</span>The Life of Now UI Kit
+                            </h5>
+                        </div>
+                        <div class="typography-line">
+                            <h6>
+                                <span>Header 6</span>The Life of Now UI Kit
+                            </h6>
+                        </div>
+                        <div class="typography-line">
+                            <p>
+                                <span>Paragraph</span>
+                                I will be the leader of a company that ends up being worth billions of dollars,
+                                because I got the answers. I understand culture. I am the nucleus. I think
+                                that’s a responsibility that I have, to push possibilities, to show people, this
+                                is the level that things could be at.
+                            </p>
+                        </div>
+                        <div class="typography-line">
+                            <span>Quote</span>
+                            <blockquote>
+                                <p class="blockquote blockquote-primary">
+                                    "I will be the leader of a company that ends up being worth billions of
+                                    dollars, because I got the answers. I understand culture. I am the nucleus.
+                                    I think that’s a responsibility that I have, to push possibilities, to show
+                                    people, this is the level that things could be at."
+                                    <br>
+                                    <br>
+                                    <small>
+                                        - Noaa
+                                    </small>
+                                </p>
+                            </blockquote>
+                        </div>
+                        <div class="typography-line">
+                            <span>Muted Text</span>
+                            <p class="text-muted">
+                                I will be the leader of a company that ends up being worth billions of dollars,
+                                because I got the answers...
+                            </p>
+                        </div>
+                        <div class="typography-line">
+                            <span>Primary Text</span>
+                            <p class="text-primary">
+                                I will be the leader of a company that ends up being worth billions of dollars,
+                                because I got the answers...</p>
+                        </div>
+                        <div class="typography-line">
+                            <span>Info Text</span>
+                            <p class="text-info">
+                                I will be the leader of a company that ends up being worth billions of dollars,
+                                because I got the answers... </p>
+                        </div>
+                        <div class="typography-line">
+                            <span>Success Text</span>
+                            <p class="text-success">
+                                I will be the leader of a company that ends up being worth billions of dollars,
+                                because I got the answers... </p>
+                        </div>
+                        <div class="typography-line">
+                            <span>Warning Text</span>
+                            <p class="text-warning">
+                                I will be the leader of a company that ends up being worth billions of dollars,
+                                because I got the answers...
+                            </p>
+                        </div>
+                        <div class="typography-line">
+                            <span>Danger Text</span>
+                            <p class="text-danger">
+                                I will be the leader of a company that ends up being worth billions of dollars,
+                                because I got the answers... </p>
+                        </div>
+                        <div class="typography-line">
+                            <h2>
+                                <span>Small Tag</span>
+                                Header with small subtitle
+                                <br>
+                                <small>Usre "small" tag for the headers</small>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-50"></div>
+            <div id="images">
+                <h4>Images</h4>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <p class="category">Image</p>
+                        <img src="{{asset('css/front/img/julie.jpg')}}" alt="Rounded Image" class="rounded">
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="category">Circle Image</p>
+                        <img src="{{asset('css/front/img/julie.jpg')}}" alt="Circle Image" class="rounded-circle">
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="category">Raised</p>
+                        <img src="{{asset('css/front/img/julie.jpg')}}" alt="Raised Image" class="rounded img-raised">
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="category">Circle Raised</p>
+                        <img src="{{asset('css/front/img/julie.jpg')}}" alt="Thumbnail Image"
+                            class="rounded-circle img-raised">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-javascript" id="javascriptComponents">
+        <div class="container">
+            <h3 class="title">Javascript components</h3>
+            <div class="row" id="modals">
+                <div class="col-md-6">
+                    <h4>Modal</h4>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Launch Modal
+                    </button>
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#myModal1">
+                        Launch Modal Mini
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <h4>Popovers</h4>
+                    <button type="button" class="btn btn-default" data-container="body"
+                        data-original-title="Popover On Left" data-toggle="popover" data-placement="left"
+                        data-content="Here will be some very useful information about his popover."
+                        data-color="primary">
+                        On left
+                    </button>
+                    <button type="button" class="btn btn-default" data-container="body"
+                        data-original-title="Popover on Top" data-toggle="popover" data-placement="top"
+                        data-content="Here will be some very useful information about his popover.">
+                        On top
+                    </button>
+                    <button type="button" class="btn btn-default" data-container="body"
+                        data-original-title="Popover on Right" data-toggle="popover" data-placement="right"
+                        data-content="Here will be some very useful information about his popover.<br> Here will be some very useful information about his popover.">
+                        On right
+                    </button>
+                    <button type="button" class="btn btn-default" data-container="body"
+                        data-original-title="Popover on Bottom" data-toggle="popover" data-placement="bottom"
+                        data-content="Here will be some very useful information about his popover.">
+                        On bottom
+                    </button>
+                </div>
+                <br />
+                <br />
 
-</html>
+                <div class="col-md-6">
+                    <h4>Tooltips</h4>
+                    <button type="button" class="btn btn-default btn-tooltip" data-toggle="tooltip"
+                        data-placement="left" title="Tooltip on left" data-container="body"
+                        data-animation="true" data-delay="100">On left</button>
+                    <button type="button" class="btn btn-default btn-tooltip" data-toggle="tooltip"
+                        data-placement="top" title="Tooltip on top" data-container="body"
+                        data-animation="true">On top</button>
+                    <button type="button" class="btn btn-default btn-tooltip" data-toggle="tooltip"
+                        data-placement="bottom" title="Tooltip on bottom" data-container="body"
+                        data-animation="true">On bottom</button>
+                    <button type="button" class="btn btn-default btn-tooltip" data-toggle="tooltip"
+                        data-placement="right" title="Tooltip on right" data-container="body"
+                        data-animation="true">On right</button>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="carousel">
+        <div class="container">
+            <div class="title">
+                <h4>Carousel</h4>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                            </li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-block" src="{{asset('css/front/img/bg1.jpg')}}" alt="First slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Nature, United States</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block" src="{{asset('css/front/img/bg3.jpg')}}" alt="Second slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Somewhere Beyond, United States</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block" src="{{asset('css/front/img/bg4.jpg')}}" alt="Third slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Yellowstone National Park, United States</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <i class="now-ui-icons arrows-1_minimal-left"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <i class="now-ui-icons arrows-1_minimal-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-nucleo-icons">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <h2 class="title">Nucleo Icons</h2>
+                    <h5 class="description">
+                        Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
+                        official package contains over 2.100 thin icons which are looking great in combination
+                        with Now UI Kit PRO Make sure you check all of them and usee those that you like the
+                        most.
+                    </h5>
+                    <!-- <div class="nucleo-container">
+                        <img src="{{asset('css/front/img/nucleo.svg')}}" alt="">
+                    </div> -->
+                    <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
+                        Demo Icons</a>
+                    <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
+                        target="_blank">View All Icons</a>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="icons-container">
+                        <i class="now-ui-icons ui-1_send"></i>
+                        <i class="now-ui-icons ui-2_like"></i>
+                        <i class="now-ui-icons transportation_air-baloon"></i>
+                        <i class="now-ui-icons text_bold"></i>
+                        <i class="now-ui-icons tech_headphones"></i>
+                        <i class="now-ui-icons emoticons_satisfied"></i>
+                        <i class="now-ui-icons shopping_cart-simple"></i>
+                        <i class="now-ui-icons objects_spaceship"></i>
+                        <i class="now-ui-icons media-2_note-03"></i>
+                        <i class="now-ui-icons ui-2_favourite-28"></i>
+                        <i class="now-ui-icons design_palette"></i>
+                        <i class="now-ui-icons clothes_tie-bow"></i>
+                        <i class="now-ui-icons location_pin"></i>
+                        <i class="now-ui-icons objects_key-25"></i>
+                        <i class="now-ui-icons travel_istanbul"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container text-center">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12 col-lg-8">
+                    <h2 class="title">Completed with examples</h2>
+                    <h5 class="description">The kit comes with three pre-built pages to help you get started
+                        faster. You can change the text and images and youre good to go. More importantly,
+                        looking at them will give you a picture of what you can built with this powerful
+                        Bootstrap 4 ui kit.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-signup"
+        style="background-image: url('{{ asset('css/front/img/bg11.jpg')}}'); background-size: cover; background-position: top center; min-height: 700px;">
+        <div class="container">
+            <div class="row">
+                <div class="card card-signup" data-background-color="orange">
+                    <form class="form" method="" action="">
+                        <div class="card-header text-center">
+                            <h3 class="card-title title-up">Sign Up</h3>
+                            <div class="social-line">
+                                <a href="#pablo" class="btn btn-neutral btn-facebook btn-icon btn-round">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a>
+                                <a href="#pablo"
+                                    class="btn btn-neutral btn-twitter btn-icon btn-lg btn-round">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#pablo" class="btn btn-neutral btn-google btn-icon btn-round">
+                                    <i class="fab fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group no-border">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons users_circle-08"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="First Name...">
+                            </div>
+                            <div class="input-group no-border">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons text_caps-small"></i>
+                                    </span>
+                                </div>
+                                <input type="text" placeholder="Last Name..." class="form-control" />
+                            </div>
+                            <div class="input-group no-border">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons ui-1_email-85"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Email...">
+                            </div>
+                            <!-- If you want to add a checkbox to this form, uncomment this code -->
+                            <!-- <div class="checkbox">
+                            <input id="checkboxSignup" type="checkbox">
+                                <label for="checkboxSignup">
+                                Unchecked
+                                </label>
+                            </div> -->
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#pablo" class="btn btn-neutral btn-round btn-lg">Get Started</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col text-center">
+                <a href="examples/login-page.html"
+                    class="btn btn-outline-default btn-round btn-white btn-lg" target="_blank">View Login
+                    Page</a>
+            </div>
+        </div>
+    </div>
+    <div class="section section-examples" data-background-color="black">
+        <div class="space-50"></div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <a href="examples/landing-page.html" target="_blank">
+                        <img src="{{asset('css/front/img/landing.jpg')}}" alt="Image" class="img-raised">
+                    </a>
+                    <a href="examples/landing-page.html"
+                        class="btn btn-outline-default btn-primary btn-round">View Landing Page</a>
+                </div>
+                <div class="col">
+                    <a href="examples/profile-page.html" target="_blank">
+                        <img src="{{asset('css/front/img/profile.jpg')}}" alt="Image" class="img-raised">
+                    </a>
+                    <a href="examples/profile-page.html"
+                        class="btn btn-outline-default btn-primary btn-round">View Profile Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-download" id="#download-section" data-background-color="black">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="text-center col-md-12 col-lg-8">
+                    <h3 class="title">Do you love this Bootstrap 4 UI Kit?</h3>
+                    <h5 class="description">Cause if you do, it can be yours for FREE. Hit the button below to
+                        navigate to Creative Tim or Invision where you can find the kit in HTML or Sketch/PSD
+                        format. Start a new project or give an old Bootstrap project a new look!</h5>
+                </div>
+                <div class="text-center col-md-12 col-lg-8">
+                    <a href="https://www.creative-tim.com/product/now-ui-kit"
+                        class="btn btn-primary btn-lg btn-round" role="button">
+                        Download HTML
+                    </a>
+                    <a href="https://www.invisionapp.com/now" target="_blank"
+                        class="btn btn-lg btn-outline-primary btn-round" role="button">
+                        Download PSD/Sketch
+                    </a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row text-center mt-5">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <h2>Want more?</h2>
+                    <h5 class="description">Weve just launched
+                        <a href="http://demos.creative-tim.com/now-ui-kit-pro/presentation.html"
+                            target="_blank">Now UI Kit PRO</a>. It has a huge number of components, sections
+                        and example pages. Start Your Development With A Badass Bootstrap 4 UI Kit.
+                    </h5>
+                </div>
+                <div class="col-md-12">
+                    <a href="http://demos.creative-tim.com/now-ui-kit-pro/presentation.html"
+                        class="btn btn-neutral btn-round btn-lg" target="_blank">
+                        <i class="now-ui-icons arrows-1_share-66"></i> Upgrade to PRO
+                    </a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row justify-content-md-center sharing-area text-center">
+                <div class="text-center col-md-12 col-lg-8">
+                    <h3>Thank you for supporting us!</h3>
+                </div>
+                <div class="text-center col-md-12 col-lg-8">
+                    <a target="_blank" href="https://www.twitter.com/creativetim"
+                        class="btn btn-neutral btn-icon btn-twitter btn-round btn-lg" rel="tooltip"
+                        title="Follow us">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a target="_blank" href="https://www.facebook.com/creativetim"
+                        class="btn btn-neutral btn-icon btn-facebook btn-round btn-lg" rel="tooltip"
+                        title="Like us">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a target="_blank" href="https://www.linkedin.com/company-beta/9430489/"
+                        class="btn btn-neutral btn-icon btn-linkedin btn-lg btn-round" rel="tooltip"
+                        title="Follow us">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a target="_blank" href="https://github.com/creativetimofficial/now-ui-kit"
+                        class="btn btn-neutral btn-icon btn-github btn-round btn-lg" rel="tooltip"
+                        title="Star on Github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>  --}}
+    </div>
+    <!-- Sart Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                    <h4 class="title title-up">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                        there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
+                        Semantics, a large language ocean. A small river named Duden flows by their place and
+                        supplies it with the necessary regelialia. It is a paradisematic country, in which roasted
+                        parts of sentences fly into your mouth.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default">Nice Button</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  End Modal -->
+    <!-- Mini Modal -->
+    <div class="modal fade modal-mini modal-primary" id="myModal1" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="modal-profile">
+                        <i class="now-ui-icons users_circle-08"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p>Always have an access to your profile</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link btn-neutral">Back</button>
+                    <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  End Modal -->
+@endsection

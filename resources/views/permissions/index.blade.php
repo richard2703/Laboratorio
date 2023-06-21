@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('user_create')
+                            @can('permission_create')
                                 <a href="{{ route('permissions.create') }}">
                                     <button type="button" class="btn btn-primary">Nuevo permiso</button>
                                 </a>
