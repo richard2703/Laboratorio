@@ -152,6 +152,12 @@ CREATE TABLE parametros(
   respuesta int null,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL,
+  altoM float(10,2) null,
+  bajoM float(10,2) null,
+  referenciaM varchar(255) null,
+  altoN float(10,2) null,
+  bajoN float(10,2) null,
+  referenciaN varchar(255) null,
   PRIMARY KEY (id)
  );
 

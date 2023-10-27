@@ -28,7 +28,7 @@ class parametrosController extends Controller
     {
         abort_if(Gate::denies('parametros_create'), 403);
 
-        parametros::create($request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia', 'respuesta'));
+        parametros::create($request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia', 'respuesta', 'altoM', 'bajoM', 'referenciaM', 'altoN', 'bajoN', 'referenciaN'));
         Session::flash('message', 1);
         return redirect()->back();
     }
@@ -47,7 +47,7 @@ class parametrosController extends Controller
     {
         abort_if(Gate::denies('parametros_update'), 403);
 
-        $data = $request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia', 'respuesta');
+        $data = $request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia', 'respuesta', 'altoM', 'bajoM', 'referenciaM', 'altoN', 'bajoN', 'referenciaN');
         $parametro->update($data);
         Session::flash('message', 1);
         return redirect()->action([parametrosController::class, 'index']);

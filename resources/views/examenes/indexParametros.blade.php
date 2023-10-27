@@ -239,14 +239,34 @@
                                             aria-labelledby="balanceUno-tab" tabindex="0">
                                             <div class="row d-flex">
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="form-label" for="">Bajo:</label></br>
+                                                    <label class="form-label" for="">Bajo Hombres:</label></br>
                                                     <input class="form-control text-center" type="number" step="0.01"
                                                         min="0.00" id="bajoU" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
-                                                    <label class="form-label" for="">Alto:</label></br>
+                                                    <label class="form-label" for="">Alto Hombres:</label></br>
                                                     <input class="form-control text-end" type="number" step="0.01"
                                                         min="0.01" id="altoU" name="alto"></br>
+                                                </div>
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <label class="form-label" for="">Bajo Mujeres:</label></br>
+                                                    <input class="form-control text-center" type="number" step="0.01"
+                                                        min="0.00" id="bajoUM" name="bajo"></br>
+                                                </div>
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <label class="form-label" for="">Alto Mujeres:</label></br>
+                                                    <input class="form-control text-end" type="number" step="0.01"
+                                                        min="0.01" id="altoUM" name="alto"></br>
+                                                </div>
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <label class="form-label" for="">Bajo Niños:</label></br>
+                                                    <input class="form-control text-center" type="number" step="0.01"
+                                                        min="0.00" id="bajoUN" name="bajo"></br>
+                                                </div>
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <label class="form-label" for="">Alto:</label></br>
+                                                    <input class="form-control text-end" type="number" step="0.01"
+                                                        min="0.01" id="altoUN" name="alto"></br>
                                                 </div>
 
                                                 <div class="col-12 col-lg-6 mb-3">
@@ -260,8 +280,21 @@
                                             aria-labelledby="balanceDos-tab" tabindex="0">
                                             <div class="row">
                                                 <div class="col-12 ">
-                                                    <label class="form-label" for="">Referencia:</label></br>
+                                                    <label class="form-label" for="">Referencia
+                                                        Hombres:</label></br>
                                                     <input class="form-control" type="text" id="referenciaU"
+                                                        name="referencia"></br>
+                                                </div>
+                                                <div class="col-12 ">
+                                                    <label class="form-label" for="">Referencia
+                                                        Mujeres:</label></br>
+                                                    <input class="form-control" type="text" id="referenciaUM"
+                                                        name="referencia"></br>
+                                                </div>
+                                                <div class="col-12 ">
+                                                    <label class="form-label" for="">Referencia
+                                                        Niños:</label></br>
+                                                    <input class="form-control" type="text" id="referenciaUN"
                                                         name="referencia"></br>
                                                 </div>
                                             </div>
