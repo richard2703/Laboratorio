@@ -80,7 +80,7 @@
                                     <label class="form-label">Maquila:</label></br>
                                     <select class="form-control" id="maquila_id" name="maquila_id"
                                         aria-label="Default select example">
-                                        <option selected>Seleccione</option>
+                                        <option value="" selected>Seleccione</option>
                                         @forelse ($maquilas as $maquila)
                                             <option value="{{ $maquila->id }}">{{ $maquila->nombre }}</option>
                                         @empty

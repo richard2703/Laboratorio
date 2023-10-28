@@ -13,7 +13,7 @@ class pacientesController extends Controller
     // FALTA EDITAR Y BORRAR, EL DE VER SERA ESPECIAL
     public function index()
     {
-        abort_if(Gate::denies('role_index'), 403);
+        // abort_if(Gate::denies('role_index'), 403);
 
         $pacientes = pacientes::paginate(15);
         return view('pacientes.indexPacientes', compact('pacientes'));
@@ -28,7 +28,7 @@ class pacientesController extends Controller
 
     public function store(Request $request)
     {
-        abort_if(Gate::denies('role_store'), 403);
+        // abort_if(Gate::denies('role_store'), 404);
 
         pacientes::create($request->only('nombre', 'apellido', 'telefono', 'nacimiento', 'correo'));
         Session::flash('message', 1);
@@ -48,14 +48,14 @@ class pacientesController extends Controller
 
     public function edit(pacientes $paciente)
     {
-        abort_if(Gate::denies('role_edit'), 403);
+        // abort_if(Gate::denies('role_edit'), 403);
 
         return view('pacientes.editPaciente', compact('paciente'));
     }
 
     public function update(Request $request, pacientes $paciente)
     {
-        abort_if(Gate::denies('role_edit'), 403);
+        // abort_if(Gate::denies('role_edit'), 403);
 
         $paciente->update($request->only('nombre', 'apellido', 'telefono', 'nacimiento', 'correo'));
         Session::flash('message', 1);
@@ -65,7 +65,7 @@ class pacientesController extends Controller
 
     public function destroy(pacientes $paciente)
     {
-        abort_if(Gate::denies('role_destroy'), 403);
+        // abort_if(Gate::denies('role_destroy'), 403);
 
         $paciente->delete();
         Session::flash('message', 2);
