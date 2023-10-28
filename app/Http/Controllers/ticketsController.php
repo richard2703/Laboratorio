@@ -30,7 +30,7 @@ class ticketsController extends Controller
             ->orderby('created_at', 'desc')
             ->paginate(15);
         // dd($tickets);
-        return view('tickets.indextickets', compact('tickets'));
+        return view('tickets.indexTickets', compact('tickets'));
     }
 
     public function create()
