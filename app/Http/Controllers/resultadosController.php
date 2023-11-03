@@ -31,7 +31,7 @@ class resultadosController extends Controller
             ->where('tomas.tickets_id', $ticket->id)
             ->paginate(10);
         // $tomas = tomas::paginate(10);
-        return view('resultados.indexresultados', compact('ticket', 'examenes'));
+        return view('resultados.indexResultados', compact('ticket', 'examenes'));
     }
 
     public function create(Request $request, $ticket)
@@ -56,7 +56,7 @@ class resultadosController extends Controller
 
         // dd($examen);
         // MANDAR A VER LOS PARAMETROS Y LLENARLOS
-        return view('resultados.createresultados', compact('ticket', 'examen', 'parametros'));
+        return view('resultados.createResultados', compact('ticket', 'examen', 'parametros'));
     }
 
     public function store(Request $request)
@@ -111,7 +111,7 @@ class resultadosController extends Controller
         $toma = tomas::find($request->toma);
         // dd($toma->estatus);
         $examen->toma = $request->toma;
-        return view('resultados.editresultados', compact('ticket', 'examen', 'parametros', 'toma'));
+        return view('resultados.editResultados', compact('ticket', 'examen', 'parametros', 'toma'));
     }
 
     public function update(Request $request)
