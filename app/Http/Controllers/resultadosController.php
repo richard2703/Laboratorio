@@ -8,7 +8,7 @@ use App\Models\tickets;
 use App\Models\examenes;
 use App\Models\parametros;
 use App\Models\pacientes;
-use App\Models\examenparametro;
+use App\Models\examenParametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
@@ -42,14 +42,14 @@ class resultadosController extends Controller
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
             ->first();
-        $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
-            ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
+        $examen = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
             ->select('examenes.nombre as examennombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
             ->where('examenes.id', $request->examen)
             ->first();
-        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id')
+        $parametros = examenParametro::join('parametros', 'examenParametro.parametros_id', 'parametros.id')
             ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta')
-            ->where('examenparametro.examenes_id', $request->examen)
+            ->where('examenParametro.examenes_id', $request->examen)
             ->get();
 
         $examen->toma = $request->toma;
@@ -96,16 +96,16 @@ class resultadosController extends Controller
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
             ->first();
-        $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
-            ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
+        $examen = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
             ->select('examenes.nombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
             ->where('examenes.id', $request->examen)
             ->first();
 
-        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
+        $parametros = examenParametro::join('parametros', 'examenParametro.parametros_id', 'parametros.id',)
             ->join('resultados', 'resultados.parametros_id', 'parametros.id')
             ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta', 'resultados.id as toma', 'resultados.resultado')
-            ->where('examenparametro.examenes_id', $request->examen)
+            ->where('examenParametro.examenes_id', $request->examen)
             ->get();
 
         $toma = tomas::find($request->toma);
@@ -153,12 +153,12 @@ class resultadosController extends Controller
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'pacientes.nacimiento', 'tickets.id', 'tickets.total', 'tickets.abono', 'tickets.created_at', 'tickets.doctor')
             ->where('tickets.id', $request->ticket)
             ->first();
-        $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
-            ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
+        $examen = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
             ->select('examenes.nombre as examennombre', 'parametros.nombre', 'parametros.id')
             ->where('examenes.id', $request->examen)
             ->first();
-        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
+        $parametros = examenParametro::join('parametros', 'examenParametro.parametros_id', 'parametros.id',)
             ->join('resultados', 'resultados.parametros_id', 'parametros.id')
             ->select(
                 'parametros.id',
@@ -174,7 +174,7 @@ class resultadosController extends Controller
                 'resultados.id as toma',
                 'resultados.resultado'
             )
-            ->where('examenparametro.examenes_id', $request->examen)
+            ->where('examenParametro.examenes_id', $request->examen)
             ->get();
         // dd($parametros);
         $bandera = "";
