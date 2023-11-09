@@ -101,7 +101,7 @@ puede ser de altura y anchura completas.
     <header>
         <div class="row">
             <div style="padding: 10px; float: left; width: 30%; text-align: justify;" class=" ">
-                <img src="img\header2.png" alt="">
+                <img src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/header2.png" alt="">
                 {{--  <img src="https://q2ces.com/img/login/logoQcem2.svg" alt="">  --}}
             </div>
             <div style="padding: 10px; float: right; width: 70%; text-align: justify;">
@@ -131,7 +131,7 @@ puede ser de altura y anchura completas.
 
     <footer>
         <div style="">
-            <img src="img\foder.png" alt="">
+            <img src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/foder.png" alt="">
         </div>
         {{--  Copyright © {{ date('Y') }}  --}}
     </footer>

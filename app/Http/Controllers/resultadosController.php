@@ -149,6 +149,7 @@ class resultadosController extends Controller
     }
     public function pdfResultado(Request $request)
     {
+        // dd('tes');
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'pacientes.nacimiento', 'tickets.id', 'tickets.total', 'tickets.abono', 'tickets.created_at', 'tickets.doctor')
             ->where('tickets.id', $request->ticket)
