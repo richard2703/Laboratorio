@@ -8,7 +8,7 @@ use App\Models\tickets;
 use App\Models\examenes;
 use App\Models\parametros;
 use App\Models\pacientes;
-use App\Models\examenparametro;
+use App\Models\examenParametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
