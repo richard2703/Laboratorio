@@ -125,9 +125,10 @@ class resultadosClienteController extends Controller
             ->get();
         $toma = tomas::find($request->toma);
         $examen->toma = $request->toma;
+        $bandera = "";
 
         $pacientes = pacientes::all();
-        return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma'))
+        return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma', 'bandera'))
             // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->setPaper('a4')
             ->stream('archivo.pdf');
