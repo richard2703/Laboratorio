@@ -95,17 +95,16 @@ class resultadosClienteController extends Controller
 
     public function pdfResultado(Request $request)
     {
-        // dd('test');
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'pacientes.nacimiento', 'tickets.id', 'tickets.total', 'tickets.abono', 'tickets.created_at', 'tickets.doctor')
             ->where('tickets.id', $request->ticket)
             ->first();
-        $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
-            ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+        $examen = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
+            ->select('examenes.nombre as examennombre', 'parametros.nombre', 'parametros.id')
             ->where('examenes.id', $request->examen)
             ->first();
-        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
+        $parametros = examenParametro::join('parametros', 'examenParametro.parametros_id', 'parametros.id',)
             ->join('resultados', 'resultados.parametros_id', 'parametros.id')
             ->select(
                 'parametros.id',
@@ -121,15 +120,15 @@ class resultadosClienteController extends Controller
                 'resultados.id as toma',
                 'resultados.resultado'
             )
-            ->where('examenparametro.examenes_id', $request->examen)
+            ->where('examenParametro.examenes_id', $request->examen)
             ->get();
+
+        $bandera = "";
         $toma = tomas::find($request->toma);
         $examen->toma = $request->toma;
-        $bandera = "";
-
         $pacientes = pacientes::all();
+
         return PDF::loadView('resultados.pdfResultado2', compact('ticket', 'examen', 'parametros', 'toma', 'bandera'))
-            // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
             ->setPaper('a4')
             ->stream('archivo.pdf');
     }
