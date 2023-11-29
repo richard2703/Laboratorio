@@ -98,18 +98,20 @@ class resultadosController extends Controller
             ->first();
         $examen = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
-            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id', 'examenes.id as examenid')
+            ->select('examenes.nombre', 'parametros.nombre as parametro', 'parametros.id', 'examenes.id as examenid')
             ->where('examenes.id', $request->examen)
             ->first();
 
         $parametros = examenParametro::join('parametros', 'examenParametro.parametros_id', 'parametros.id',)
             ->join('resultados', 'resultados.parametros_id', 'parametros.id')
-            ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta', 'resultados.id as toma', 'resultados.resultado')
+            ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta', 'resultados.ticket_id', 'resultados.id as toma', 'resultados.resultado')
+            // ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta', 'resultados.ticket_id')
             ->where('examenParametro.examenes_id', $request->examen)
+            ->where('resultados.ticket_id', $ticket->id)
             ->get();
 
         $toma = tomas::find($request->toma);
-        // dd($toma->estatus);
+        // dd($parametros);
         $examen->toma = $request->toma;
         return view('resultados.editResultados', compact('ticket', 'examen', 'parametros', 'toma'));
     }
@@ -176,6 +178,7 @@ class resultadosController extends Controller
                 'resultados.resultado'
             )
             ->where('examenParametro.examenes_id', $request->examen)
+            ->where('resultados.ticket_id', $ticket->id)
             ->get();
         // dd($parametros);
         $bandera = "";
