@@ -8,8 +8,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
+use App\Models\examenParametro;
 use App\Models\pacientes;
 use App\Models\maquilas;
+use App\Models\parametros;
 use App\Models\tomas;
 use Illuminate\Support\Facades\DB;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -202,6 +204,31 @@ class ticketsController extends Controller
 
         return PDF::loadView('tickets.ticketPDF')
             // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
+    }
+
+
+    public function hojaTrabajo($ticketId)
+    {
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'tickets.id', 'pacientes.nacimiento')
+            ->where('tickets.id', $ticketId)
+            ->first();
+        // dd($ticket);
+
+
+        $examenes = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
+            ->select('examenes.nombre as examen', 'parametros.nombre', 'parametros.id', 'parametros.tipo')
+            ->whereIn('examenes.id', [1, 2, 3])
+            ->get();
+        $bandera = "";
+        $banderaE = "";
+
+        // return view('tickets.hojaTrabajo', compact('ticket', 'examenes', 'bandera', 'banderaE'));
+
+        return PDF::loadView('tickets.hojaTrabajo', compact('ticket', 'examenes', 'bandera', 'banderaE'))
             ->setPaper('a4')
             ->stream('archivo.pdf');
     }

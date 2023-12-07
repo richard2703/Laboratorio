@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('examenes', App\Http\Controllers\examenesController::class);
     Route::resource('maquilas', App\Http\Controllers\maquilasController::class);
     Route::resource('pacientes', App\Http\Controllers\pacientesController::class);
+    Route::get('tickets/Hoja/{ticketId}', [App\Http\Controllers\ticketsController::class, 'hojaTrabajo'])->name('tickets.hojaTrabajo');
     Route::resource('tickets', App\Http\Controllers\ticketsController::class);
     Route::get('create/tickets/search', [App\Http\Controllers\ticketsController::class, 'search'])->name('search.ticket.paciente');
     Route::get('create/tickets/searchexamen', [App\Http\Controllers\ticketsController::class, 'searchexamen'])->name('search.ticket.examen');

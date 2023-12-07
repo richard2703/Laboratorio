@@ -200,6 +200,7 @@ class resultadosController extends Controller
             ->setPaper('a4')
             ->stream('archivo.pdf');
     }
+
     public function pdftest()
     {
         $pacientes = pacientes::all();
