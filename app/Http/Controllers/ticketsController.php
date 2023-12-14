@@ -217,18 +217,37 @@ class ticketsController extends Controller
             ->first();
         // dd($ticket);
 
+        $tomas = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id', 'tomas.tickets_id')
+            ->select('examenes.id', 'examenes.nombre', 'tomas.estatus', 'tomas.id as toma')
+            ->where('tomas.tickets_id', $ticketId)
+            ->get()
+            ->pluck('id')
+            ->toArray();
+        // dd($tomas);
 
         $examenes = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
             ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
-            ->select('examenes.nombre as examen', 'parametros.nombre', 'parametros.id', 'parametros.tipo')
-            ->whereIn('examenes.id', [1, 2, 3])
+            ->select(
+                'examenes.nombre as examen',
+                'parametros.nombre',
+                'parametros.id',
+                'parametros.tipo',
+                'parametros.referencia',
+                'parametros.alto',
+                'parametros.bajo',
+                'parametros.medicion',
+                'parametros.escrito',
+                'parametros.respuesta',
+            )
+            ->whereIn('examenes.id', $tomas)
             ->get();
+        // dd($examenes);
         $bandera = "";
         $banderaE = "";
 
         // return view('tickets.hojaTrabajo', compact('ticket', 'examenes', 'bandera', 'banderaE'));
 
-        return PDF::loadView('tickets.hojaTrabajo', compact('ticket', 'examenes', 'bandera', 'banderaE'))
+        return PDF::loadView('tickets.hojaTrabajo2', compact('ticket', 'examenes', 'bandera', 'banderaE'))
             ->setPaper('a4')
             ->stream('archivo.pdf');
     }
