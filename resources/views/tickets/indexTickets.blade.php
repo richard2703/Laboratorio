@@ -35,6 +35,7 @@
                                     <th>Total</th>
                                     <th>Abono </th>
                                     <th>Ticket</th>
+                                    <th>Hoja de trabajo</th>
                                     <th class="text-right">Acciones</th>
                                 </thead>
                                 <tbody>
@@ -47,6 +48,9 @@
                                             <td>{{ $ticket->total }}</td>
                                             <td>{{ $ticket->abono }}</td>
                                             <td><a href="{{ route('tickets.show', $ticket->id) }}" Target="_blank">
+                                                    <i class="bi bi-download h3"></i></a>
+                                            </td>
+                                            <td><a href="{{ route('tickets.hojaTrabajo', $ticket->id) }}" Target="_blank">
                                                     <i class="bi bi-download h3"></i></a>
                                             </td>
                                             <td class="td-actions text-right">

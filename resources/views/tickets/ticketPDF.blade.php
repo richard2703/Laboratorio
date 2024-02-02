@@ -67,8 +67,12 @@ puede ser de altura y anchura completas.
                     <table>
                         <thead>
                             <tr>
-                                <th class="col1"><img class="wlogo" src="img\header2.png" alt=""></th>
-                                <th class="col2"><img class="hlogo" src="img\matriz2.png" alt=""></th>
+                                <th class="col1"><img class="wlogo"
+                                        src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/header2.png"
+                                        alt=""></th>
+                                <th class="col2"><img class="hlogo"
+                                        src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/matriz2.png"
+                                        alt=""></th>
                                 <th class="col3">Fecha:
                                     <br>{{ \Carbon\Carbon::parse($ticket->created_at)->format('d/m/y') }}
                                 </th>
@@ -168,8 +172,12 @@ puede ser de altura y anchura completas.
                     <table>
                         <thead>
                             <tr>
-                                <th class="col1"><img class="wlogo" src="img\header2.png" alt=""></th>
-                                <th class="col2"><img class="hlogo" src="img\matriz2.png" alt=""></th>
+                                <th class="col1"><img class="wlogo"
+                                        src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/header2.png"
+                                        alt=""></th>
+                                <th class="col2"><img class="hlogo"
+                                        src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/matriz2.png"
+                                        alt=""></th>
                                 <th class="col3">Fecha:
                                     <br>{{ \Carbon\Carbon::parse($ticket->created_at)->format('d/m/y') }}
                                 </th>

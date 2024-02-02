@@ -80,7 +80,7 @@
                                     <label class="form-label">Maquila:</label></br>
                                     <select class="form-control" id="maquila_id" name="maquila_id"
                                         aria-label="Default select example">
-                                        <option selected>Seleccione</option>
+                                        <option value="" selected>Seleccione</option>
                                         @forelse ($maquilas as $maquila)
                                             <option value="{{ $maquila->id }}">{{ $maquila->nombre }}</option>
                                         @empty
@@ -148,7 +148,7 @@
     {{--  Buscador  --}}
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
         crossorigin="anonymous"></script>
-    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <script>
         var curso = ['html', 'hola', 'hi'];
@@ -228,6 +228,33 @@
                 total = (parseFloat(document.getElementById('total').value) - parseFloat(valor)).toFixed(2);
             }
             document.getElementById('total').value = total;
+        }
+    </script>
+
+    <script>
+        function vacio() {
+            alert('examenes vacios');
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Examenes vacios'
+            })
+        }
+        var slug = '{{ Session::get('message') }}';
+        if (slug == 1) {
+            vacio();
+
         }
     </script>
 @endsection

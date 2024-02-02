@@ -99,16 +99,16 @@ puede ser de altura y anchura completas.
 <body>
     <!-- Defina bloques de encabezado y pie de página antes de su contenido -->
     <header>
-        <div class="row">
-            <div style="padding: 10px; float: left; width: 30%; text-align: justify;" class=" ">
-                <img src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/header2.png" alt="">
-                {{--  <img src="https://q2ces.com/img/login/logoQcem2.svg" alt="">  --}}
-            </div>
-            <div style="padding: 10px; float: right; width: 70%; text-align: justify;">
-                <ul style="font-size: larger; padding-top: 15px;">
-                    <li><strong>Fecha: </strong>
+        <div class="row" style="display: flex;">
+            {{--  <div style="padding: 10px; float: left; width: 30%; text-align: justify;" class=" ">
+                <img src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/header2.png" alt="">  --}}
+            {{--  <img src="https://q2ces.com/img/login/logoQcem2.svg" alt="">  --}}
+            {{--  </div>  --}}
+            <div style="padding: 10px; float: left; width: 50%; text-align: justify;">
+                <ul style=" padding-top: 15px;">
+                    {{--  <li><strong>Fecha: </strong>
                         {{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat(' D \d\e MMMM \d\e\l Y') }}
-                    </li>
+                    </li>  --}}
                     <li><strong>Paciente:</strong> {{ $ticket->nombre }}
                         {{ $ticket->apellido }}
                     </li>
@@ -125,45 +125,94 @@ puede ser de altura y anchura completas.
                 </ul>
 
             </div>
+
+            <div style="padding: 10px; float: right; width: 50%; text-align: justify;">
+                <ul style="padding-top: 15px;">
+                    {{--  <li><strong>Fecha: </strong>
+                        {{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat(' D \d\e MMMM \d\e\l Y') }}
+                    </li>  --}}
+                    <li><strong>N. Ticket:</strong> {{ $ticket->id }}
+                    </li>
+                    <li>
+                        <strong>Página: </strong>
+                    </li>
+                    {{--  <li><strong>Edad: </strong>
+                        {{ \Carbon\Carbon::parse($ticket->nacimiento)->age }}</li>
+                    <li><strong>DR(A): </strong>
+                        @if ($ticket->doctor == null || $ticket->doctor == '')
+                            A quien corresponda
+                        @elseif (1 == 1)
+                            {{ $ticket->doctor }}
+                        @endif
+                    </li>  --}}
+
+                </ul>
+
+            </div>
         </div>
 
     </header>
 
     <footer>
         <div style="">
-            <img src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/foder.png" alt="">
+            {{--  <img src="{{ env('APP_URL', 'https://laboratorioprevida.com') }}/img/foder.png" alt="">  --}}
         </div>
         {{--  Copyright © {{ date('Y') }}  --}}
     </footer>
 
     <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
     <main>
-        <div class="content p-3">
+        <div class="content">
             <div class="text-center">
-                <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->examennombre }}</strong></h1>
+                {{--  <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->examennombre }}</strong></h1>  --}}
+                {{--  @forelse ($examenes as $examen)
+                    <b> {{ $examen->examen }}</b>
+                    <b> {{ $examen->nombre }}</b>
+
+                    <br>
+                @empty
+                @endforelse  --}}
+                {{--  <h1 class="display-5 mb-4 text-uppercase"><strong>{{ $examen->examennombre }}</strong></h1>  --}}
 
             </div>
-            <div class="col-10 mx-auto">
+            <div class="col-12 mx-auto">
                 <div class="table-responsive">
                     <table class="table text-center" style="width: 100%;text-align: center;">
                         <thead class="labelTitulo">
-                            <th></th>
-                            <th>Resultado</th>
+                            <th style="width: 150px;">Examen</th>
+                            <th style="width: 150px;">Tipo</th>
+                            <th style="width: 150px;">Resultado</th>
                             <th>Unidad</th>
-                            <th>Referencia</th>
+
                         </thead>
                         <tbody>
-                            {{--  {{ $ticket->maquila = 1 ? 'selected' : '' }}  --}}
+                            {{--  {{ $ticket->maquila = 1 ? 'selected' : '' }}    --}}
 
-                            @forelse ($parametros as $parametro)
-                                @if ($bandera != $parametro->tipo)
-                                    {{ $bandera = $parametro->tipo }}
-                                    <tr>
-                                        <td><b> {{ $parametro->tipo }} </b></td>
-                                    </tr>
-                                @else
-                                @endif
+                            @forelse ($examenes as $examen)
                                 <tr>
+                                    @if ($banderaE != $examen->examen)
+                                        {{ $banderaE = $examen->examen }}
+
+                                        <td><b> {{ $examen->examen }} </b></td>
+                                    @else
+                                        <td><b> </b></td>
+                                    @endif
+                                    @if ($bandera != $examen->tipo)
+                                        {{ $bandera = $examen->tipo }}
+                                        <td><b> {{ $examen->tipo }} </b></td>
+                                    @else
+                                        <td><b> </b></td>
+                                    @endif
+                                    <td>{{ $examen->nombre }} </td>
+
+                                    <td>
+                                        <div style="border-radius: 1em; border-color: black; margin-right: 5px !important;
+                                        border-width: 1px;
+                                        border-style: solid; height: 31px; margin-top: 3px"
+                                            class="d-flex justify-content-center align-items-center"> </div>
+                                    </td>
+                                </tr>
+                                {{--  <tr>
                                     <td> {{ $parametro->nombre }}</td>
                                     <td>
                                         @if ($parametro->respuesta == 1)
@@ -194,7 +243,7 @@ puede ser de altura y anchura completas.
                                             {{ $parametro->referencia }}
                                         @endif
                                     </td>
-                                </tr>
+                                </tr>  --}}
                             @empty
                                 <tr>
                                     <td colspan="2">Sin registros.</td>
@@ -209,15 +258,13 @@ puede ser de altura y anchura completas.
 
     </main>
 
-
-
-
     <script type="text/php">
 	if ( isset($pdf) ) {
 		$pdf->page_script('
 			$font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
-			$pdf->text(270, 730, "Pagina $PAGE_NUM de $PAGE_COUNT", $font, 10);
+			$pdf->text(362, 61, " $PAGE_NUM de $PAGE_COUNT", $font, 12);
 		');
+
 	}
 </script>
 </body>

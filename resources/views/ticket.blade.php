@@ -39,7 +39,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($ticket->abono > $ticket->total && $examene->estatus == 2)
+                                                    @if ($ticket->abono >= $ticket->total && $examene->estatus == 2)
                                                         <form action="{{ route('resultado.pdf') }}" method="POST"
                                                             style="display: inline-block;" target="_blank">
                                                             @csrf

@@ -8,8 +8,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
+use App\Models\examenParametro;
 use App\Models\pacientes;
 use App\Models\maquilas;
+use App\Models\parametros;
 use App\Models\tomas;
 use Illuminate\Support\Facades\DB;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -30,7 +32,7 @@ class ticketsController extends Controller
             ->orderby('created_at', 'desc')
             ->paginate(15);
         // dd($tickets);
-        return view('tickets.indextickets', compact('tickets'));
+        return view('tickets.indexTickets', compact('tickets'));
     }
 
     public function create()
@@ -93,7 +95,11 @@ class ticketsController extends Controller
     public function store(Request $request)
     {
         abort_if(Gate::denies('tickets_create'), 403);
-
+        //dd(!isset($request->examenes));
+        if (!isset($request->examenes)) {
+            Session::flash('message', 1);
+            return redirect()->back();
+        }
         $ticket = new tickets();
         if (!$request->paciente_id) {
             // Guardar al paciente
@@ -202,6 +208,50 @@ class ticketsController extends Controller
 
         return PDF::loadView('tickets.ticketPDF')
             // ->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
+    }
+
+
+    public function hojaTrabajo($ticketId)
+    {
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'tickets.id', 'pacientes.nacimiento')
+            ->where('tickets.id', $ticketId)
+            ->first();
+        // dd($ticket);
+
+        $tomas = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id', 'tomas.tickets_id')
+            ->select('examenes.id', 'examenes.nombre', 'tomas.estatus', 'tomas.id as toma')
+            ->where('tomas.tickets_id', $ticketId)
+            ->get()
+            ->pluck('id')
+            ->toArray();
+        // dd($tomas);
+
+        $examenes = examenes::join('examenParametro', 'examenes.id', 'examenParametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenParametro.parametros_id')
+            ->select(
+                'examenes.nombre as examen',
+                'parametros.nombre',
+                'parametros.id',
+                'parametros.tipo',
+                'parametros.referencia',
+                'parametros.alto',
+                'parametros.bajo',
+                'parametros.medicion',
+                'parametros.escrito',
+                'parametros.respuesta',
+            )
+            ->whereIn('examenes.id', $tomas)
+            ->get();
+        // dd($examenes);
+        $bandera = "";
+        $banderaE = "";
+
+        // return view('tickets.hojaTrabajo', compact('ticket', 'examenes', 'bandera', 'banderaE'));
+
+        return PDF::loadView('tickets.hojaTrabajo2', compact('ticket', 'examenes', 'bandera', 'banderaE'))
             ->setPaper('a4')
             ->stream('archivo.pdf');
     }
