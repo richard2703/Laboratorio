@@ -122,12 +122,7 @@ puede ser de altura y anchura completas.
                     </table>
 
                     <ul style="font-size: larger; padding-top: 15px;">
-                        <li>
-                            <strong>Diagnostico: </strong>
-                        </li>
-                        <li>
-                            N/A
-                        </li>
+
                         <li>
                             <strong>Estudios: </strong>
                         </li>
@@ -139,6 +134,11 @@ puede ser de altura y anchura completas.
                                     <td colspan="2">Sin registros.</td>
                                 </tr>
                             @endforelse
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+
                         </li>
                     </ul>
 
@@ -154,7 +154,10 @@ puede ser de altura y anchura completas.
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="pru1">15/12/10</td>
+                                <td style="border-radius: 1em; border-color: black; margin-right: 5px !important;
+                                border-width: 1px;
+                                border-style: solid; height: 31px; margin-top: 3px"
+                                    class="d-flex justify-content-center align-items-center"></td>
                                 <td class="col2">$ {{ $ticket->total }}</td>
                                 <td class="col3">$ {{ $ticket->abono }}</td>
                                 <td class="col4">$ {{ $ticket->total - $ticket->abono }}</td>
@@ -227,12 +230,7 @@ puede ser de altura y anchura completas.
                     </table>
 
                     <ul style="font-size: larger; padding-top: 15px;">
-                        <li>
-                            <strong>Diagnostico: </strong>
-                        </li>
-                        <li>
-                            N/A
-                        </li>
+
                         <li>
                             <strong>Estudios: </strong>
                         </li>
@@ -259,7 +257,10 @@ puede ser de altura y anchura completas.
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="pru1">15/12/10</td>
+                                <td style="border-radius: 1em; border-color: black; margin-right: 5px !important;
+                                border-width: 1px;
+                                border-style: solid; height: 31px; margin-top: 3px"
+                                    class="d-flex justify-content-center align-items-center"></td>
                                 <td class="col2">$ {{ $ticket->total }}</td>
                                 <td class="col3">$ {{ $ticket->abono }}</td>
                                 <td class="col4">$ {{ $ticket->total - $ticket->abono }}</td>
