@@ -95,7 +95,11 @@ class ticketsController extends Controller
     public function store(Request $request)
     {
         abort_if(Gate::denies('tickets_create'), 403);
-
+        //dd(!isset($request->examenes));
+        if (!isset($request->examenes)) {
+            Session::flash('message', 1);
+            return redirect()->back();
+        }
         $ticket = new tickets();
         if (!$request->paciente_id) {
             // Guardar al paciente
