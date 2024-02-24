@@ -351,7 +351,7 @@
             {{--  <!-- Pacientes -->  --}}
 
             <li class="nav-heading">Administracion</li>
-            @can('maquilas_index')
+            {{--  @can('maquilas_index')
                 <li class="nav-item collapsed">
                     <a class="nav-link {{ $activePage == 'maquilas' ? '' : 'collapsed' }}"
                         href="{{ route('maquilas.index') }}">
@@ -359,7 +359,47 @@
                         <span>Maquilas</span>
                     </a>
                 </li>
-            @endcan
+            @endcan  --}}
+
+            {{--  @can('examenes_index')  --}}
+            <li class="nav-item">
+                <a class="nav-link {{ $activePage == 'lugaresTrabajo' ? '' : 'collapsed' }} "
+                    data-bs-target="#lugaresTrabajo-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-clipboard2-pulse"></i>
+                    <span>Lugares de Trabajo</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="lugaresTrabajo-nav"
+                    class="nav-content collapse {{ $activePage == 'lugaresTrabajo' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    {{--  @can('parametros_index')  --}}
+                    <li>
+                        <a href="{{ route('sucursales.index') }}"
+                            class=" {{ $activeItem == 'sucursales' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Sucursales</span>
+                        </a>
+                    </li>
+                    {{--  @endcan  --}}
+                    {{--  @can('parametros_index')  --}}
+                    <li>
+                        <a href="{{ route('doctores.index') }}"
+                            class=" {{ $activeItem == 'doctores' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Doctores</span>
+                        </a>
+                    </li>
+                    {{--  @endcan  --}}
+                    @can('maquilas_index')
+                        <li>
+                            <a href="{{ route('maquilas.index') }}"
+                                class=" {{ $activeItem == 'maquilas' ? 'active' : '' }}">
+                                <i class="bi bi-circle"></i>
+                                <span>Maquilas</span>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+            {{--  @endcan  --}}
             {{--  <!-- Maquilas -->  --}}
             @can('examenes_index')
                 <li class="nav-item">
