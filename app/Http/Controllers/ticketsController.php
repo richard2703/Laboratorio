@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tickets;
 use App\Models\personal;
 use App\Http\Controllers\Controller;
+use App\Models\doctores;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
@@ -12,6 +13,7 @@ use App\Models\examenParametro;
 use App\Models\pacientes;
 use App\Models\maquilas;
 use App\Models\parametros;
+use App\Models\sucursales;
 use App\Models\tomas;
 use Illuminate\Support\Facades\DB;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -108,6 +110,7 @@ class ticketsController extends Controller
         } else {
             $ticket->paciente_id = $request->paciente_id;
         }
+        $ticket->tipo = $request->tipo;
         $ticket->maquila_id = $request->maquila_id;
         $ticket->total = $request->total;
         $ticket->abono = $request->abono;
@@ -191,6 +194,33 @@ class ticketsController extends Controller
         $ticket->delete();
         Session::flash('message', 2);
         return redirect()->action([ticketsController::class, 'index']);
+    }
+
+    public function tipoXsucursal($tipo)
+    {
+        // abort_if(Gate::denies('tickets_destroy'), 403);
+        switch ($tipo) {
+            case 1:
+                $data = sucursales::select('id', 'nombre',)
+                    ->orderBy('nombre', 'asc')
+                    ->get();
+                break;
+            case 2:
+                $data = doctores::select('id', 'nombre',)
+                    ->orderBy('nombre', 'asc')
+                    ->get();
+                break;
+            case 3:
+                $data = maquilas::select('id', 'nombre',)
+                    ->orderBy('nombre', 'asc')
+                    ->get();
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        return response()->json($data);
     }
 
 

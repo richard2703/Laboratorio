@@ -77,27 +77,41 @@
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
-                                    <label class="form-label">Maquila:</label></br>
+                                    <label class="form-label">Tipo:</label></br>
+                                    <select class="form-control" id="tipo" name="tipo"
+                                        aria-label="Default select example" onchange="sucursal()" required>
+                                        <option>Seleccione una opcion</option>
+                                        <option value="1">Sucursales</option>
+                                        <option value="2">Doctores</option>
+                                        <option value="3">Maquilas</option>
+                                    </select>
+                                </div>
+
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
+                                    <label class="form-label">Sucursal:</label></br>
                                     <select class="form-control" id="maquila_id" name="maquila_id"
-                                        aria-label="Default select example">
-                                        <option value="" selected>Seleccione</option>
+                                        aria-label="Default select example" required>
+
+                                    </select>
+
+                                    {{--  <option value="" selected>Seleccione</option>
                                         @forelse ($maquilas as $maquila)
                                             <option value="{{ $maquila->id }}">{{ $maquila->nombre }}</option>
                                         @empty
-                                        @endforelse
+                                        @endforelse  --}}
                                     </select>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Total:</label></br>
-                                    <input type="text" class="form-control" id="total" name="total" value="0"
-                                        readonly>
+                                    <input type="text" class="form-control" id="total" name="total"
+                                        value="0" readonly>
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Abono:</label></br>
-                                    <input type="text" class="form-control" id="abono" name="abono" value=""
-                                        required>
+                                    <input type="text" class="form-control" id="abono" name="abono"
+                                        value="" required>
                                 </div>
 
                                 <div class="col-12 ">
@@ -183,6 +197,33 @@
             }
 
         });
+    </script>
+
+    <script>
+        function sucursal() {
+            const tipo = document.getElementById('tipo').value;
+            const ListaSeleccionar = document.getElementById('maquila_id');
+
+            var url = '{{ route('ticket.tipoXsucursal', ':tipo') }}';
+            url = url.replace(':tipo', tipo);
+
+            console.log(url); //serviciosTrasporte.obrasXconcepto
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Actualiza las opciones en el select "item"
+                    //console.log(data);
+                    ListaSeleccionar.innerHTML = '';
+                    data.forEach(item => {
+                        //console.log(item);
+                        var option = document.createElement('option');
+                        option.value = item.id;
+                        option.textContent = item.nombre;
+                        ListaSeleccionar.appendChild(option);
+                    });
+
+                });
+        };
     </script>
 
     <script>
