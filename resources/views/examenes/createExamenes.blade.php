@@ -75,6 +75,14 @@
                                     </div>
                                 </div>
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                    <label for="doctor" class="form-label">Costo Doctor:</label></br>
+                                    <input type="number" class="form-control" id="doctor" name="doctor"
+                                        value="{{ old('doctor') }}">
+                                    <div class="invalid-tooltip">
+                                        Es Obligatorio!
+                                    </div>
+                                </div>
+                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                     <label for="maquila" class="form-label">Metodologia:</label></br>
                                     <input type="text" class="form-control" id="metodologia" name="metodologia"
                                         value="{{ old('metodologia') }}">

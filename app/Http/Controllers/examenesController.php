@@ -35,7 +35,7 @@ class examenesController extends Controller
 
         abort_if(Gate::denies('examenes_create'), 403);
 
-        $examen = examenes::create($request->only('nombre', 'costo', 'maquila', 'metodologia', 'muestra', 'abreviacion'));
+        $examen = examenes::create($request->only('nombre', 'costo', 'maquila', 'doctor', 'metodologia', 'muestra', 'abreviacion'));
         $examen->parametros()->sync($request->input('parametros', []));
         Session::flash('message', 1);
         return redirect()->action([examenesController::class, 'index']);

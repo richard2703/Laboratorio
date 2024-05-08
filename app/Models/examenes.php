@@ -13,7 +13,7 @@ class examenes extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre', 'costo', 'maquila', 'leyenda', 'metodologia', 'muestra', 'abreviacion'
+        'nombre', 'costo', 'maquila', 'doctor', 'leyenda', 'metodologia', 'muestra', 'abreviacion'
     ];
 
     public function parametros()

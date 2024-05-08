@@ -1,0 +1,1 @@
+ALTER TABLE lab.examenes ADD doctor FLOAT(10,2) DEFAULT 0 NULL;
