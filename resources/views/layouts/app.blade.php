@@ -361,7 +361,50 @@
                 </li>
             @endcan  --}}
 
+            <li class="nav-item collapsed">
+                <a class="nav-link {{ $activePage == 'lugares' ? '' : 'collapsed' }}"
+                    href="{{ route('pacientes.index') }}">
+                    <i class="bi bi-person"></i>
+                    <span>Lugares de trabajo</span>
+                </a>
+            </li>
             {{--  @can('examenes_index')  --}}
+            <li class="nav-item">
+                <a class="nav-link {{ $activePage == 'catalogos' ? '' : 'collapsed' }} "
+                    data-bs-target="#catalogos-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-clipboard2-pulse"></i>
+                    <span>Lugares de Trabajo</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="catalogos-nav" class="nav-content collapse {{ $activePage == 'catalogos' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    {{--  @can('parametros_index')  --}}
+                    <li>
+                        <a href="{{ route('catlugares.index') }}"
+                            class=" {{ $activeItem == 'catLugare' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Lugares</span>
+                        </a>
+                    </li>
+                    {{--  @endcan  --}}
+                    {{--  @can('parametros_index')  --}}
+                    <li>
+                        <a href="{{ route('doctores.index') }}"
+                            class=" {{ $activeItem == 'doctores' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Doctores</span>
+                        </a>
+                    </li>
+                    {{--  @endcan  --}}
+                    @can('maquilas_index')
+                        <li>
+                            <a href="{{ route('maquilas.index') }}"
+                                class=" {{ $activeItem == 'maquilas' ? 'active' : '' }}">
+                                <i class="bi bi-circle"></i>
+                                <span>Maquilas</span>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
             <li class="nav-item">
                 <a class="nav-link {{ $activePage == 'lugaresTrabajo' ? '' : 'collapsed' }} "
                     data-bs-target="#lugaresTrabajo-nav" data-bs-toggle="collapse" href="#">

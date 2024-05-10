@@ -35,6 +35,7 @@ Route::group(['middleware' => ['role:1Admin']], function () {
 // });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('users', App\Http\Controllers\UserController::class);
@@ -61,4 +62,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/pdf', [App\Http\Controllers\resultadosController::class, 'pdftest'])->name('resultados.pdftest');
+
+    Route::resource('catlugares', App\Http\Controllers\cat_lugaresController::class);
 });
