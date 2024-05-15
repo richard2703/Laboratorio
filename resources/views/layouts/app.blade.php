@@ -363,7 +363,7 @@
 
             <li class="nav-item collapsed">
                 <a class="nav-link {{ $activePage == 'lugares' ? '' : 'collapsed' }}"
-                    href="{{ route('pacientes.index') }}">
+                    href="{{ route('catlugares.index') }}">
                     <i class="bi bi-person"></i>
                     <span>Lugares de trabajo</span>
                 </a>

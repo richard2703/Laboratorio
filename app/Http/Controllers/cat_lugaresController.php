@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\cat_lugares;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class cat_lugaresController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //abort_if(Gate::denies('parametros_index'), 403);
@@ -18,51 +16,28 @@ class cat_lugaresController extends Controller
         return view('catalogos.indexLugares', compact('lugares'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        cat_lugares::create($request->only('nombre'));
+        Session::flash('message', 1);
+        return redirect()->action([cat_lugaresController::class, 'index']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(cat_lugares $cat_lugares)
+    public function update(Request $request)
     {
-        //
+        $catlugare = cat_lugares::find($request->id);
+        $data = $request->only('nombre');
+        $catlugare->update($data);
+        Session::flash('message', 1);
+        return redirect()->action([cat_lugaresController::class, 'index']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(cat_lugares $cat_lugares)
+    public function destroy(cat_lugares $catlugare)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, cat_lugares $cat_lugares)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(cat_lugares $cat_lugares)
-    {
-        //
+        // abort_if(Gate::denies('parametros_destroy'), 403);
+        dd("borrado");
+        $catlugare->delete();
+        Session::flash('message', 2);
+        return redirect()->action([cat_lugaresController::class, 'index']);
     }
 }
