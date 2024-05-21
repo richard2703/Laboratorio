@@ -13,7 +13,7 @@ class cat_lugaresController extends Controller
         //abort_if(Gate::denies('parametros_index'), 403);
 
         $lugares = cat_lugares::orderBy('id', 'desc')->paginate(15);
-        return view('catalogos.indexLugares', compact('lugares'));
+        return view('catalogos.indexTiposLugares', compact('lugares'));
     }
 
     public function store(Request $request)

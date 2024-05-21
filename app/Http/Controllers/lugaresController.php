@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cat_lugares;
 use App\Models\lugares;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class lugaresController extends Controller
 {
@@ -12,7 +14,9 @@ class lugaresController extends Controller
      */
     public function index()
     {
-        //
+        $lugares = lugares::orderBy('id', 'desc')->paginate(15);
+        $catLugares = cat_lugares::orderBy('id', 'desc')->get();
+        return view('lugares.indexLugares', compact('lugares','catLugares'));
     }
 
     /**
@@ -28,7 +32,10 @@ class lugaresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        lugares::create($request->only('nombre','cat_lugares_id'));
+        Session::flash('message', 1);
+        return redirect()->action([cat_lugaresController::class, 'index']);
     }
 
     /**

@@ -22,6 +22,8 @@ Antes de comenzar a trabajar en este proyecto, asegúrate de tener instalado lo 
    bash
    composer install
 
+3.1 Si marca error "git was not found in your PATH, skipping source download" se corrige modificando el archivo php.ini en la parte de cambiando la linea ";extension=zip" por "extension=zip"
+
 4. Monte la base de datos en Xampp (mysql), el scrip esta en raiz del proyecto con nombre Script copy.sql
 
 5. Configura el archivo .env con las credenciales de la base de datos y creando la key del proyecto.

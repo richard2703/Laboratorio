@@ -64,4 +64,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pdf', [App\Http\Controllers\resultadosController::class, 'pdftest'])->name('resultados.pdftest');
 
     Route::resource('catlugares', App\Http\Controllers\cat_lugaresController::class);
+    Route::resource('lugares', App\Http\Controllers\lugaresController::class);
 });

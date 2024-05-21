@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Lugares</h1>
+        <h1>Catalogo de Lugares</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                 <li class="breadcrumb-item ">Catalogos</li>
-                <li class="breadcrumb-item active">Lugares</li>
+                <li class="breadcrumb-item active">CatLugares</li>
             </ol>
         </nav>
     </div>

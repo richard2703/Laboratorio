@@ -362,8 +362,16 @@
             @endcan  --}}
 
             <li class="nav-item collapsed">
-                <a class="nav-link {{ $activePage == 'lugares' ? '' : 'collapsed' }}"
+                <a class="nav-link {{ $activePage == 'catLugares' ? '' : 'collapsed' }}"
                     href="{{ route('catlugares.index') }}">
+                    <i class="bi bi-person"></i>
+                    <span>Tipos de Lugares de trabajo</span>
+                </a>
+            </li>
+
+            <li class="nav-item collapsed">
+                <a class="nav-link {{ $activePage == 'lugares' ? '' : 'collapsed' }}"
+                    href="{{ route('lugares.index') }}">
                     <i class="bi bi-person"></i>
                     <span>Lugares de trabajo</span>
                 </a>
