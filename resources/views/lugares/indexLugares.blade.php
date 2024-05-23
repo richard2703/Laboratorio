@@ -17,12 +17,10 @@
                 <div class="card">
                     <div class="card-header ">
                         <div class="col text-end">
-                            @can('parametros_create')
-                                {{--  <a href="{{ route('permissions.create') }}">  --}}
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modal-nuevo">Nuevo Lugar</button>
-                                {{--  </a>  --}}
-                            @endcan
+                                <a href="{{ route('lugares.create') }}"> 
+                                <button type="button" class="btn btn-primary">Nuevo Lugar</button>
+                                </a> 
+                            
                         </div>
                     </div>
                     <div class="card-body">
@@ -52,14 +50,13 @@
                                                         <i class="bi bi-person-vcard  colorVolverGral"></i></a>
                                                 @endcan  --}}
                                                 @can('parametros_edit')
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-update"
-                                                        onclick="cargaItem('{{ $item->id }}','{{ $item->nombre }}')"><i
+                                                    <a href="{{ route('lugares.edit', $item->id) }}"><i
                                                             class="bi bi-pencil h3 px-2"></i>
                                                     </a>
                                                 @endcan
                                                 @can('parametros_destroy')
                                                     <form class="alertaBorrar"
-                                                        action="{{ route('parametros.destroy', $item->id) }}" method="POST"
+                                                        action="{{ route('lugares.destroy', $item->id) }}" method="POST"
                                                         style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')

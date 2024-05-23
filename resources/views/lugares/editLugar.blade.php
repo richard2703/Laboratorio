@@ -1,8 +1,8 @@
-@extends('layouts.app', ['activePage' => 'lugares', 'activeItem' => ''])
+@extends('layouts.app', ['activePage' => 'maquilas', 'activeItem' => ''])
 
 @section('content')
     <div class="pagetitle">
-        <h1>Lugares</h1>
+        <h1>Maquilas</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
@@ -11,6 +11,7 @@
             </ol>
         </nav>
     </div>
+
 
     <section class="section">
         <div class="row">
@@ -25,49 +26,52 @@
                             @endcan
                         </div>  --}}
                     </div>
-                    <form action="{{ route('lugares.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('lugares.update', $lugare->id) }}" method="post" class="form-horizontal">
                         @csrf
+                        @method('put')
                         <div class="card-body">
 
                             <div class="row">
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Nombre:</label></br>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" value="">
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                        value="{{ $lugare->nombre }}">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Direccion:</label></br>
                                     <input type="text" class="form-control" id="direccion" name="direccion"
-                                        value="">
+                                        value="{{ $lugare->direccion }}">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Telefono:</label></br>
                                     <input type="text" class="form-control" id="telefono" name="telefono"
-                                        value="">
+                                        value="{{ $lugare->telefono }}">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Correo:</label></br>
-                                    <input type="text" class="form-control" id="correo" name="correo" value="">
+                                    <input type="text" class="form-control" id="correo" name="correo"
+                                        value="{{ $lugare->correo }}">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Encargado:</label></br>
                                     <input type="text" class="form-control" id="encargado" name="encargado"
-                                        value="">
+                                        value="{{ $lugare->encargado }}">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Telefono Encargado:</label></br>
                                     <input type="text" class="form-control" id="telEncargado" name="telEncargado"
-                                        value="">
+                                        value="{{ $lugare->telEncargado }}">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
                                     <label class="form-label">Foraneo:</label></br>
-                                    <input type="number" class="form-control" id="foraneo" name="foraneo" value=""
-                                        placeholder="Extra por examen">
+                                    <input type="number" class="form-control" id="foraneo" name="foraneo"
+                                        value="{{ $lugare->foraneo }}" placeholder="Extra por examen">
                                 </div>
 
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative ">
@@ -76,7 +80,9 @@
                                         aria-label="Default select example" required>
                                     <option value="" selected>Seleccione</option>
                                         @forelse ($catLugares as $item)
-                                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $lugare->cat_lugares_id == $item->id ? 'selected' : '' }}>
+                                                {{ $item->nombre }}</option>
                                         @empty
                                         @endforelse  
                                     </select>

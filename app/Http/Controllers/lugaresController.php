@@ -24,7 +24,8 @@ class lugaresController extends Controller
      */
     public function create()
     {
-        //
+        $catLugares = cat_lugares::orderBy('id', 'desc')->get();
+        return view('lugares.createLugar', compact('catLugares'));
     }
 
     /**
@@ -32,10 +33,9 @@ class lugaresController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        lugares::create($request->only('nombre','cat_lugares_id'));
+        lugares::create($request->only('nombre', 'direccion', 'telefono', 'correo', 'encargado', 'telEncargado', 'foraneo','cat_lugares_id'));
         Session::flash('message', 1);
-        return redirect()->action([cat_lugaresController::class, 'index']);
+        return redirect()->action([lugaresController::class, 'index']);
     }
 
     /**
@@ -49,24 +49,30 @@ class lugaresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(lugares $lugares)
+    public function edit(lugares $lugare)
     {
-        //
+        $catLugares = cat_lugares::orderBy('id', 'desc')->get();
+        return view('lugares.editLugar', compact('catLugares','lugare'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, lugares $lugares)
+    public function update(Request $request, lugares $lugare)
     {
-        //
+        $lugare->update($request->only('nombre', 'direccion', 'telefono', 'correo', 'encargado', 'telEncargado', 'foraneo','cat_lugares_id'));
+        Session::flash('message', 1);
+        return redirect()->action([lugaresController::class, 'index']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(lugares $lugares)
+    public function destroy(lugares $lugare)
     {
-        //
+        dd("destroy lugar");
+        $lugare->delete();
+        Session::flash('message', 2);
+        return redirect()->action([lugaresController::class, 'index']);
     }
 }
