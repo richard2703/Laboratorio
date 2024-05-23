@@ -59,30 +59,6 @@
                                     </div>
                                 </div>
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
-                                    <label for="costo" class="form-label">Costo:</label></br>
-                                    <input type="number" class="form-control" id="costo" name="costo"
-                                        value="{{ old('costo') }}" required>
-                                    <div class="invalid-tooltip">
-                                        Es Obligatorio!
-                                    </div>
-                                </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
-                                    <label for="maquila" class="form-label">Costo Maquila:</label></br>
-                                    <input type="number" class="form-control" id="maquila" name="maquila"
-                                        value="{{ old('maquila') }}">
-                                    <div class="invalid-tooltip">
-                                        Es Obligatorio!
-                                    </div>
-                                </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
-                                    <label for="doctor" class="form-label">Costo Doctor:</label></br>
-                                    <input type="number" class="form-control" id="doctor" name="doctor"
-                                        value="{{ old('doctor') }}">
-                                    <div class="invalid-tooltip">
-                                        Es Obligatorio!
-                                    </div>
-                                </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                     <label for="maquila" class="form-label">Metodologia:</label></br>
                                     <input type="text" class="form-control" id="metodologia" name="metodologia"
                                         value="{{ old('metodologia') }}">
@@ -95,6 +71,20 @@
                                         Es Obligatorio!
                                     </div>
                                 </div>
+
+                                @forelse ($lugares as $item)
+                                    <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
+                                        <label for="costo" class="form-label">Precio a {{$item->nombre}}:</label></br>
+                                        <input type="number" class="form-control" id="costo" name="costo"
+                                            value="{{ old('costo') }}" required>
+                                        <div class="invalid-tooltip">
+                                            Es Obligatorio!
+                                        </div>
+                                    </div>
+                                @empty
+                                    <label> No hay </label>
+                                @endforelse
+                                
                                 <div class="col-12 ">
                                     <label for="nombre" class="form-label">Parametros:</label></br>
                                     <div class="row position-relative d-flex">

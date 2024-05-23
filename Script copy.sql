@@ -1891,3 +1891,16 @@ COMMIT;
 
 /*Datos a agregar */
 ALTER TABLE lugares MODIFY COLUMN nombre varchar(255) NOT NULL;
+
+CREATE TABLE examen_precio (
+  id bigint(20) UNSIGNED DEFAULT NULL,
+  tipoLugarId bigint(20) UNSIGNED DEFAULT NULL,
+  examenId  bigint(20) UNSIGNED DEFAULT NULL,
+  precio float DEFAULT 0,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT null,
+  PRIMARY KEY (id),
+  CONSTRAINT FK_examen_precio_examenId foreign key (examenId) references examenes(id),
+  CONSTRAINT FK_examen_precio_tipoLugarId foreign key (tipoLugarId) references cat_lugares(id)
+);
+

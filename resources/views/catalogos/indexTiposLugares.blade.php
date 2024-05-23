@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'catLugares', 'activeItem' => 'parametros'])
+@extends('layouts.app', ['activePage' => 'catalogos', 'activeItem' => 'catLugare'])
 
 @section('content')
     <div class="pagetitle">
@@ -32,10 +32,6 @@
                                 <thead class="labelTitulo">
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Tipo</th>
-                                    <th>Referencia</th>
-                                    <th>Baja</th>
-                                    <th>Alta </th>
                                     <th class="text-right">Acciones</th>
                                 </thead>
                                 <tbody>
@@ -43,10 +39,6 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->nombre }}</td>
-                                            <td>{{ $item->tipo }}</td>
-                                            <td>{{ $item->referencia }}</td>
-                                            <td>{{ $item->bajo }}</td>
-                                            <td>{{ $item->alto }}</td>
                                             <td class="td-actions text-right">
                                                 {{--  @can('user_show')
                                                     <a href="{{ route('users.show', $parametro->id) }}">

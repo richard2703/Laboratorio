@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\examenes;
 use App\Http\Controllers\Controller;
+use App\Models\cat_lugares;
 use Illuminate\Http\Request;
 use App\Models\parametros;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +26,8 @@ class examenesController extends Controller
         abort_if(Gate::denies('examenes_create'), 403);
 
         $parametros = parametros::get();
-        return view('examenes.createExamenes', compact('parametros'));
+        $lugares = cat_lugares::get();
+        return view('examenes.createExamenes', compact('parametros','lugares'));
     }
 
     public function store(Request $request)

@@ -348,27 +348,10 @@
                     </a>
                 </li>
             @endcan
-            {{--  <!-- Pacientes -->  --}}
 
             <li class="nav-heading">Administracion</li>
-            {{--  @can('maquilas_index')
-                <li class="nav-item collapsed">
-                    <a class="nav-link {{ $activePage == 'maquilas' ? '' : 'collapsed' }}"
-                        href="{{ route('maquilas.index') }}">
-                        <i class="bi bi-shop"></i>
-                        <span>Maquilas</span>
-                    </a>
-                </li>
-            @endcan  --}}
 
-            <li class="nav-item collapsed">
-                <a class="nav-link {{ $activePage == 'catLugares' ? '' : 'collapsed' }}"
-                    href="{{ route('catlugares.index') }}">
-                    <i class="bi bi-person"></i>
-                    <span>Tipos de Lugares de trabajo</span>
-                </a>
-            </li>
-
+            {{--  <!-- LUGARES -->  --}}
             <li class="nav-item collapsed">
                 <a class="nav-link {{ $activePage == 'lugares' ? '' : 'collapsed' }}"
                     href="{{ route('lugares.index') }}">
@@ -376,82 +359,8 @@
                     <span>Lugares de trabajo</span>
                 </a>
             </li>
-            {{--  @can('examenes_index')  --}}
-            <li class="nav-item">
-                <a class="nav-link {{ $activePage == 'catalogos' ? '' : 'collapsed' }} "
-                    data-bs-target="#catalogos-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-clipboard2-pulse"></i>
-                    <span>Lugares de Trabajo</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="catalogos-nav" class="nav-content collapse {{ $activePage == 'catalogos' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    {{--  @can('parametros_index')  --}}
-                    <li>
-                        <a href="{{ route('catlugares.index') }}"
-                            class=" {{ $activeItem == 'catLugare' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Lugares</span>
-                        </a>
-                    </li>
-                    {{--  @endcan  --}}
-                    {{--  @can('parametros_index')  --}}
-                    <li>
-                        <a href="{{ route('doctores.index') }}"
-                            class=" {{ $activeItem == 'doctores' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Doctores</span>
-                        </a>
-                    </li>
-                    {{--  @endcan  --}}
-                    @can('maquilas_index')
-                        <li>
-                            <a href="{{ route('maquilas.index') }}"
-                                class=" {{ $activeItem == 'maquilas' ? 'active' : '' }}">
-                                <i class="bi bi-circle"></i>
-                                <span>Maquilas</span>
-                            </a>
-                        </li>
-                    @endcan
 
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ $activePage == 'lugaresTrabajo' ? '' : 'collapsed' }} "
-                    data-bs-target="#lugaresTrabajo-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-clipboard2-pulse"></i>
-                    <span>Lugares de Trabajo</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="lugaresTrabajo-nav"
-                    class="nav-content collapse {{ $activePage == 'lugaresTrabajo' ? 'show' : '' }}"
-                    data-bs-parent="#sidebar-nav">
-                    {{--  @can('parametros_index')  --}}
-                    <li>
-                        <a href="{{ route('sucursales.index') }}"
-                            class=" {{ $activeItem == 'sucursales' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Sucursales</span>
-                        </a>
-                    </li>
-                    {{--  @endcan  --}}
-                    {{--  @can('parametros_index')  --}}
-                    <li>
-                        <a href="{{ route('doctores.index') }}"
-                            class=" {{ $activeItem == 'doctores' ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i><span>Doctores</span>
-                        </a>
-                    </li>
-                    {{--  @endcan  --}}
-                    @can('maquilas_index')
-                        <li>
-                            <a href="{{ route('maquilas.index') }}"
-                                class=" {{ $activeItem == 'maquilas' ? 'active' : '' }}">
-                                <i class="bi bi-circle"></i>
-                                <span>Maquilas</span>
-                            </a>
-                        </li>
-                    @endcan
-
-                </ul>
-            </li>
-            {{--  @endcan  --}}
-            {{--  <!-- Maquilas -->  --}}
+            {{--  <!-- EXAMENES Y PARAMETROS -->  --}}
             @can('examenes_index')
                 <li class="nav-item">
                     <a class="nav-link {{ $activePage == 'examenes' ? '' : 'collapsed' }} "
@@ -482,9 +391,25 @@
                 </li>
             @endcan
 
-
-            {{--  <!-- Usuarios Examenes y Parametros -->  --}}
-
+            {{--  <!-- CATALOGOS -->  --}}
+            <li class="nav-item">
+                <a class="nav-link {{ $activePage == 'catalogos' ? '' : 'collapsed' }} "
+                    data-bs-target="#catalogos-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-clipboard2-pulse"></i>
+                    <span>Catalogos</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="catalogos-nav" class="nav-content collapse {{ $activePage == 'catalogos' ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('catlugares.index') }}"
+                            class=" {{ $activeItem == 'catLugare' ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Tipos de Lugares de trabajo</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+                        
+            {{--  <!-- USUARIOS Y PERMISOS -->  --}}
             @can('user_index')
                 <li class="nav-item">
                     <a class="nav-link {{ $activePage == 'usuarios' ? '' : 'collapsed' }} "
@@ -521,7 +446,6 @@
                     </ul>
                 </li>
             @endcan
-            {{--  <!-- Usuarios Roles y permisos -->  --}}
 
         </ul>
 
