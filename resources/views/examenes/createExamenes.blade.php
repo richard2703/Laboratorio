@@ -75,7 +75,7 @@
                                 @forelse ($lugares as $item)
                                     <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                         <label for="costo" class="form-label">Precio a {{$item->nombre}}:</label></br>
-                                        <input type="number" class="form-control" id="costo" name="costo"
+                                        <input type="number" class="form-control" id="costo_{{ $item->id }}" name="costo[{{ $item->id }}]"
                                             value="{{ old('costo') }}" required>
                                         <div class="invalid-tooltip">
                                             Es Obligatorio!

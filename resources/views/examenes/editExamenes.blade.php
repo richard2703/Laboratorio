@@ -58,19 +58,6 @@
                                     </div>
                                 </div>
                                 <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
-                                    <label for="costo" class="form-label">Costo:</label></br>
-                                    <input type="number" class="form-control" id="costo" name="costo"
-                                        value="{{ $examene->costo }}" required>
-                                    <div class="invalid-tooltip">
-                                        Es Obligatorio!
-                                    </div>
-                                </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
-                                    <label for="maquila" class="form-label">Costo Maquila:</label></br>
-                                    <input type="number" class="form-control" id="maquila" name="maquila"
-                                        value="{{ $examene->maquila }}">
-                                </div>
-                                <div class=" col-12 col-sm-6  col-lg-4 my-3 position-relative">
                                     <label for="maquila" class="form-label">Metodologia:</label></br>
                                     <input type="text" class="form-control" id="metodologia" name="metodologia"
                                         value="{{ $examene->metodologia }}">
@@ -83,6 +70,19 @@
                                         Es Obligatorio!
                                     </div>
                                 </div>
+                                @forelse ($lugares as $lugar)
+                                    <div class="col-12 col-sm-6 col-lg-4 my-3 position-relative">
+                                        <label for="costo_{{ $lugar->id }}" class="form-label">Precio a {{ $lugar->nombre }}:</label></br>
+                                        <input type="number" class="form-control" id="costo_{{ $lugar->id }}" name="costo[{{ $lugar->id }}]"
+                                            value="{{ old('costo.' . $lugar->id, $precios->has($lugar->id) ? $precios[$lugar->id]->precio : '') }}" required>
+                                        <div class="invalid-tooltip">
+                                            ¡Es Obligatorio!
+                                        </div>
+                                    </div>
+                                @empty
+                                    <label>No hay lugares disponibles</label>
+                                @endforelse
+
                                 <div class="col-12 ">
                                     <label class="form-label">Parametros:</label></br>
                                     <div class="row position-relative d-flex">

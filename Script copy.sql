@@ -1893,7 +1893,7 @@ COMMIT;
 ALTER TABLE lugares MODIFY COLUMN nombre varchar(255) NOT NULL;
 
 CREATE TABLE examen_precio (
-  id bigint(20) UNSIGNED DEFAULT NULL,
+  id bigint(20) UNSIGNED DEFAULT NULL AUTO_INCREMENT,
   tipoLugarId bigint(20) UNSIGNED DEFAULT NULL,
   examenId  bigint(20) UNSIGNED DEFAULT NULL,
   precio float DEFAULT 0,

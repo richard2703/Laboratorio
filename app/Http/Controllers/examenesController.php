@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\examenes;
 use App\Http\Controllers\Controller;
 use App\Models\cat_lugares;
+use App\Models\examen_precio;
+use App\Models\lugares;
 use Illuminate\Http\Request;
 use App\Models\parametros;
 use Illuminate\Support\Facades\Session;
@@ -37,7 +39,15 @@ class examenesController extends Controller
 
         abort_if(Gate::denies('examenes_create'), 403);
 
-        $examen = examenes::create($request->only('nombre', 'costo', 'maquila', 'doctor', 'metodologia', 'muestra', 'abreviacion'));
+        $examen = examenes::create($request->only('nombre', 'maquila', 'doctor', 'metodologia', 'muestra', 'abreviacion'));
+        foreach ($request->costo as $lugarId => $precio) {
+            $examenPrecio = new examen_precio();
+            $examenPrecio->examenId = $examen->id;
+            $examenPrecio->tipoLugarId = $lugarId;
+            $examenPrecio->precio = $precio;
+            $examenPrecio->save(); 
+
+        }
         $examen->parametros()->sync($request->input('parametros', []));
         Session::flash('message', 1);
         return redirect()->action([examenesController::class, 'index']);
@@ -53,14 +63,27 @@ class examenesController extends Controller
 
         $parametros = parametros::all()->pluck('nombre', 'id');
         $examene->load('parametros');
-        return view('examenes.editExamenes', compact('parametros', 'examene'));
+        $lugares = cat_lugares::all();
+        $precios = examen_precio::where('examenId', $examene->id)->get()->keyBy('tipoLugarId');
+        
+        return view('examenes.editExamenes', compact('parametros', 'examene','precios','lugares'));
     }
 
     public function update(Request $request, examenes $examene)
     {
         abort_if(Gate::denies('examenes_edit'), 403);
-
-        $examene->update($request->only('nombre', 'costo', 'maquila', 'metodologia', 'muestra', 'abreviacion'));
+        $examene->update($request->only('nombre', 'maquila', 'doctor', 'metodologia', 'muestra', 'abreviacion'));
+        foreach ($request->costo as $lugarId => $precio) {
+            examen_precio::updateOrCreate(
+                [
+                    'examenId' => $examene->id,
+                    'tipoLugarId' => $lugarId
+                ],
+                [
+                    'precio' => $precio
+                ]
+            );
+        }
         $examene->parametros()->sync($request->input('parametros', []));
         Session::flash('message', 1);
         // $examenes = examenes::paginate(15);
