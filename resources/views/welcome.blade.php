@@ -4,9 +4,9 @@
     <div class="main">
         <div class="section" id="carousel">
             <div class="container">
-                <div class="title">
-                    {{--  <h4>Carousel</h4>  --}}
-                </div>
+                {{-- <div class="title">
+                  <h4>Carousel</h4>
+                </div> --}}
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -49,12 +49,12 @@
                 </div>
             </div>
         </div>
-        <div class="section section-tabs">
+        {{--  <div class="section section-tabs">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 ml-auto mr-auto">
                         <h2 class="title">Servicios</h2>
-                        {{--  <p class="category">Tabs with Icons on Card</p>  --}}
+                        <p class="category">Tabs with Icons on Card</p>
                         <!-- Nav tabs -->
                         <div class="card">
                             <div class="card-header">
@@ -65,12 +65,12 @@
                                             <i class="far fa-gem"></i> Home
                                         </a>
                                     </li>
-                                    {{--  <li class="nav-item">
+                                     <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#home"
                                         role="tab">
                                         <i class="now-ui-icons objects_umbrella-13"></i> Home
                                     </a>
-                                </li>  --}}
+                                </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
                                             <i class="now-ui-icons shopping_cart-simple"></i> Profile
@@ -130,47 +130,164 @@
                     </div>
                 </div>
             </div>
+        </div>  --}}
+
+        <div class="section section-tabs ">
+            <div class="container">
+                <h2 class="title">Servicios</h2>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">Análisis clínicos de rutina y especializados</h3>
+                        <h3 class="title">Perfiles de estudios con menor costo</h3>
+
+                        <h3 class="title">Tomas de muestras a domicilio</h3>
+
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <img src="{{ asset('img/analisis.jpeg') }}" alt="" srcset="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <img src="{{ asset('img/analisis-clinicos.jpg') }}" alt="" srcset="">
+                    </div>
+                    <div class="col-lg-6 col-md-12"
+                        style="
+                    place-content: space-evenly;
+                ">
+
+                        <h3 class="title">Atenciones urgentes</h3>
+                        <h3 class="title">Atenciona empresas</h3>
+
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="section ">
             <div class="container">
                 <h2 class="title">Sucursales</h2>
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <h3 class="title">Matriz</h3>
-                        <h5 class="description">
-                            Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
-                            official package contains over 2.100 thin icons which are looking great in combination
-                            with Now UI Kit PRO Make sure you check all of them and usee those that you like the
-                            most.
-                        </h5>
-                        <div class="nucleo-container">
-                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
+
+                        <div class="d-flex">
+                            <i class="fas fa-map-marker-alt pr-2"></i>
+                            <h5 class="">
+                                Bahia de todos los santos #2759 Col. Parques de santa maria <br>
+                                Tlaquepaque, Jal.
+                            </h5>
                         </div>
-                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
-                            Demo Icons</a>
-                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
-                            target="_blank">View All Icons</a>
+                        <div class="d-flex">
+                            <i class="fa fa-phone-alt me-3 pr-2"> </i>
+                            <p class="mb-2 textTels"> 33 3693 5986</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fab fa-whatsapp pr-2"></i>
+                            <p class="mb-2 textTels"> +52 33 1286 7393</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fas fa-clock pr-2"></i>
+                            <p class="mb-2 textTels"> Lunes a Viernes de 7:00 am a 7:00 pm <br>
+                                Sábados
+                                de 7:00 am a 3:00 pm</p>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <h3 class="title">San Jacinto</h3>
-                        <h5 class="description">
-                            Now UI Kit PRO comes with 100 custom icons made by our friends from NucleoApp. The
-                            official package contains over 2.100 thin icons which are looking great in combination
-                            with Now UI Kit PRO Make sure you check all of them and usee those that you like the
-                            most.
-                        </h5>
-                        {{--  <div class="nucleo-container">
-                            <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
-                        </div>  --}}
-                        <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
-                            Demo Icons</a>
-                        <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
-                            target="_blank">View All Icons</a>
+                        <h3 class="title">San agustin</h3>
+
+                        <div class="d-flex">
+                            <i class="fas fa-map-marker-alt pr-2"></i>
+                            <h5 class="">
+                                Nicolas R. Casillas #4-a
+                                Tlajomulco, Jal.
+                            </h5>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-phone-alt me-3 pr-2"> </i>
+                            <p class="mb-2 textTels"> 33 3693 5986</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fab fa-whatsapp pr-2"></i>
+                            <p class="mb-2 textTels"> +52 33 1286 7393</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fas fa-clock pr-2"></i>
+                            <p class="mb-2 textTels"> Lunes a Sábado de 7:30 am a 1:30 pm</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">Santa Anita</h3>
+
+                        <div class="d-flex">
+                            <i class="fas fa-map-marker-alt pr-2"></i>
+                            <h5 class="">
+                                Blvd. Bosques de Santa Anita #255
+                                (Dentro de Núcleo Médico Bosques)
+                                Tlajomulco, Jal.
+                            </h5>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-phone-alt me-3 pr-2"> </i>
+                            <p class="mb-2 textTels"> 331655 0591</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fab fa-whatsapp pr-2"></i>
+                            <p class="mb-2 textTels"> 33 34018555</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fas fa-clock pr-2"></i>
+                            <p class="mb-2 textTels">Lunes a Viernes 7:30 am a 1:30 pm <br>Domingos PREVIA CITA </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">San Miguel Cuyutlán</h3>
+
+                        <div class="d-flex">
+                            <i class="fas fa-map-marker-alt pr-2"></i>
+                            <h5 class="">
+                                Calle Madero #12
+                                (Frente al Centro de Salud)
+                                San Miguel Cuyutlán, Jal.
+                            </h5>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fab fa-whatsapp pr-2"></i>
+                            <p class="mb-2 textTels"> 33 3401 8555</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fas fa-clock pr-2"></i>
+                            <p class="mb-2 textTels">Lunes a Viernes 7:30 am a 1:30 pm <br>Domingos PREVIA CITA </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <h3 class="title">Guadalajara</h3>
+
+                        <div class="d-flex">
+                            <i class="fas fa-map-marker-alt pr-2"></i>
+                            <h5 class="">
+                                Av. Hidalgo #1267 Col. Americana
+                                (Dentro de Núcleo Médico Bosques)
+                                Guadalajara, Jal.
+                            </h5>
+                        </div>
+                        <div class="d-flex">
+                            <i class="fa fa-phone-alt me-3 pr-2"> </i>
+                            <p class="mb-2 textTels"> 33 3401 8555</p>
+                        </div>
+
+                        <div class="d-flex">
+                            <i class="fas fa-clock pr-2"></i>
+                            <p class="mb-2 textTels"> PREVIA CITA </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="section section-tabs section-nucleo-icons">
+        {{--  <div class="section section-tabs section-nucleo-icons">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
@@ -188,9 +305,9 @@
                             </div>
                         </div>
 
-                        {{--  <div class="nucleo-container">
+                        <div class="nucleo-container">
                             <img src="{{ asset('css/front/img/nucleo.svg') }}" alt="">
-                        </div>  --}}
+                        </div>
                         <a href="nucleo-icons.html" class="btn btn-primary btn-round btn-lg" target="_blank">View
                             Demo Icons</a>
                         <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-primary btn-round btn-lg"
@@ -217,7 +334,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  --}}
         {{--  <div class="section section-images">
         <div class="container">
             <div class="row">
