@@ -60,7 +60,8 @@
         <div class="container container-nav">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="#">
-                    <img class="" style="width: 150px" src="{{ asset('img/ISOLOGO_COLOR.png') }}" alt="">
+                    <img class="" style="width: 150px" src="{{ asset('css/front/img/ISOLOGO_COLOR.png') }}"
+                        alt="">
 
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse"

@@ -144,13 +144,13 @@
 
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <img src="{{ asset('img/analisis.jpeg') }}" alt="" srcset="">
+                        <img src="{{ asset('css/front/img/analisis.jpeg') }}" alt="" srcset="">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
-                        <img src="{{ asset('img/analisis-clinicos.jpg') }}" alt="" srcset="">
+                        <img src="{{ asset('css/front/img/analisis-clinicos.jpg') }}" alt="" srcset="">
                     </div>
                     <div class="col-lg-6 col-md-12"
                         style="
