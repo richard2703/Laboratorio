@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="main">
-        <div class="section" id="carousel">
-            <div class="container">
+        <div class="section section-tabs" id="carousel">
+            <div class="container ">
                 {{-- <div class="title">
                   <h4>Carousel</h4>
                 </div> --}}
@@ -132,7 +132,7 @@
             </div>
         </div>  --}}
 
-        <div class="section section-tabs ">
+        {{--  <div class="section section-tabs ">
             <div class="container">
                 <h2 class="title">Servicios</h2>
                 <div class="row">
@@ -163,9 +163,85 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  --}}
 
         <div class="section ">
+            <div class="container text-center">
+                <h2 class="title">Nuestros Beneficios Para Ti</h2>
+                {{--  <p class="subtitle">Al elegir MEM Laboratorio Clínico en Guadalajara</p>  --}}
+
+                <div class="row mt-4">
+                    {{--  <div class="col-md-4 mb-4">
+                        <div class="icon-box">
+                            <img src="path_to_icon" alt="Consulta e Interpretación médica">
+                            <h4 class="title">Consulta e Interpretación médica</h4>
+                            <p>Contamos con doctores en sitio listos para brindarte un servicio más completo.</p>
+                        </div>
+                    </div>  --}}
+                    <div class="col-md-6 mb-4">
+                        <div class="icon-box">
+                            {{--  <img src="path_to_icon" alt="Toma de muestras a domicilio">  --}}
+                            <img src="{{ asset('img/logos/ambulance.png') }}" alt="Toma de muestras a domicilio"
+                                style="
+                            max-width: 70px;
+                        ">
+
+                            <h4 class="title">Toma de muestras a domicilio</h4>
+                            <p>Por un pequeño costo adicional, vamos a tu domicilio para la extracción de muestra.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="icon-box">
+                            {{--  <img src="path_to_icon" alt="Precios competitivos reales">  --}}
+                            <img src="{{ asset('img/logos/coin-3.png') }}" alt="Toma de muestras a domicilio"
+                                style="
+                            max-width: 70px;
+                        ">
+                            <h4 class="title">Precios competitivos reales</h4>
+                            <p>Aseguramos los mejores recursos y convenios para brindarte precios accesibles.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-4 mb-4">
+                        <div class="icon-box">
+                            {{--  <img src="path_to_icon" alt="Amplio horario de atención">  --}}
+                            <img src="{{ asset('img/logos/hospital-3.png') }}" alt="Toma de muestras a domicilio"
+                                style="
+                            max-width: 70px;
+                        ">
+                            <h4 class="title">Amplio horario de atención</h4>
+                            <p>Nuestros horarios de atención son de 8am - 6pm de lunes a viernes. Sábados 8am - 2pm.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="icon-box">
+                            {{--  <img src="path_to_icon" alt="Historia clínica digital">  --}}
+                            <img src="{{ asset('img/logos/folder.png') }}" alt="Toma de muestras a domicilio"
+                                style="
+                            max-width: 70px;
+                        ">
+                            <h4 class="title">Historia clínica digital</h4>
+                            <p>Generamos un historial de tus estudios de laboratorio para que puedas consultarlos.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="icon-box">
+                            {{--  <img src="path_to_icon" alt="Respuesta rápida">  --}}
+                            <img src="{{ asset('img/logos/fast-time.png') }}" alt="Toma de muestras a domicilio"
+                                style="
+                            max-width: 70px;
+                        ">
+                            <h4 class="title">Respuesta rápida</h4>
+                            <p>Nuestro tiempo de respuesta y seguimiento suele ser de menos de 15min.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-tabs">
             <div class="container">
                 <h2 class="title">Sucursales</h2>
                 <div class="row">
@@ -174,9 +250,10 @@
 
                         <div class="d-flex">
                             <i class="fas fa-map-marker-alt pr-2"></i>
-                            <h5 class="">
-                                Bahia de todos los santos #2759 Col. Parques de santa maria <br>
-                                Tlaquepaque, Jal.
+                            <h5 class=""> <a target="_blank" href="https://maps.app.goo.gl/KPMDrngb82hxLJ4t5"
+                                    style="color: white;">
+                                    Bahia de todos los santos #2759 Col. Parques de santa maria <br>
+                                    Tlaquepaque, Jal.</a>
                             </h5>
                         </div>
                         <div class="d-flex">
@@ -199,9 +276,10 @@
 
                         <div class="d-flex">
                             <i class="fas fa-map-marker-alt pr-2"></i>
-                            <h5 class="">
-                                Nicolas R. Casillas #4-a
-                                Tlajomulco, Jal.
+                            <h5 class=""> <a target="_blank" href="https://maps.app.goo.gl/pSFz3gzVb84fUjiSA"
+                                    style="color: white;">
+                                    Nicolas R. Casillas #4-a
+                                    Tlajomulco, Jal.</a>
                             </h5>
                         </div>
                         <div class="d-flex">
@@ -222,10 +300,11 @@
 
                         <div class="d-flex">
                             <i class="fas fa-map-marker-alt pr-2"></i>
-                            <h5 class="">
-                                Blvd. Bosques de Santa Anita #255
-                                (Dentro de Núcleo Médico Bosques)
-                                Tlajomulco, Jal.
+                            <h5 class=""> <a target="_blank" href="https://maps.app.goo.gl/s3q5pWBsmyzHGhGF7"
+                                    style="color: white;">
+                                    Blvd. Bosques de Santa Anita #255
+                                    (Dentro de Núcleo Médico Bosques)
+                                    Tlajomulco, Jal.</a>
                             </h5>
                         </div>
                         <div class="d-flex">
@@ -247,10 +326,11 @@
 
                         <div class="d-flex">
                             <i class="fas fa-map-marker-alt pr-2"></i>
-                            <h5 class="">
-                                Calle Madero #12
-                                (Frente al Centro de Salud)
-                                San Miguel Cuyutlán, Jal.
+                            <h5 class=""> <a target="_blank" href="https://maps.app.goo.gl/ikEFhyTDSA3qSkai9"
+                                    style="color: white;">
+                                    Calle Madero #12
+                                    (Frente al Centro de Salud)
+                                    San Miguel Cuyutlán, Jal.</a>
                             </h5>
                         </div>
                         <div class="d-flex">
@@ -263,7 +343,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-12">
+                    {{--  <div class="col-lg-6 col-md-12">
                         <h3 class="title">Guadalajara</h3>
 
                         <div class="d-flex">
@@ -283,7 +363,7 @@
                             <i class="fas fa-clock pr-2"></i>
                             <p class="mb-2 textTels"> PREVIA CITA </p>
                         </div>
-                    </div>
+                    </div>  --}}
                 </div>
             </div>
         </div>

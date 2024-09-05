@@ -156,10 +156,16 @@
         <div class=" container d-flex ">
             <div class="row">
                 <div class="col-4">
-                    <h3 class="title">Sucursales</h3>
+                    {{--  <h3 class="title">Sucursales</h3>  --}}
                     <nav>
                         <ul>
                             <li>
+                                <div class="d-flex">
+                                    <i class="fa fa-phone-alt me-3"></i>
+                                    <p class="mb-2 textTels"> +52 33 1286 7393</p>
+                                </div>
+                            </li>
+                            {{--  <li>
                                 <a href="https://www.creative-tim.com">
                                     Creative Tim
                                 </a>
@@ -173,16 +179,30 @@
                                 <a href="http://blog.creative-tim.com">
                                     Blog
                                 </a>
-                            </li>
+                            </li>  --}}
                         </ul>
                     </nav>
                 </div>
                 <div class="col-4">
-                    <h3 class="title">Servicios</h3>
+                    {{--  <h3 class="title">Servicios</h3>  --}}
 
                     <nav>
                         <ul>
                             <li>
+                                <div class="text-left col-12 ">
+                                    <a target="_blank" href="https://www.instagram.com/antois.laboratorio"
+                                        class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
+                                        title="Siguenos">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a target="_blank" href="https://wa.me/+523312867393"
+                                        class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
+                                        title="Envianos un mensaje">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            {{--  <li>
                                 <a href="https://www.creative-tim.com">
                                     Analisis clinicos </a>
                             </li>
@@ -195,28 +215,28 @@
                                 <a href="http://blog.creative-tim.com">
                                     Gastroenterologia
                                 </a>
-                            </li>
+                            </li>  --}}
                         </ul>
                     </nav>
                 </div>
                 <div class="col-4">
-                    <h3 class="title">Contactanos</h3>
+                    {{--  <h3 class="title">Contactanos</h3>  --}}
                     <nav>
-                        <ul>
+                        {{--  <ul>
                             <li>
                                 <div class="text-left col-12 ">
-                                    <a target="_blank" href="https://www.instagram.com/"
+                                    <a target="_blank" href="https://www.instagram.com/antois.laboratorio"
                                         class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
-                                        title="Siguenos">
-                                        {{--  <i class="fab fa-twitter"></i>  --}}
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                    <a target="_blank" href="https://www.facebook.com/"
+                                        title="Siguenos">  --}}
+                        {{--  <i class="fab fa-twitter"></i>  --}}
+                        {{--  <i class="fab fa-instagram"></i>
+                                    </a>  --}}
+                        {{--  <a target="_blank" href="https://www.facebook.com/antois.laboratorio"
                                         class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
                                         title="Danos Like">
                                         <i class="fab fa-facebook-square"></i>
-                                    </a>
-                                    <a target="_blank" href="https://www.facebook.com/"
+                                    </a>  --}}
+                        {{--  <a target="_blank" href="https://www.facebook.com/"
                                         class="btn btn-redes btn-icon  btn-round btn-lg" rel="tooltip"
                                         title="Envianos un mensaje">
                                         <i class="fab fa-whatsapp"></i>
@@ -230,7 +250,15 @@
                                 </div>
                             </li>
                             <li>
-                                <p class="mb-2"><i class="fa fa-envelope me-3"></i> contacto@previda.com</p>
+                                <p class="mb-2"><i class="fa fa-envelope me-3"></i> info@laboratorioantois.com.mx
+                                </p>
+
+                            </li>
+                        </ul>   --}}
+                        <ul>
+                            <li>
+                                <p class="mb-2"><i class="fa fa-envelope me-3"></i> info@laboratorioantois.com.mx
+                                </p>
 
                             </li>
                         </ul>
