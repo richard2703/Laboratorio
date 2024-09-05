@@ -181,10 +181,12 @@
                     <div class="col-md-6 mb-4">
                         <div class="icon-box">
                             {{--  <img src="path_to_icon" alt="Toma de muestras a domicilio">  --}}
-                            <img src="{{ asset('img/logos/ambulance.png') }}" alt="Toma de muestras a domicilio"
+                            {{--  <img src="{{ asset('img/logos/ambulance.png') }}" alt="Toma de muestras a domicilio"
                                 style="
                             max-width: 70px;
-                        ">
+                        ">  --}}
+                            <i class='fas fa-ambulance' style='font-size:70px'></i>
+
 
                             <h4 class="title">Toma de muestras a domicilio</h4>
                             <p>Por un pequeño costo adicional, vamos a tu domicilio para la extracción de muestra.</p>
@@ -193,10 +195,11 @@
                     <div class="col-md-6 mb-4">
                         <div class="icon-box">
                             {{--  <img src="path_to_icon" alt="Precios competitivos reales">  --}}
-                            <img src="{{ asset('img/logos/coin-3.png') }}" alt="Toma de muestras a domicilio"
+                            {{--  <img src="{{ asset('img/logos/coin-3.png') }}" alt="Toma de muestras a domicilio"
                                 style="
                             max-width: 70px;
-                        ">
+                        ">  --}}
+                            <i class='fas fa-hand-holding-usd' style='font-size:70px'></i>
                             <h4 class="title">Precios competitivos reales</h4>
                             <p>Aseguramos los mejores recursos y convenios para brindarte precios accesibles.</p>
                         </div>
@@ -207,10 +210,12 @@
                     <div class="col-md-4 mb-4">
                         <div class="icon-box">
                             {{--  <img src="path_to_icon" alt="Amplio horario de atención">  --}}
-                            <img src="{{ asset('img/logos/hospital-3.png') }}" alt="Toma de muestras a domicilio"
+                            {{--  <img src="{{ asset('img/logos/hospital-3.png') }}" alt="Toma de muestras a domicilio"
                                 style="
                             max-width: 70px;
-                        ">
+                        ">  --}}
+                            <i class='far fa-hospital' style='font-size:70px'></i>
+
                             <h4 class="title">Amplio horario de atención</h4>
                             <p>Nuestros horarios de atención son de 8am - 6pm de lunes a viernes. Sábados 8am - 2pm.</p>
                         </div>
@@ -218,10 +223,12 @@
                     <div class="col-md-4 mb-4">
                         <div class="icon-box">
                             {{--  <img src="path_to_icon" alt="Historia clínica digital">  --}}
-                            <img src="{{ asset('img/logos/folder.png') }}" alt="Toma de muestras a domicilio"
+                            {{--  <img src="{{ asset('img/logos/folder.png') }}" alt="Toma de muestras a domicilio"
                                 style="
                             max-width: 70px;
-                        ">
+                        ">  --}}
+                            <i class='fas fa-laptop-medical' style='font-size:70px'></i>
+
                             <h4 class="title">Historia clínica digital</h4>
                             <p>Generamos un historial de tus estudios de laboratorio para que puedas consultarlos.</p>
                         </div>
@@ -229,10 +236,11 @@
                     <div class="col-md-4 mb-4">
                         <div class="icon-box">
                             {{--  <img src="path_to_icon" alt="Respuesta rápida">  --}}
-                            <img src="{{ asset('img/logos/fast-time.png') }}" alt="Toma de muestras a domicilio"
-                                style="
-                            max-width: 70px;
-                        ">
+                            {{--  <img src="{{ asset('img/logos/fast-time.png') }}" alt="Toma de muestras a domicilio"
+                                style="max-width: 70px;
+                        ">  --}}
+                            <i class='far fa-clock' style='font-size:70px'></i>
+
                             <h4 class="title">Respuesta rápida</h4>
                             <p>Nuestro tiempo de respuesta y seguimiento suele ser de menos de 15min.</p>
                         </div>
