@@ -35,11 +35,11 @@
         <div class="row g-0 d-none d-lg-flex">
             <div class="col-lg-6 ps-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center text-white">
-                    <span>Follow Us:</span>
+                    {{--  <span>Follow Us:</span>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>  --}}
                 </div>
             </div>
             <div class="col-lg-6 text-right  px-0">
@@ -270,8 +270,8 @@
                     <script>
                         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                     </script>, Designed by
-                    <a href="https://www.invisionapp.com" target="_blank">Richard.corp</a>. Coded by
-                    <a href="https://www.creative-tim.com" target="_blank">Richard.corp</a>.
+                    <a href="#" target="_blank">Richard.corp</a>. Coded by
+                    <a href="#" target="_blank">Richard.corp</a>.
                 </div>
             </div>
         </div>
